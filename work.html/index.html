@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jared Stewart — Work</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1e2530;
+      --muted: #1e2530;
+      --border: #dadce0;
+      --btn-bg: #f8f9fa;
+      --btn-bg-hover: #f1f3f4;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #121212;
+      --text: #e8eaed;
+      --muted: #9aa0a6;
+      --border: #3c4043;
+      --btn-bg: #2d2d2d;
+      --btn-bg-hover: #3c4043;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.4);
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    
+    .top-bar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      background: var(--bg);
+      padding: 16px 20px;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .top-left {
+      flex: 1;
+      text-align: left;
+    }
+
+    .top-right {
+      flex: 1;
+      text-align: right;
+    }
+
+    .home-button {
+      background: #4285F4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      box-shadow: 0 2px 8px rgba(66, 133, 244, 0.3);
+    }
+    
+    .home-button:hover {
+      background: #3367d6;
+      transform: translateY(-1px);
+    }
+    
+    .home-button:active {
+      transform: translateY(0);
+    }
+
+    .dark-mode-toggle {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+      margin-right: 16px;
+      cursor: pointer;
+    }
+
+    .dark-mode-toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--border);
+      transition: 0.3s;
+      border-radius: 24px;
+    }
+
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+
+    .dark-mode-toggle input:checked + .toggle-slider {
+      background-color: #4285F4;
+    }
+
+    .dark-mode-toggle input:checked + .toggle-slider:before {
+      transform: translateX(26px);
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .search-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      width: 584px;
+      margin: 0 auto 40px auto;
+    }
+
+    .search-box {
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      width: 100%;
+      height: 44px;
+      padding: 0 44px 0 18px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      font-size: 16px;
+      outline: none;
+      transition: box-shadow 140ms ease, border-color 140ms ease, background-color 140ms ease;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    .search-box input:focus {
+      border-color: #d2e3fc;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .search-box input:hover {
+      box-shadow: var(--shadow-sm);
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .suggestions-dropdown {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0 0;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: var(--shadow-sm);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      display: none;
+    }
+
+    .suggestions-dropdown li {
+      padding: 12px 16px;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border);
+      color: #9aa0a6;
+      font-size: 14px;
+      transition: background-color 120ms ease;
+      text-align: left;
+    }
+
+    .suggestions-dropdown li:last-child {
+      border-bottom: none;
+    }
+
+    .suggestions-dropdown li:hover {
+      background-color: var(--btn-bg-hover);
+    }
+    
+    .work-grid {
+      max-width: 800px;
+      margin-top: 40px;
+      text-align: left;
+    }
+    
+    .project {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .project:last-child {
+      border-bottom: none;
+    }
+    
+    .project-url {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 4px;
+      text-decoration: none;
+    }
+    
+    .project-url:hover {
+      text-decoration: underline;
+    }
+    
+    .project h2 {
+      font-size: 20px;
+      font-weight: 400;
+      margin: 0 0 8px 0;
+      color: #1a0dab;
+      text-decoration: none;
+      line-height: 1.3;
+    }
+    
+    .project h2:hover {
+      text-decoration: underline;
+    }
+    
+    .project p {
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0;
+      font-size: 14px;
+    }
+    
+    .view-case {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="top-left">
+      <a href="../index.html" class="home-button">← Return to Home</a>
+    </div>
+    <div class="top-right">
+      <label class="dark-mode-toggle">
+        <input type="checkbox" id="darkModeToggle">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+  <h1>My Work</h1>
+  
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search my portfolio...">
+      <div class="search-icon">🔍</div>
+    </div>
+
+    <ul id="searchSuggestions" class="suggestions-dropdown">
+      <!-- Suggestions will be populated dynamically -->
+    </ul>
+  </div>
+  
+  <div class="work-grid">
+    <section class="project">
+      <a href="brew-to-grow.html" class="project-url">jaredstewart.com › brew-to-grow</a>
+      <h2><a href="brew-to-grow.html">Brew to Grow</a></h2>
+      <p>A sustainability-focused app that helps local coffee shops donate used grounds to community gardens. This UX case study explores how technology can bridge the gap between waste reduction and community gardening initiatives.</p>
+    </section>
+
+    <section class="project">
+      <a href="philo.html" class="project-url">jaredstewart.com › philo-redesign</a>
+      <h2><a href="philo.html">Philo Sign-In Redesign</a></h2>
+      <p>A UX case study focused on improving sign-in flows and accessibility for streaming users. This project addresses common authentication pain points and creates a more inclusive user experience for diverse audiences.</p>
+    </section>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Dark mode functionality
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      const body = document.body;
+      
+      // Check for saved theme preference or default to light mode
+      const currentTheme = localStorage.getItem('theme') || 'light';
+      body.setAttribute('data-theme', currentTheme);
+      updateToggleState(currentTheme);
+      
+      darkModeToggle.addEventListener('change', () => {
+        const newTheme = darkModeToggle.checked ? 'dark' : 'light';
+        
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      });
+      
+      function updateToggleState(theme) {
+        darkModeToggle.checked = theme === 'dark';
+      }
+
+      // Search functionality with autofill
+      const searchInput = document.getElementById('searchInput');
+      const searchSuggestions = document.getElementById('searchSuggestions');
+      
+      // Define searchable items
+      const searchItems = [
+        { text: 'resume', url: '../resume.html/index.html' },
+        { text: 'about', url: '../about.html/index.html' },
+        { text: 'work', url: '../work.html/index.html' },
+        { text: 'projects', url: '../index.html' },
+        { text: 'photography', url: '#', disabled: true },
+        { text: 'contact', url: '../index.html' },
+        { text: 'jared stewart', url: '../index.html' },
+        { text: 'ux design', url: '../work.html/index.html' },
+        { text: 'portfolio', url: '../index.html' },
+        // Specific projects
+        { text: 'brew to grow', url: 'brew-to-grow.html' },
+        { text: 'philo', url: 'philo.html' },
+        { text: 'philo sign-in', url: 'philo.html' },
+        { text: 'philo redesign', url: 'philo.html' },
+        { text: 'sustainability', url: 'brew-to-grow.html' },
+        { text: 'coffee', url: 'brew-to-grow.html' },
+        { text: 'streaming', url: 'philo.html' },
+        { text: 'accessibility', url: 'philo.html' },
+        { text: 'sign-in', url: 'philo.html' },
+        { text: 'authentication', url: 'philo.html' }
+      ];
+
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        
+        if (query.length === 0) {
+          searchSuggestions.style.display = 'none';
+          return;
+        }
+
+        // Filter items that match the query
+        const matches = searchItems.filter(item => 
+          item.text.toLowerCase().includes(query)
+        );
+
+        if (matches.length > 0) {
+          displaySuggestions(matches);
+        } else {
+          searchSuggestions.style.display = 'none';
+        }
+      });
+
+      searchInput.addEventListener('focus', () => {
+        if (searchInput.value.trim().length > 0) {
+          const query = searchInput.value.toLowerCase().trim();
+          const matches = searchItems.filter(item => 
+            item.text.toLowerCase().includes(query)
+          );
+          if (matches.length > 0) {
+            displaySuggestions(matches);
+          }
+        }
+      });
+
+      searchInput.addEventListener('blur', () => {
+        setTimeout(() => {
+          searchSuggestions.style.display = 'none';
+        }, 150);
+      });
+
+      function displaySuggestions(matches) {
+        searchSuggestions.innerHTML = '';
+        
+        matches.forEach(match => {
+          const li = document.createElement('li');
+          li.textContent = match.text;
+          li.addEventListener('click', () => {
+            if (!match.disabled) {
+              window.location.href = match.url;
+            }
+          });
+          searchSuggestions.appendChild(li);
+        });
+        
+        searchSuggestions.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
