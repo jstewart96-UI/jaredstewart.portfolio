@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <title>Jared Stewart — About</title>
   <link rel="stylesheet" href="../styles.css">
   <style>
@@ -171,6 +171,147 @@
       display: block;
       box-shadow: 0 4px 16px rgba(0,0,0,0.1);
     }
+    
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 100px;
+      }
+      
+      .bio-content {
+        max-width: 100%;
+        padding: 0 20px;
+      }
+      
+      .bio-image {
+        width: 180px;
+        height: 180px;
+        margin-bottom: 24px;
+      }
+      
+      h1 {
+        font-size: 28px;
+        margin-bottom: 16px;
+      }
+      
+      .top-bar {
+        padding: 12px 16px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      body {
+        padding-top: 140px;
+        min-height: 100vh;
+      }
+      
+      .bio-content {
+        padding: 0 16px;
+        max-width: 100%;
+        margin: 0 auto;
+      }
+      
+      .bio-image {
+        width: 180px;
+        height: 180px;
+        margin-bottom: 24px;
+        border-radius: 12px;
+      }
+      
+      h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      
+      .bio-content p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 16px;
+      }
+      
+      .bio-content p:first-of-type {
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+      
+      .top-bar {
+        padding: 8px 12px;
+        flex-wrap: wrap;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+      }
+      
+      .top-left {
+        order: 1;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 6px;
+        display: flex;
+        gap: 12px;
+      }
+      
+      .top-right {
+        order: 2;
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      
+      .home-button {
+        padding: 8px 16px;
+        font-size: 14px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        -webkit-tap-highlight-color: transparent;
+      }
+    }
+    
+    /* iPhone 15 specific optimizations */
+    @media screen and (max-width: 430px) and (max-height: 932px) {
+      body {
+        padding-top: 120px;
+      }
+      
+      .bio-image {
+        width: 160px;
+        height: 160px;
+        margin-bottom: 20px;
+      }
+      
+      h1 {
+        font-size: 24px;
+        margin-bottom: 16px;
+      }
+      
+      .bio-content p {
+        font-size: 15px;
+        line-height: 1.5;
+      }
+    }
+    
+    /* iPhone 15 Pro Max and larger screens */
+    @media screen and (max-width: 430px) and (min-height: 932px) {
+      body {
+        padding-top: 130px;
+      }
+      
+      .bio-image {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 28px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -202,17 +343,20 @@
       const darkModeToggle = document.getElementById('darkModeToggle');
       const body = document.body;
       
-      // Check for saved theme preference or default to light mode
-      const currentTheme = localStorage.getItem('theme') || 'light';
-      body.setAttribute('data-theme', currentTheme);
-      updateToggleState(currentTheme);
-      
-      darkModeToggle.addEventListener('change', () => {
-        const newTheme = darkModeToggle.checked ? 'dark' : 'light';
-        
-        body.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-      });
+          // Check for saved theme preference or default to light mode
+          const currentTheme = localStorage.getItem('theme') || 'light';
+          const html = document.documentElement;
+          body.setAttribute('data-theme', currentTheme);
+          html.setAttribute('data-theme', currentTheme);
+          updateToggleState(currentTheme);
+
+          darkModeToggle.addEventListener('change', () => {
+            const newTheme = darkModeToggle.checked ? 'dark' : 'light';
+
+            body.setAttribute('data-theme', newTheme);
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+          });
       
       function updateToggleState(theme) {
         darkModeToggle.checked = theme === 'dark';

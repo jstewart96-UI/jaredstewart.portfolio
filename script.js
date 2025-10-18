@@ -14,17 +14,20 @@ document.addEventListener('DOMContentLoaded', () => {
     { text: 'jared stewart', url: 'index.html' },
     { text: 'ux design', url: 'work.html/index.html' },
     { text: 'portfolio', url: 'index.html' },
-    // Specific projects
-    { text: 'brew to grow', url: 'work.html/index.html' },
-    { text: 'philo', url: 'work.html/index.html' },
-    { text: 'philo sign-in', url: 'work.html/index.html' },
-    { text: 'philo redesign', url: 'work.html/index.html' },
-    { text: 'sustainability', url: 'work.html/index.html' },
-    { text: 'coffee', url: 'work.html/index.html' },
-    { text: 'streaming', url: 'work.html/index.html' },
-    { text: 'accessibility', url: 'work.html/index.html' },
-    { text: 'sign-in', url: 'work.html/index.html' },
-    { text: 'authentication', url: 'work.html/index.html' }
+        // Specific projects
+        { text: 'brew to grow', url: 'work.html/index.html' },
+        { text: 'philo', url: 'work.html/index.html' },
+        { text: 'philo sign-in', url: 'work.html/index.html' },
+        { text: 'philo redesign', url: 'work.html/index.html' },
+        { text: 'peets coffee', url: 'work.html/index.html' },
+        { text: 'peets coffee mobile', url: 'work.html/index.html' },
+        { text: 'mobile app', url: 'work.html/index.html' },
+        { text: 'sustainability', url: 'work.html/index.html' },
+        { text: 'coffee', url: 'work.html/index.html' },
+        { text: 'streaming', url: 'work.html/index.html' },
+        { text: 'accessibility', url: 'work.html/index.html' },
+        { text: 'sign-in', url: 'work.html/index.html' },
+        { text: 'authentication', url: 'work.html/index.html' }
   ];
 
   searchInput.addEventListener('input', (e) => {
@@ -82,21 +85,24 @@ document.addEventListener('DOMContentLoaded', () => {
     searchHistory.style.display = 'block';
   }
 
-  // Dark mode functionality
-  const darkModeToggle = document.getElementById('darkModeToggle');
-  const body = document.body;
-  
-  // Check for saved theme preference or default to light mode
-  const currentTheme = localStorage.getItem('theme') || 'light';
-  body.setAttribute('data-theme', currentTheme);
-  updateToggleState(currentTheme);
-  
-  darkModeToggle.addEventListener('change', () => {
-    const newTheme = darkModeToggle.checked ? 'dark' : 'light';
-    
-    body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-  });
+      // Dark mode functionality
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      const body = document.body;
+      const html = document.documentElement;
+
+      // Check for saved theme preference or default to light mode
+      const currentTheme = localStorage.getItem('theme') || 'light';
+      body.setAttribute('data-theme', currentTheme);
+      html.setAttribute('data-theme', currentTheme);
+      updateToggleState(currentTheme);
+
+      darkModeToggle.addEventListener('change', () => {
+        const newTheme = darkModeToggle.checked ? 'dark' : 'light';
+
+        body.setAttribute('data-theme', newTheme);
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      });
   
   function updateToggleState(theme) {
     darkModeToggle.checked = theme === 'dark';
