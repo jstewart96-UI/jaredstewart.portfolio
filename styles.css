@@ -43,116 +43,86 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.top-bar {
+/* Header layout */
+header {
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   background: var(--bg);
-  padding: 16px 20px;
   z-index: 100;
   border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 16px 32px;
+  width: 100%;
 }
 
-.top-left {
-  flex: 1;
+.nav-left,
+.nav-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
 }
 
-.top-right {
-  flex: 1;
-  text-align: right;
-}
-
-.about-link {
-  color: #4285F4;
+.nav-link {
   text-decoration: none;
-  font-size: 14px;
+  color: inherit;
   font-weight: 500;
-  transition: color 0.2s ease;
 }
 
-.about-link:hover {
-  color: #3367d6;
-  text-decoration: underline;
+.nav-link:hover {
+  opacity: 0.7;
 }
 
-.resume-link {
-  color: #4285F4;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.resume-link:hover {
-  color: #3367d6;
-  text-decoration: underline;
-}
-
-.email-link {
-  color: #4285F4;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.email-link:hover {
-  color: #3367d6;
-  text-decoration: underline;
-}
-
-.dark-mode-toggle {
+/* Toggle Switch */
+.toggle-switch {
   position: relative;
-  display: inline-block;
   width: 50px;
-  height: 24px;
-  margin-right: 16px;
-  cursor: pointer;
+  height: 26px;
+  display: inline-block;
 }
 
-.dark-mode-toggle input {
+.toggle-switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.toggle-slider {
+/* Slider (background track) */
+.slider {
   position: absolute;
   cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--border);
-  transition: 0.3s;
-  border-radius: 24px;
+  background-color: #ccc;
+  border-radius: 26px;
+  transition: background-color 0.3s;
 }
 
-.toggle-slider:before {
+/* Circle knob */
+.slider::before {
   position: absolute;
   content: "";
-  height: 18px;
-  width: 18px;
+  height: 20px;
+  width: 20px;
   left: 3px;
   bottom: 3px;
   background-color: white;
-  transition: 0.3s;
   border-radius: 50%;
+  transition: transform 0.3s;
 }
 
-.dark-mode-toggle input:checked + .toggle-slider {
-  background-color: #4285F4;
+/* Checked (dark mode active) */
+.toggle-switch input:checked + .slider {
+  background-color: #2196F3;
 }
 
-.dark-mode-toggle input:checked + .toggle-slider:before {
-  transform: translateX(26px);
+.toggle-switch input:checked + .slider::before {
+  transform: translateX(24px);
 }
 
 .page {
@@ -361,20 +331,17 @@ html, body {
   }
 }
 
-/* Mobile landscape */
+/* Responsive layout for mobile */
 @media (max-width: 768px) {
-  .top-bar {
-    padding: 12px 16px;
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 12px 20px;
   }
-  
-  .top-left {
-    display: flex;
-    gap: 16px;
-  }
-  
-  .about-link, .resume-link {
-    font-size: 13px;
-    margin-right: 0;
+
+  .nav-left,
+  .nav-right {
+    gap: 12px;
   }
   
   .logo {
@@ -407,7 +374,7 @@ html, body {
 
 /* Mobile portrait - Desktop-like styling */
 @media (max-width: 480px) {
-  .top-bar {
+  header {
     padding: 12px 16px;
     position: fixed;
     top: 0;
@@ -421,80 +388,82 @@ html, body {
     align-items: center;
   }
   
-  .top-left {
+  .nav-left {
     display: flex;
     align-items: center;
     gap: 16px;
   }
   
-  .top-right {
+  .nav-right {
     display: flex;
     align-items: center;
     gap: 12px;
   }
   
-  .about-link, .resume-link {
+  .nav-link {
     font-size: 14px;
     color: #4285F4;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.2s ease;
+    transition: opacity 0.2s ease;
     background: none;
     border: none;
     padding: 0;
     border-radius: 0;
   }
   
-  .about-link:hover, .resume-link:hover {
-    color: #3367d6;
-    text-decoration: underline;
+  .nav-link:hover {
+    opacity: 0.7;
   }
   
-  .dark-mode-toggle {
+  /* Toggle container */
+  .toggle-switch {
     position: relative;
-    display: inline-block;
     width: 50px;
-    height: 24px;
-    margin-right: 16px;
-    cursor: pointer;
+    height: 26px;
+    display: inline-block;
   }
 
-  .dark-mode-toggle input {
+  /* Hide default checkbox */
+  .toggle-switch input {
     opacity: 0;
     width: 0;
     height: 0;
   }
 
-  .toggle-slider {
+  /* Track */
+  .slider {
     position: absolute;
     cursor: pointer;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--border);
-    transition: 0.3s;
-    border-radius: 24px;
+    background-color: #ccc;
+    border-radius: 26px;
+    transition: 0.4s;
   }
 
-  .toggle-slider:before {
+  /* Circle knob */
+  .slider::before {
     position: absolute;
     content: "";
-    height: 18px;
-    width: 18px;
+    height: 20px;
+    width: 20px;
     left: 3px;
     bottom: 3px;
     background-color: white;
-    transition: 0.3s;
     border-radius: 50%;
+    transition: 0.4s;
   }
 
-  .dark-mode-toggle input:checked + .toggle-slider {
-    background-color: #4285F4;
+  /* When checked */
+  .toggle-switch input:checked + .slider {
+    background-color: #2196F3;
   }
 
-  .dark-mode-toggle input:checked + .toggle-slider:before {
-    transform: translateX(26px);
+  .toggle-switch input:checked + .slider::before {
+    transform: translateX(24px);
   }
   
   .logo {
