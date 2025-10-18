@@ -405,11 +405,10 @@ html, body {
   }
 }
 
-/* Mobile portrait - iPhone optimized */
+/* Mobile portrait - Desktop-like styling */
 @media (max-width: 480px) {
   .top-bar {
-    padding: 8px 12px;
-    flex-wrap: wrap;
+    padding: 12px 16px;
     position: fixed;
     top: 0;
     left: 0;
@@ -417,21 +416,18 @@ html, body {
     z-index: 1000;
     background: var(--bg);
     border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   
   .top-left {
-    order: 1;
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 6px;
     display: flex;
-    gap: 12px;
+    align-items: center;
+    gap: 16px;
   }
   
   .top-right {
-    order: 2;
-    width: 100%;
-    justify-content: center;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -439,18 +435,70 @@ html, body {
   
   .about-link, .resume-link {
     font-size: 14px;
-    padding: 8px 12px;
-    border-radius: 6px;
-    background: var(--btn-bg);
-    border: 1px solid var(--border);
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: #4285F4;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    background: none;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+  }
+  
+  .about-link:hover, .resume-link:hover {
+    color: #3367d6;
+    text-decoration: underline;
+  }
+  
+  .dark-mode-toggle {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-right: 16px;
+    cursor: pointer;
+  }
+
+  .dark-mode-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--border);
+    transition: 0.3s;
+    border-radius: 24px;
+  }
+
+  .toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+  }
+
+  .dark-mode-toggle input:checked + .toggle-slider {
+    background-color: #4285F4;
+  }
+
+  .dark-mode-toggle input:checked + .toggle-slider:before {
+    transform: translateX(26px);
   }
   
   .logo {
-    font-size: clamp(28px, 8vw, 42px);
+    font-size: clamp(32px, 8vw, 48px);
     line-height: 1.1;
     margin: 0;
     text-align: center;
@@ -458,7 +506,7 @@ html, body {
   
   .search-wrapper {
     width: 100%;
-    max-width: 350px;
+    max-width: 584px;
     margin: 0 auto;
   }
   
@@ -466,9 +514,10 @@ html, body {
     height: 44px;
     font-size: 16px;
     padding: 0 44px 0 16px;
-    border-radius: 22px;
+    border-radius: 24px;
     -webkit-appearance: none;
     appearance: none;
+    width: 100%;
   }
   
   .search-icon {
@@ -479,41 +528,62 @@ html, body {
   .history-dropdown {
     width: 100%;
     font-size: 14px;
-    border-radius: 8px;
+    border-radius: 12px;
     margin-top: 4px;
   }
   
   .buttons {
-    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
     width: 100%;
-    gap: 12px;
-    margin-top: 24px;
-    max-width: 350px;
+    max-width: 584px;
     margin-left: auto;
     margin-right: auto;
   }
   
   .buttons button {
-    width: 100%;
-    height: 48px;
-    padding: 14px 20px;
-    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    background: var(--btn-bg);
+    border: 1px solid var(--border);
     border-radius: 8px;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: background 140ms ease, box-shadow 140ms ease, transform 60ms ease;
     -webkit-appearance: none;
     appearance: none;
   }
   
+  .buttons button:hover {
+    background: var(--btn-bg-hover);
+    box-shadow: var(--shadow-sm);
+  }
+  
   .page {
-    padding: 140px 16px 0;
+    padding: 80px 16px 0;
     min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .landing {
-    padding: 20px 0;
-    gap: 20px;
+    padding: 40px 0;
+    gap: 24px;
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   
   .work-grid {

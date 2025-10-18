@@ -201,7 +201,7 @@
     
     @media (max-width: 480px) {
       body {
-        padding-top: 140px;
+        padding-top: 80px;
         min-height: 100vh;
       }
       
@@ -212,9 +212,9 @@
       }
       
       .bio-image {
-        width: 180px;
-        height: 180px;
-        margin-bottom: 24px;
+        width: 200px;
+        height: 200px;
+        margin-bottom: 30px;
         border-radius: 12px;
       }
       
@@ -236,8 +236,7 @@
       }
       
       .top-bar {
-        padding: 8px 12px;
-        flex-wrap: wrap;
+        padding: 12px 16px;
         position: fixed;
         top: 0;
         left: 0;
@@ -245,35 +244,41 @@
         z-index: 1000;
         background: var(--bg);
         border-bottom: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
       
       .top-left {
-        order: 1;
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 6px;
         display: flex;
-        gap: 12px;
+        align-items: center;
+        gap: 16px;
       }
       
       .top-right {
-        order: 2;
-        width: 100%;
-        justify-content: center;
         display: flex;
         align-items: center;
         gap: 12px;
       }
       
       .home-button {
-        padding: 8px 16px;
+        background: #4285F4;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 20px;
         font-size: 14px;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 6px;
+        font-weight: 500;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+        box-shadow: 0 2px 8px rgba(66, 133, 244, 0.3);
         -webkit-tap-highlight-color: transparent;
+      }
+      
+      .home-button:hover {
+        background: #3367d6;
+        transform: translateY(-1px);
       }
     }
     
