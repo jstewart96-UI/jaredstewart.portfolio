@@ -75,7 +75,6 @@ html, body {
   font-size: 14px;
   font-weight: 500;
   transition: color 0.2s ease;
-  margin-right: 20px;
 }
 
 .about-link:hover {
@@ -683,6 +682,53 @@ html, body {
   .about-link, .resume-link, .email-link {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
+  }
+}
+
+/* Additional responsive optimizations */
+/* --- Tablet --- */
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 2rem;
+  }
+  .search-wrapper {
+    width: 70%;
+  }
+  .buttons button {
+    width: 80%;
+  }
+}
+
+/* --- Mobile --- */
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .search-wrapper {
+    width: 100%;
+    margin: 1rem auto;
+  }
+
+  .search-box input {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .buttons button {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .history-dropdown {
+    width: 100%;
+    position: absolute;
+    top: 100%;
   }
 }
 
