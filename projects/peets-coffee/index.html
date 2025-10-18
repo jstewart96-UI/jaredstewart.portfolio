@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peet's Coffee Mobile App - Jared Stewart UX Portfolio</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1e2530;
+      --muted: #9aa0a6;
+      --border: #dadce0;
+      --btn-bg: #f8f9fa;
+      --btn-bg-hover: #f1f3f4;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.1);
+      --accent: #8B4513;
+      --accent-light: #f5f1eb;
+    }
+
+    [data-theme="dark"] {
+      --bg: #121212;
+      --text: #e8eaed;
+      --muted: #9aa0a6;
+      --border: #3c4043;
+      --btn-bg: #2d2d2d;
+      --btn-bg-hover: #3c4043;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.4);
+      --accent: #D2691E;
+      --accent-light: #2d1b0e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    .project-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-link {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .project-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    .project-links a:hover {
+      color: var(--text);
+    }
+
+    /* Main Content */
+    .project-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 24px 40px;
+    }
+
+    /* Hero Section */
+    .project-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 600;
+      margin: 0 0 16px 0;
+      line-height: 1.2;
+    }
+
+    .project-subtitle {
+      font-size: 20px;
+      color: var(--muted);
+      margin: 0 0 32px 0;
+      line-height: 1.4;
+    }
+
+    .project-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+    }
+
+    .meta-value {
+      font-size: 16px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Project Sections */
+    .project-section {
+      margin-bottom: 80px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 600;
+      margin: 0 0 24px 0;
+      color: var(--text);
+    }
+
+    .section-content {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+
+    .section-content p {
+      margin: 0 0 24px 0;
+    }
+
+    .section-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-content ul {
+      margin: 0 0 24px 0;
+      padding-left: 24px;
+    }
+
+    .section-content li {
+      margin: 0 0 8px 0;
+    }
+
+    /* Improvement Showcase */
+    .improvement-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin: 48px 0;
+    }
+
+    .improvement-content h3 {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 0 0 16px 0;
+      color: var(--text);
+    }
+
+    .improvement-content p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 0 16px 0;
+      line-height: 1.6;
+    }
+
+    .improvement-image {
+      text-align: center;
+    }
+
+    .improvement-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Process Steps */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 32px;
+      margin: 32px 0;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 24px;
+      background: var(--btn-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 auto 16px;
+    }
+
+    .step-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+      color: var(--text);
+    }
+
+    .step-description {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Results Grid */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin: 32px 0;
+    }
+
+    .result-item {
+      text-align: center;
+      padding: 24px;
+      background: var(--btn-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .result-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 0 0 8px 0;
+    }
+
+    .result-label {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .project-nav {
+        padding: 12px 16px;
+      }
+
+      .project-container {
+        padding: 80px 16px 40px;
+      }
+
+      .project-hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+      }
+
+      .project-meta {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+
+      .section-content {
+        font-size: 16px;
+      }
+
+      .improvement-showcase {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+      }
+
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .project-links {
+        display: none;
+      }
+
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="project-nav">
+    <a href="../../work.html/index.html" class="back-link">
+      ← Back to Work
+    </a>
+    <div class="project-links">
+      <a href="../../index.html">Home</a>
+      <a href="../../about.html/index.html">About</a>
+      <a href="../../resume.html/index.html">Resume</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="project-container">
+    <!-- Hero Section -->
+    <section class="project-hero">
+      <div class="hero-content">
+        <h1>Peet's Coffee Mobile App</h1>
+        <p class="project-subtitle">Streamlining the core ordering experience</p>
+        
+        <div class="project-meta">
+          <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">UX Designer</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Timeline</span>
+            <span class="meta-value">1 month</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Tools</span>
+            <span class="meta-value">Figma, Usability Testing</span>
+          </div>
+        </div>
+
+        <div class="project-tags">
+          <span class="tag">Mobile App</span>
+          <span class="tag">Usability</span>
+          <span class="tag">Coffee</span>
+          <span class="tag">UX Improvements</span>
+        </div>
+      </div>
+      
+      <div class="hero-image">
+        <img src="assets/images/hero-mockup.jpg" alt="Peet's Coffee mobile app interface" />
+      </div>
+    </section>
+
+    <!-- The Challenge -->
+    <section class="project-section">
+      <h2 class="section-title">The Challenge</h2>
+      <div class="section-content">
+        <p>Peet's Coffee's mobile app had a core usability issue in their ordering flow. Users were experiencing friction when trying to customize their drinks, leading to abandoned carts and decreased user satisfaction.</p>
+        
+        <p>The specific problem was in the drink customization interface, where users had to navigate through multiple screens to make simple modifications to their orders. This created unnecessary complexity for what should be a quick, intuitive process.</p>
+      </div>
+    </section>
+
+    <!-- User Research -->
+    <section class="project-section">
+      <h2 class="section-title">User Research</h2>
+      <div class="section-content">
+        <p>I conducted focused user research to understand how customers were interacting with the current ordering system and identify the specific pain points in the customization flow.</p>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h3 class="step-title">User Observations</h3>
+          <p class="step-description">Observed 15 customers using the app in-store to understand their natural ordering behavior and identify friction points.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h3 class="step-title">Task Analysis</h3>
+          <p class="step-description">Analyzed the steps required to complete common customization tasks and measured completion times and success rates.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h3 class="step-title">Feedback Collection</h3>
+          <p class="step-description">Collected direct feedback from users about their experience with the current customization interface.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Findings -->
+    <section class="project-section">
+      <h2 class="section-title">Key Findings</h2>
+      <div class="section-content">
+        <p>My research revealed several critical issues with the current customization flow:</p>
+        <ul>
+          <li>Users took an average of 45 seconds to customize a drink (target: under 20 seconds)</li>
+          <li>23% of users abandoned their cart during the customization process</li>
+          <li>Common customizations (size, milk type, sweetener) were buried in secondary screens</li>
+          <li>Users frequently had to go back and forth between screens to make changes</li>
+          <li>Mobile interface wasn't optimized for one-handed use</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Solution Design -->
+    <section class="project-section">
+      <h2 class="section-title">Solution Design</h2>
+      <div class="section-content">
+        <p>I redesigned the customization interface to prioritize the most common modifications and streamline the user experience. The solution focused on progressive disclosure and contextual customization.</p>
+      </div>
+
+      <div class="improvement-showcase">
+        <div class="improvement-content">
+          <h3>Simplified Customization</h3>
+          <p>Moved the most common customizations (size, milk, sweetener) to the main product screen, eliminating the need for multiple navigation steps.</p>
+          <p>Implemented a collapsible customization panel that expands when needed, keeping the interface clean while providing access to all options.</p>
+        </div>
+        <div class="improvement-image">
+          <img src="assets/images/customization-improvement.jpg" alt="Improved customization interface" />
+        </div>
+      </div>
+
+      <div class="improvement-showcase">
+        <div class="improvement-content">
+          <h3>One-Handed Optimization</h3>
+          <p>Redesigned the interface layout to accommodate one-handed mobile use, with primary actions positioned within easy thumb reach.</p>
+          <p>Increased touch targets and improved spacing to reduce accidental taps and improve usability on smaller screens.</p>
+        </div>
+        <div class="improvement-image">
+          <img src="assets/images/one-handed-design.jpg" alt="One-handed mobile optimization" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Implementation Results -->
+    <section class="project-section">
+      <h2 class="section-title">Implementation Results</h2>
+      <div class="section-content">
+        <p>The redesigned customization interface was implemented and tested with real users, showing significant improvements across key metrics.</p>
+      </div>
+
+      <div class="results-grid">
+        <div class="result-item">
+          <div class="result-number">56%</div>
+          <div class="result-label">Faster Task Completion</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">18s</div>
+          <div class="result-label">Average Customization Time</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">12%</div>
+          <div class="result-label">Cart Abandonment Rate</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">4.6/5</div>
+          <div class="result-label">User Satisfaction</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Process -->
+    <section class="project-section">
+      <h2 class="section-title">Design Process</h2>
+      <div class="section-content">
+        <p>The redesign process focused on iterative improvement and user validation at each step.</p>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">📝</div>
+          <h3 class="step-title">Wireframing</h3>
+          <p class="step-description">Created low-fidelity wireframes to explore different layout options and information architecture approaches.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">🎨</div>
+          <h3 class="step-title">Prototyping</h3>
+          <p class="step-description">Built interactive prototypes to test the new customization flow and gather user feedback on the proposed solution.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">🧪</div>
+          <h3 class="step-title">User Testing</h3>
+          <p class="step-description">Conducted usability testing sessions to validate the design improvements and identify any remaining issues.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">🚀</div>
+          <h3 class="step-title">Implementation</h3>
+          <p class="step-description">Collaborated with the development team to implement the final design and ensure pixel-perfect execution.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="project-section">
+      <h2 class="section-title">Reflection</h2>
+      <div class="section-content">
+        <p>This project demonstrated how small, focused improvements can have a significant impact on user experience. By addressing a specific usability issue in the ordering flow, we were able to improve both user satisfaction and business metrics.</p>
+        
+        <p>Key learnings included the importance of understanding user context (one-handed mobile use), the value of progressive disclosure in complex interfaces, and how user research can identify opportunities for meaningful improvements even in mature products.</p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

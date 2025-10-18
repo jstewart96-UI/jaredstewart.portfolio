@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Philo Sign-In Redesign - Jared Stewart UX Portfolio</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1e2530;
+      --muted: #9aa0a6;
+      --border: #dadce0;
+      --btn-bg: #f8f9fa;
+      --btn-bg-hover: #f1f3f4;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.1);
+      --accent: #4285F4;
+      --accent-light: #e8f0fe;
+    }
+
+    [data-theme="dark"] {
+      --bg: #121212;
+      --text: #e8eaed;
+      --muted: #9aa0a6;
+      --border: #3c4043;
+      --btn-bg: #2d2d2d;
+      --btn-bg-hover: #3c4043;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.4);
+      --accent: #4285F4;
+      --accent-light: #1a237e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    .project-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-link {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .project-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    .project-links a:hover {
+      color: var(--text);
+    }
+
+    /* Main Content */
+    .project-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 24px 40px;
+    }
+
+    /* Hero Section */
+    .project-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 600;
+      margin: 0 0 16px 0;
+      line-height: 1.2;
+    }
+
+    .project-subtitle {
+      font-size: 20px;
+      color: var(--muted);
+      margin: 0 0 32px 0;
+      line-height: 1.4;
+    }
+
+    .project-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+    }
+
+    .meta-value {
+      font-size: 16px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Project Sections */
+    .project-section {
+      margin-bottom: 80px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 600;
+      margin: 0 0 24px 0;
+      color: var(--text);
+    }
+
+    .section-content {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+
+    .section-content p {
+      margin: 0 0 24px 0;
+    }
+
+    .section-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-content ul {
+      margin: 0 0 24px 0;
+      padding-left: 24px;
+    }
+
+    .section-content li {
+      margin: 0 0 8px 0;
+    }
+
+    /* Before/After Comparison */
+    .comparison-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin: 32px 0;
+    }
+
+    .comparison-item {
+      text-align: center;
+    }
+
+    .comparison-label {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .comparison-image {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Accessibility Features */
+    .accessibility-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      margin: 32px 0;
+    }
+
+    .accessibility-item {
+      padding: 24px;
+      background: var(--btn-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .accessibility-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .accessibility-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+      color: var(--text);
+    }
+
+    .accessibility-description {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Results Grid */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin: 32px 0;
+    }
+
+    .result-item {
+      text-align: center;
+      padding: 24px;
+      background: var(--btn-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .result-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 0 0 8px 0;
+    }
+
+    .result-label {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .project-nav {
+        padding: 12px 16px;
+      }
+
+      .project-container {
+        padding: 80px 16px 40px;
+      }
+
+      .project-hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+      }
+
+      .project-meta {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+
+      .section-content {
+        font-size: 16px;
+      }
+
+      .comparison-container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .accessibility-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .project-links {
+        display: none;
+      }
+
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="project-nav">
+    <a href="../../work.html/index.html" class="back-link">
+      ← Back to Work
+    </a>
+    <div class="project-links">
+      <a href="../../index.html">Home</a>
+      <a href="../../about.html/index.html">About</a>
+      <a href="../../resume.html/index.html">Resume</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="project-container">
+    <!-- Hero Section -->
+    <section class="project-hero">
+      <div class="hero-content">
+        <h1>Philo Sign-In Redesign</h1>
+        <p class="project-subtitle">Improving accessibility and user experience for streaming authentication</p>
+        
+        <div class="project-meta">
+          <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">UX Designer</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Timeline</span>
+            <span class="meta-value">2 months</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Tools</span>
+            <span class="meta-value">Figma, User Testing, A/B Testing</span>
+          </div>
+        </div>
+
+        <div class="project-tags">
+          <span class="tag">Streaming</span>
+          <span class="tag">Accessibility</span>
+          <span class="tag">Authentication</span>
+          <span class="tag">User Testing</span>
+        </div>
+      </div>
+      
+      <div class="hero-image">
+        <img src="assets/images/hero-mockup.jpg" alt="Philo sign-in interface redesign" />
+      </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="project-section">
+      <h2 class="section-title">The Problem</h2>
+      <div class="section-content">
+        <p>Philo's existing sign-in flow was causing significant user friction and accessibility barriers. Users were experiencing high drop-off rates during authentication, particularly among users with disabilities and those using assistive technologies.</p>
+        
+        <p>Key issues identified:</p>
+        <ul>
+          <li>Poor contrast ratios that failed WCAG guidelines</li>
+          <li>Complex multi-step authentication process</li>
+          <li>Limited keyboard navigation support</li>
+          <li>Inconsistent error messaging and validation</li>
+          <li>Mobile responsiveness issues</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Research & Discovery -->
+    <section class="project-section">
+      <h2 class="section-title">Research & Discovery</h2>
+      <div class="section-content">
+        <p>I conducted comprehensive user research to understand the pain points in the current sign-in experience and identify opportunities for improvement.</p>
+      </div>
+
+      <div class="accessibility-grid">
+        <div class="accessibility-item">
+          <div class="accessibility-icon">👥</div>
+          <h3 class="accessibility-title">User Interviews</h3>
+          <p class="accessibility-description">Interviewed 20 users including those with visual, motor, and cognitive disabilities to understand their authentication challenges.</p>
+        </div>
+        <div class="accessibility-item">
+          <div class="accessibility-icon">📊</div>
+          <h3 class="accessibility-title">Analytics Review</h3>
+          <p class="accessibility-description">Analyzed user behavior data to identify drop-off points and common failure patterns in the authentication flow.</p>
+        </div>
+        <div class="accessibility-item">
+          <div class="accessibility-icon">🧪</div>
+          <h3 class="accessibility-title">Usability Testing</h3>
+          <p class="accessibility-description">Conducted moderated usability tests with diverse users to identify specific accessibility barriers and usability issues.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution Design -->
+    <section class="project-section">
+      <h2 class="section-title">Solution Design</h2>
+      <div class="section-content">
+        <p>Based on my research findings, I redesigned the sign-in flow to prioritize accessibility, simplicity, and user trust. The new design implements progressive disclosure and clear visual hierarchy.</p>
+      </div>
+
+      <div class="comparison-container">
+        <div class="comparison-item">
+          <h3 class="comparison-label">Before</h3>
+          <img src="assets/images/before-design.jpg" alt="Original Philo sign-in interface" class="comparison-image" />
+        </div>
+        <div class="comparison-item">
+          <h3 class="comparison-label">After</h3>
+          <img src="assets/images/after-design.jpg" alt="Redesigned Philo sign-in interface" class="comparison-image" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Accessibility Improvements -->
+    <section class="project-section">
+      <h2 class="section-title">Accessibility Improvements</h2>
+      <div class="section-content">
+        <p>The redesign focused heavily on accessibility compliance and inclusive design principles.</p>
+      </div>
+
+      <div class="accessibility-grid">
+        <div class="accessibility-item">
+          <div class="accessibility-icon">🎨</div>
+          <h3 class="accessibility-title">Color Contrast</h3>
+          <p class="accessibility-description">Improved contrast ratios to meet WCAG AA standards, ensuring text and interactive elements are clearly visible.</p>
+        </div>
+        <div class="accessibility-item">
+          <div class="accessibility-icon">⌨️</div>
+          <h3 class="accessibility-title">Keyboard Navigation</h3>
+          <p class="accessibility-description">Implemented comprehensive keyboard navigation support with clear focus indicators and logical tab order.</p>
+        </div>
+        <div class="accessibility-item">
+          <div class="accessibility-icon">📱</div>
+          <h3 class="accessibility-title">Screen Reader Support</h3>
+          <p class="accessibility-description">Added proper ARIA labels, roles, and descriptions to ensure compatibility with assistive technologies.</p>
+        </div>
+        <div class="accessibility-item">
+          <div class="accessibility-icon">⚡</div>
+          <h3 class="accessibility-title">Error Handling</h3>
+          <p class="accessibility-description">Improved error messaging with clear, actionable feedback and proper error announcement to screen readers.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- User Testing Results -->
+    <section class="project-section">
+      <h2 class="section-title">User Testing Results</h2>
+      <div class="section-content">
+        <p>Comprehensive user testing validated the effectiveness of the redesign, showing significant improvements across key metrics.</p>
+      </div>
+
+      <div class="results-grid">
+        <div class="result-item">
+          <div class="result-number">67%</div>
+          <div class="result-label">Reduction in Task Time</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">89%</div>
+          <div class="result-label">Task Success Rate</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">92%</div>
+          <div class="result-label">Accessibility Compliance</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">4.8/5</div>
+          <div class="result-label">User Satisfaction</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Implementation -->
+    <section class="project-section">
+      <h2 class="section-title">Implementation & Impact</h2>
+      <div class="section-content">
+        <p>The redesigned sign-in flow was implemented across all Philo platforms, resulting in measurable improvements in user experience and accessibility compliance.</p>
+        
+        <p>Key implementation highlights:</p>
+        <ul>
+          <li>Progressive enhancement approach ensuring compatibility across devices</li>
+          <li>Comprehensive accessibility testing with real users and assistive technologies</li>
+          <li>A/B testing to validate improvements and optimize conversion rates</li>
+          <li>Continuous monitoring and iteration based on user feedback</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="project-section">
+      <h2 class="section-title">Reflection</h2>
+      <div class="section-content">
+        <p>This project reinforced the importance of inclusive design and accessibility-first thinking. By prioritizing users with disabilities, I created a solution that improved the experience for all users.</p>
+        
+        <p>Key learnings included the value of early accessibility testing, the importance of clear error messaging, and how good accessibility practices often lead to better overall user experience.</p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

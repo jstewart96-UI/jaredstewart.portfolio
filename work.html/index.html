@@ -14,6 +14,8 @@
       --btn-bg: #f8f9fa;
       --btn-bg-hover: #f1f3f4;
       --shadow-sm: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.1);
+      --project-card-bg: #ffffff;
+      --project-card-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
 
     [data-theme="dark"] {
@@ -24,6 +26,8 @@
       --btn-bg: #2d2d2d;
       --btn-bg-hover: #3c4043;
       --shadow-sm: 0 1px 2px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.4);
+      --project-card-bg: #1e1e1e;
+      --project-card-shadow: 0 1px 3px rgba(0,0,0,0.3);
     }
 
     body {
@@ -240,6 +244,123 @@
       margin-top: 40px;
       text-align: left;
     }
+
+    /* Enhanced Project Cards */
+    .project-card {
+      background: var(--project-card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      transition: all 0.3s ease;
+      box-shadow: var(--project-card-shadow);
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .project-url {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 4px;
+      text-decoration: none;
+    }
+    
+    .project-url:hover {
+      text-decoration: underline;
+    }
+    
+    .project h2 {
+      font-size: 24px;
+      font-weight: 500;
+      margin: 0 0 12px 0;
+      color: #1a0dab;
+      text-decoration: none;
+      line-height: 1.3;
+    }
+    
+    .project h2:hover {
+      text-decoration: underline;
+    }
+    
+    .project p {
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0 0 16px 0;
+      font-size: 15px;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .meta-label {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .meta-value {
+      color: var(--text);
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      background: var(--btn-bg);
+      color: var(--text);
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 500;
+      border: 1px solid var(--border);
+    }
+
+    .view-case-study {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #4285F4;
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .view-case-study:hover {
+      background: #3367d6;
+      transform: translateY(-1px);
+    }
+
+    .view-case-study:active {
+      transform: translateY(0);
+    }
     
     /* Mobile responsiveness */
     @media (max-width: 768px) {
@@ -249,9 +370,9 @@
         padding: 0 16px;
       }
       
-      .project {
-        margin-bottom: 24px;
-        padding-bottom: 16px;
+      .project-card {
+        margin-bottom: 20px;
+        padding: 20px;
       }
       
       .project h2 {
@@ -262,6 +383,11 @@
       .project p {
         font-size: 15px;
         line-height: 1.5;
+      }
+
+      .project-meta {
+        flex-direction: column;
+        gap: 8px;
       }
       
       .search-wrapper {
@@ -478,22 +604,97 @@
   </div>
   
   <div class="work-grid">
-    <section class="project">
-      <a href="brew-to-grow.html" class="project-url">jaredstewart.com › brew-to-grow</a>
-      <h2><a href="brew-to-grow.html">Brew to Grow</a></h2>
+    <!-- Brew to Grow Project -->
+    <section class="project-card">
+      <a href="../projects/brew-to-grow/index.html" class="project-url">jaredstewart.com › brew-to-grow</a>
+      <h2><a href="../projects/brew-to-grow/index.html">Brew to Grow</a></h2>
       <p>A sustainability-focused app that helps local coffee shops donate used grounds to community gardens. This UX case study explores how technology can bridge the gap between waste reduction and community gardening initiatives.</p>
+      
+      <div class="project-meta">
+        <div class="meta-item">
+          <span class="meta-label">Role:</span>
+          <span class="meta-value">UX Designer & Researcher</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Timeline:</span>
+          <span class="meta-value">3 months</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Tools:</span>
+          <span class="meta-value">Figma, User Research, Prototyping</span>
+        </div>
+      </div>
+
+      <div class="project-tags">
+        <span class="tag">Sustainability</span>
+        <span class="tag">Mobile App</span>
+        <span class="tag">Community</span>
+        <span class="tag">User Research</span>
+      </div>
+
+      <a href="../projects/brew-to-grow/index.html" class="view-case-study">View Case Study →</a>
     </section>
 
-    <section class="project">
-      <a href="philo.html" class="project-url">jaredstewart.com › philo-redesign</a>
-      <h2><a href="philo.html">Philo Sign-In Redesign</a></h2>
+    <!-- Philo Redesign Project -->
+    <section class="project-card">
+      <a href="../projects/philo/index.html" class="project-url">jaredstewart.com › philo-redesign</a>
+      <h2><a href="../projects/philo/index.html">Philo Sign-In Redesign</a></h2>
       <p>A UX case study focused on improving sign-in flows and accessibility for streaming users. This project addresses common authentication pain points and creates a more inclusive user experience for diverse audiences.</p>
+      
+      <div class="project-meta">
+        <div class="meta-item">
+          <span class="meta-label">Role:</span>
+          <span class="meta-value">UX Designer</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Timeline:</span>
+          <span class="meta-value">2 months</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Tools:</span>
+          <span class="meta-value">Figma, User Testing, A/B Testing</span>
+        </div>
+      </div>
+
+      <div class="project-tags">
+        <span class="tag">Streaming</span>
+        <span class="tag">Accessibility</span>
+        <span class="tag">Authentication</span>
+        <span class="tag">User Testing</span>
+      </div>
+
+      <a href="../projects/philo/index.html" class="view-case-study">View Case Study →</a>
     </section>
 
-    <section class="project">
-      <a href="peets-coffee.html" class="project-url">jaredstewart.com › peets-coffee-mobile</a>
-      <h2><a href="peets-coffee.html">Peet's Coffee Mobile App</a></h2>
-      <p>How a small improvement streamlined a core function for increased usability.</p>
+    <!-- Peet's Coffee Project -->
+    <section class="project-card">
+      <a href="../projects/peets-coffee/index.html" class="project-url">jaredstewart.com › peets-coffee-mobile</a>
+      <h2><a href="../projects/peets-coffee/index.html">Peet's Coffee Mobile App</a></h2>
+      <p>How a small improvement streamlined a core function for increased usability. This case study demonstrates how thoughtful UX design can significantly improve user experience with minimal changes.</p>
+      
+      <div class="project-meta">
+        <div class="meta-item">
+          <span class="meta-label">Role:</span>
+          <span class="meta-value">UX Designer</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Timeline:</span>
+          <span class="meta-value">1 month</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Tools:</span>
+          <span class="meta-value">Figma, Usability Testing</span>
+        </div>
+      </div>
+
+      <div class="project-tags">
+        <span class="tag">Mobile App</span>
+        <span class="tag">Usability</span>
+        <span class="tag">Coffee</span>
+        <span class="tag">UX Improvements</span>
+      </div>
+
+      <a href="../projects/peets-coffee/index.html" class="view-case-study">View Case Study →</a>
     </section>
   </div>
 
@@ -538,19 +739,19 @@
         { text: 'ux design', url: '../work.html/index.html' },
         { text: 'portfolio', url: '../index.html' },
             // Specific projects
-            { text: 'brew to grow', url: 'brew-to-grow.html' },
-            { text: 'philo', url: 'philo.html' },
-            { text: 'philo sign-in', url: 'philo.html' },
-            { text: 'philo redesign', url: 'philo.html' },
-            { text: 'peets coffee', url: 'peets-coffee.html' },
-            { text: 'peets coffee mobile', url: 'peets-coffee.html' },
-            { text: 'mobile app', url: 'peets-coffee.html' },
-            { text: 'sustainability', url: 'brew-to-grow.html' },
-            { text: 'coffee', url: 'brew-to-grow.html' },
-            { text: 'streaming', url: 'philo.html' },
-            { text: 'accessibility', url: 'philo.html' },
-            { text: 'sign-in', url: 'philo.html' },
-            { text: 'authentication', url: 'philo.html' }
+            { text: 'brew to grow', url: '../projects/brew-to-grow/index.html' },
+            { text: 'philo', url: '../projects/philo/index.html' },
+            { text: 'philo sign-in', url: '../projects/philo/index.html' },
+            { text: 'philo redesign', url: '../projects/philo/index.html' },
+            { text: 'peets coffee', url: '../projects/peets-coffee/index.html' },
+            { text: 'peets coffee mobile', url: '../projects/peets-coffee/index.html' },
+            { text: 'mobile app', url: '../projects/peets-coffee/index.html' },
+            { text: 'sustainability', url: '../projects/brew-to-grow/index.html' },
+            { text: 'coffee', url: '../projects/brew-to-grow/index.html' },
+            { text: 'streaming', url: '../projects/philo/index.html' },
+            { text: 'accessibility', url: '../projects/philo/index.html' },
+            { text: 'sign-in', url: '../projects/philo/index.html' },
+            { text: 'authentication', url: '../projects/philo/index.html' }
       ];
 
       searchInput.addEventListener('input', (e) => {

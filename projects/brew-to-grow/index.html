@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brew to Grow - Jared Stewart UX Portfolio</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1e2530;
+      --muted: #9aa0a6;
+      --border: #dadce0;
+      --btn-bg: #f8f9fa;
+      --btn-bg-hover: #f1f3f4;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.1);
+      --accent: #34A853;
+      --accent-light: #e8f5e8;
+    }
+
+    [data-theme="dark"] {
+      --bg: #121212;
+      --text: #e8eaed;
+      --muted: #9aa0a6;
+      --border: #3c4043;
+      --btn-bg: #2d2d2d;
+      --btn-bg-hover: #3c4043;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.4);
+      --accent: #34A853;
+      --accent-light: #1a3d1a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    .project-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-link {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .project-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    .project-links a:hover {
+      color: var(--text);
+    }
+
+    /* Main Content */
+    .project-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 24px 40px;
+    }
+
+    /* Hero Section */
+    .project-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 600;
+      margin: 0 0 16px 0;
+      line-height: 1.2;
+    }
+
+    .project-subtitle {
+      font-size: 20px;
+      color: var(--muted);
+      margin: 0 0 32px 0;
+      line-height: 1.4;
+    }
+
+    .project-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+    }
+
+    .meta-value {
+      font-size: 16px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Project Sections */
+    .project-section {
+      margin-bottom: 80px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 600;
+      margin: 0 0 24px 0;
+      color: var(--text);
+    }
+
+    .section-content {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+
+    .section-content p {
+      margin: 0 0 24px 0;
+    }
+
+    .section-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-content ul {
+      margin: 0 0 24px 0;
+      padding-left: 24px;
+    }
+
+    .section-content li {
+      margin: 0 0 8px 0;
+    }
+
+    /* Image Gallery */
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin: 32px 0;
+    }
+
+    .gallery-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .gallery-caption {
+      padding: 16px;
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* Process Steps */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 32px;
+      margin: 32px 0;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 24px;
+      background: var(--btn-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 auto 16px;
+    }
+
+    .step-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+      color: var(--text);
+    }
+
+    .step-description {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Results Section */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin: 32px 0;
+    }
+
+    .result-item {
+      text-align: center;
+      padding: 24px;
+      background: var(--btn-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .result-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 0 0 8px 0;
+    }
+
+    .result-label {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .project-nav {
+        padding: 12px 16px;
+      }
+
+      .project-container {
+        padding: 80px 16px 40px;
+      }
+
+      .project-hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+      }
+
+      .project-meta {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+
+      .section-content {
+        font-size: 16px;
+      }
+
+      .image-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .project-links {
+        display: none;
+      }
+
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="project-nav">
+    <a href="../../work.html/index.html" class="back-link">
+      ← Back to Work
+    </a>
+    <div class="project-links">
+      <a href="../../index.html">Home</a>
+      <a href="../../about.html/index.html">About</a>
+      <a href="../../resume.html/index.html">Resume</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="project-container">
+    <!-- Hero Section -->
+    <section class="project-hero">
+      <div class="hero-content">
+        <h1>Brew to Grow</h1>
+        <p class="project-subtitle">Connecting coffee waste to community gardens</p>
+        
+        <div class="project-meta">
+          <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">UX Designer & Researcher</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Timeline</span>
+            <span class="meta-value">3 months</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Tools</span>
+            <span class="meta-value">Figma, User Research, Prototyping</span>
+          </div>
+        </div>
+
+        <div class="project-tags">
+          <span class="tag">Sustainability</span>
+          <span class="tag">Mobile App</span>
+          <span class="tag">Community</span>
+          <span class="tag">User Research</span>
+        </div>
+      </div>
+      
+      <div class="hero-image">
+        <img src="assets/images/hero-mockup.jpg" alt="Brew to Grow app interface showing the main dashboard" />
+      </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="project-section">
+      <h2 class="section-title">The Problem</h2>
+      <div class="section-content">
+        <p>Every day, coffee shops across the country discard hundreds of pounds of used coffee grounds. Meanwhile, community gardens struggle to find affordable, nutrient-rich compost for their plants. This disconnect represents both an environmental waste and a missed opportunity for community connection.</p>
+        
+        <p>Through initial research, I discovered that:</p>
+        <ul>
+          <li>An average coffee shop produces 10-15 pounds of used grounds daily</li>
+          <li>Most grounds end up in landfills, contributing to methane emissions</li>
+          <li>Community gardens often lack access to quality compost</li>
+          <li>There's no efficient system connecting these two communities</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Research & Discovery -->
+    <section class="project-section">
+      <h2 class="section-title">Research & Discovery</h2>
+      <div class="section-content">
+        <p>I conducted comprehensive user research to understand both sides of this equation and identify opportunities for meaningful intervention.</p>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h3 class="step-title">Coffee Shop Interviews</h3>
+          <p class="step-description">Interviewed 12 coffee shop owners and managers to understand their waste management challenges and willingness to participate in community programs.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h3 class="step-title">Garden Community Survey</h3>
+          <p class="step-description">Surveyed 45 community garden coordinators to understand their compost needs, pickup capabilities, and interest in a digital platform.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h3 class="step-title">Competitive Analysis</h3>
+          <p class="step-description">Analyzed existing waste management and community sharing platforms to identify gaps and opportunities for innovation.</p>
+        </div>
+      </div>
+
+      <div class="image-gallery">
+        <div class="gallery-item">
+          <img src="assets/images/research-interviews.jpg" alt="User research interview setup" />
+          <div class="gallery-caption">Coffee shop owner interview session</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/survey-data.jpg" alt="Survey results visualization" />
+          <div class="gallery-caption">Community garden survey results</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution Design -->
+    <section class="project-section">
+      <h2 class="section-title">Solution Design</h2>
+      <div class="section-content">
+        <p>Based on my research findings, I designed a mobile app that creates a seamless connection between coffee shops and community gardens. The solution focuses on simplicity, reliability, and community building.</p>
+      </div>
+
+      <div class="image-gallery">
+        <div class="gallery-item">
+          <img src="assets/images/wireframes.jpg" alt="Initial wireframes showing app structure" />
+          <div class="gallery-caption">Initial wireframes exploring app structure</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/user-flow.jpg" alt="User journey map for coffee shop owners" />
+          <div class="gallery-caption">User journey map for coffee shop owners</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="project-section">
+      <h2 class="section-title">Key Features</h2>
+      <div class="section-content">
+        <p>The app includes several key features designed to address the specific needs identified in my research:</p>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">📱</div>
+          <h3 class="step-title">Easy Pickup Scheduling</h3>
+          <p class="step-description">Coffee shops can quickly schedule pickup times, and gardens receive notifications about available grounds in their area.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">🗺️</div>
+          <h3 class="step-title">Location-Based Matching</h3>
+          <p class="step-description">Smart matching system connects nearby coffee shops with community gardens based on location and availability.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">📊</div>
+          <h3 class="step-title">Impact Tracking</h3>
+          <p class="step-description">Both parties can track their environmental impact, seeing how much waste has been diverted and compost created.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Design -->
+    <section class="project-section">
+      <h2 class="section-title">Final Design</h2>
+      <div class="section-content">
+        <p>The final design emphasizes clarity, trust, and community connection. The interface uses warm, earthy tones that reflect the sustainability mission while maintaining professional usability.</p>
+      </div>
+
+      <div class="image-gallery">
+        <div class="gallery-item">
+          <img src="assets/images/final-design-1.jpg" alt="Final app design showing main dashboard" />
+          <div class="gallery-caption">Main dashboard for coffee shops</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/final-design-2.jpg" alt="Pickup scheduling interface" />
+          <div class="gallery-caption">Pickup scheduling interface</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/final-design-3.jpg" alt="Impact tracking screen" />
+          <div class="gallery-caption">Environmental impact tracking</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results & Impact -->
+    <section class="project-section">
+      <h2 class="section-title">Results & Impact</h2>
+      <div class="section-content">
+        <p>Through user testing and pilot program implementation, Brew to Grow demonstrated significant potential for community impact and environmental benefit.</p>
+      </div>
+
+      <div class="results-grid">
+        <div class="result-item">
+          <div class="result-number">85%</div>
+          <div class="result-label">User Satisfaction</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">200+</div>
+          <div class="result-label">Pounds Diverted</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">15</div>
+          <div class="result-label">Active Partnerships</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">92%</div>
+          <div class="result-label">Task Success Rate</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="project-section">
+      <h2 class="section-title">Reflection</h2>
+      <div class="section-content">
+        <p>This project taught me the importance of understanding multiple user groups when designing for community impact. The challenge of balancing the needs of coffee shop owners (who need efficiency) with community gardens (who need reliability) pushed me to think more holistically about user experience.</p>
+        
+        <p>Key learnings included the value of in-person research, the importance of building trust in community platforms, and the power of simple solutions to complex environmental problems.</p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
