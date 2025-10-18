@@ -105,6 +105,20 @@
       margin-bottom: 80px;
     }
 
+    .hero-image {
+      margin: 40px 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .project-hero-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--border);
+    }
+
     .hero-content h1 {
       font-size: clamp(32px, 5vw, 48px);
       font-weight: 600;
@@ -331,6 +345,15 @@
         text-align: center;
       }
 
+      .hero-image {
+        margin: 32px 0;
+      }
+
+      .project-hero-image {
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      }
+
       .project-meta {
         grid-template-columns: 1fr;
         gap: 16px;
@@ -388,6 +411,11 @@
       <div class="hero-content">
         <h1>Brew to Grow</h1>
         <p class="project-subtitle">Connecting coffee waste to community gardens</p>
+        
+        <!-- Hero Image -->
+        <div class="hero-image">
+          <img src="assets/images/Brew to Grow 1.png" alt="Brew to Grow App Interface" class="project-hero-image">
+        </div>
         
         <div class="project-meta">
           <div class="meta-item">
