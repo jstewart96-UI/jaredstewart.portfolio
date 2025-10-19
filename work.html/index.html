@@ -16,8 +16,8 @@
       --shadow-sm: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.1);
       --project-card-bg: #ffffff;
       --project-card-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      --header-height: 80px;
-      --header-height-mobile: 70px;
+      --header-height: 90px;
+      --header-height-mobile: 80px;
     }
 
     [data-theme="dark"] {
@@ -46,7 +46,7 @@
       font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
     
-    .top-bar {
+    header {
       position: fixed;
       top: 0;
       right: 0;
@@ -60,14 +60,74 @@
       align-items: center;
     }
 
-    .top-left {
-      flex: 1;
-      text-align: left;
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
-    .top-right {
-      flex: 1;
-      text-align: right;
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--muted);
+    }
+
+    /* Toggle Switch */
+    .toggle-switch {
+      position: relative;
+      width: 50px;
+      height: 26px;
+      display: inline-block;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      border-radius: 26px;
+      transition: background-color 0.3s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+
+    .toggle-switch input:checked + .slider {
+      background-color: #2196F3;
+    }
+
+    .toggle-switch input:checked + .slider:before {
+      transform: translateX(24px);
     }
 
     .home-button {
@@ -243,7 +303,7 @@
     
     .work-grid {
       max-width: 800px;
-      margin: calc(var(--header-height) + 70px) auto 0;
+      margin: calc(var(--header-height) + 80px) auto 0;
       padding: 0 20px;
       text-align: left;
     }
@@ -375,7 +435,7 @@
       
       .work-grid {
         max-width: 100%;
-        margin-top: calc(var(--header-height-mobile) + 10px);
+        margin-top: calc(var(--header-height-mobile) + 20px);
         padding: 0 16px;
       }
       
@@ -417,7 +477,7 @@
       
       .work-grid {
         padding: 0 12px;
-        margin-top: calc(var(--header-height-mobile) + 10px);
+        margin-top: calc(var(--header-height-mobile) + 20px);
         max-width: 100%;
       }
       
@@ -462,7 +522,7 @@
         text-align: center;
       }
       
-      .top-bar {
+      header {
         padding: 12px 16px;
         position: fixed;
         top: 0;
@@ -476,13 +536,13 @@
         align-items: center;
       }
       
-      .top-left {
+      .nav-left {
         display: flex;
         align-items: center;
         gap: 16px;
       }
       
-      .top-right {
+      .nav-right {
         display: flex;
         align-items: center;
         gap: 12px;
@@ -522,7 +582,7 @@
       
       .work-grid {
         padding: 0 8px;
-        margin-top: calc(var(--header-height-mobile) + 10px);
+        margin-top: calc(var(--header-height-mobile) + 20px);
       }
       
       .project-card {
@@ -547,7 +607,7 @@
       }
       
       .work-grid {
-        margin-top: calc(var(--header-height-mobile) + 10px);
+        margin-top: calc(var(--header-height-mobile) + 20px);
         padding: 0 8px;
       }
     }
