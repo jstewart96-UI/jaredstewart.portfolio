@@ -665,17 +665,32 @@
 
       window.addEventListener('scroll', () => {
         const currentScrollY = window.scrollY;
+        const currentTheme = body.getAttribute('data-theme');
         
-        if (currentScrollY > 50) {
-          header.style.background = 'rgba(255, 255, 255, 0.95)';
-          header.style.backdropFilter = 'blur(20px)';
-          header.style.webkitBackdropFilter = 'blur(20px)';
-          header.style.borderBottom = '1px solid rgba(0, 0, 0, 0.15)';
+        if (currentTheme === 'dark') {
+          if (currentScrollY > 50) {
+            header.style.background = 'rgba(18, 18, 18, 0.95)';
+            header.style.backdropFilter = 'blur(20px)';
+            header.style.webkitBackdropFilter = 'blur(20px)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.15)';
+          } else {
+            header.style.background = 'rgba(18, 18, 18, 0.8)';
+            header.style.backdropFilter = 'blur(10px)';
+            header.style.webkitBackdropFilter = 'blur(10px)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+          }
         } else {
-          header.style.background = 'rgba(255, 255, 255, 0.8)';
-          header.style.backdropFilter = 'blur(10px)';
-          header.style.webkitBackdropFilter = 'blur(10px)';
-          header.style.borderBottom = '1px solid rgba(0, 0, 0, 0.1)';
+          if (currentScrollY > 50) {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            header.style.backdropFilter = 'blur(20px)';
+            header.style.webkitBackdropFilter = 'blur(20px)';
+            header.style.borderBottom = '1px solid rgba(0, 0, 0, 0.15)';
+          } else {
+            header.style.background = 'rgba(255, 255, 255, 0.8)';
+            header.style.backdropFilter = 'blur(10px)';
+            header.style.webkitBackdropFilter = 'blur(10px)';
+            header.style.borderBottom = '1px solid rgba(0, 0, 0, 0.1)';
+          }
         }
         
         lastScrollY = currentScrollY;
@@ -688,17 +703,25 @@
         if (theme === 'dark') {
           if (currentScrollY > 50) {
             header.style.background = 'rgba(18, 18, 18, 0.95)';
+            header.style.backdropFilter = 'blur(20px)';
+            header.style.webkitBackdropFilter = 'blur(20px)';
             header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.15)';
           } else {
             header.style.background = 'rgba(18, 18, 18, 0.8)';
+            header.style.backdropFilter = 'blur(10px)';
+            header.style.webkitBackdropFilter = 'blur(10px)';
             header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
           }
         } else {
           if (currentScrollY > 50) {
             header.style.background = 'rgba(255, 255, 255, 0.95)';
+            header.style.backdropFilter = 'blur(20px)';
+            header.style.webkitBackdropFilter = 'blur(20px)';
             header.style.borderBottom = '1px solid rgba(0, 0, 0, 0.15)';
           } else {
             header.style.background = 'rgba(255, 255, 255, 0.8)';
+            header.style.backdropFilter = 'blur(10px)';
+            header.style.webkitBackdropFilter = 'blur(10px)';
             header.style.borderBottom = '1px solid rgba(0, 0, 0, 0.1)';
           }
         }
