@@ -375,7 +375,7 @@ header {
   }
   
   .page {
-    padding: 30px 12px 0;
+    padding: 10px 12px 0;
     min-height: 100vh;
     display: flex;
     align-items: flex-start;
@@ -553,7 +553,7 @@ header {
   }
   
   .page {
-    padding: 30px 16px 0;
+    padding: 10px 16px 0;
     min-height: 100vh;
     display: flex;
     align-items: flex-start;
@@ -683,7 +683,7 @@ header {
 /* iPhone 15 specific optimizations */
 @media screen and (max-width: 430px) and (max-height: 932px) {
   .page {
-    padding: 40px 12px 0;
+    padding: 15px 12px 0;
     min-height: 100vh;
     display: flex;
     align-items: flex-start;
@@ -716,7 +716,7 @@ header {
 /* iPhone 15 Pro Max and larger screens */
 @media screen and (max-width: 430px) and (min-height: 932px) {
   .page {
-    padding: 50px 12px 0;
+    padding: 20px 12px 0;
     min-height: 100vh;
     display: flex;
     align-items: flex-start;
