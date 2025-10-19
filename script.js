@@ -107,4 +107,58 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateToggleState(theme) {
     darkModeToggle.checked = theme === 'dark';
   }
+
+  // Header scroll effect
+  const header = document.querySelector('header');
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    
+    if (currentScrollY > 50) {
+      header.style.background = 'rgba(255, 255, 255, 0.95)';
+      header.style.backdropFilter = 'blur(20px)';
+      header.style.webkitBackdropFilter = 'blur(20px)';
+      header.style.borderBottom = '1px solid rgba(0, 0, 0, 0.15)';
+    } else {
+      header.style.background = 'rgba(255, 255, 255, 0.8)';
+      header.style.backdropFilter = 'blur(10px)';
+      header.style.webkitBackdropFilter = 'blur(10px)';
+      header.style.borderBottom = '1px solid rgba(0, 0, 0, 0.1)';
+    }
+    
+    lastScrollY = currentScrollY;
+  });
+
+  // Dark mode header scroll effect
+  function updateHeaderForTheme(theme) {
+    const currentScrollY = window.scrollY;
+    
+    if (theme === 'dark') {
+      if (currentScrollY > 50) {
+        header.style.background = 'rgba(18, 18, 18, 0.95)';
+        header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.15)';
+      } else {
+        header.style.background = 'rgba(18, 18, 18, 0.8)';
+        header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+      }
+    } else {
+      if (currentScrollY > 50) {
+        header.style.background = 'rgba(255, 255, 255, 0.95)';
+        header.style.borderBottom = '1px solid rgba(0, 0, 0, 0.15)';
+      } else {
+        header.style.background = 'rgba(255, 255, 255, 0.8)';
+        header.style.borderBottom = '1px solid rgba(0, 0, 0, 0.1)';
+      }
+    }
+  }
+
+  // Update header when theme changes
+  darkModeToggle.addEventListener('change', () => {
+    const newTheme = darkModeToggle.checked ? 'dark' : 'light';
+    updateHeaderForTheme(newTheme);
+  });
+
+  // Initialize header for current theme
+  updateHeaderForTheme(currentTheme);
 });
