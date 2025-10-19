@@ -332,14 +332,14 @@
       font-weight: 500;
     }
 
-    /* Mobile Responsiveness */
-    @media (max-width: 768px) {
+    /* Mobile Responsiveness - Comprehensive */
+    @media screen and (max-width: 768px) and (orientation: portrait) {
       .project-nav {
         padding: 12px 16px;
       }
 
       .project-container {
-        padding: 160px 20px 40px;
+        padding: 160px 20px 40px !important;
       }
 
       .hero-layout {
@@ -380,6 +380,40 @@
 
       .results-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media screen and (max-width: 768px) and (orientation: landscape) {
+      .project-container {
+        padding: 120px 20px 40px !important;
+      }
+    }
+
+    /* iPhone 15 specific */
+    @media screen and (max-width: 430px) and (max-height: 932px) {
+      .project-container {
+        padding: 180px 20px 40px !important;
+      }
+    }
+
+    /* iPhone 15 Pro Max and larger */
+    @media screen and (max-width: 430px) and (min-height: 932px) {
+      .project-container {
+        padding: 200px 20px 40px !important;
+      }
+    }
+
+    /* Very small devices */
+    @media screen and (max-width: 375px) {
+      .project-container {
+        padding: 140px 16px 40px !important;
+      }
+    }
+
+    /* Tablet range */
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+      .project-container {
+        padding: 120px 30px 40px;
       }
     }
 
