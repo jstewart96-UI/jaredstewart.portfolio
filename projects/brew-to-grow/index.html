@@ -93,20 +93,23 @@
     .project-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 100px 24px 40px;
+      padding: 100px 40px 40px;
     }
 
     /* Hero Section */
     .project-hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
       margin-bottom: 80px;
     }
 
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+      margin-top: 40px;
+    }
+
     .hero-image {
-      margin: 40px 0;
       display: flex;
       justify-content: center;
     }
@@ -134,8 +137,8 @@
     }
 
     .project-meta {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      display: flex;
+      flex-direction: column;
       gap: 24px;
       margin-bottom: 32px;
     }
@@ -336,13 +339,14 @@
       }
 
       .project-container {
-        padding: 80px 16px 40px;
+        padding: 80px 20px 40px;
       }
 
-      .project-hero {
+      .hero-layout {
         grid-template-columns: 1fr;
         gap: 32px;
         text-align: center;
+        padding-top: 80px;
       }
 
       .hero-image {
@@ -410,11 +414,13 @@
     <section class="project-hero">
       <div class="hero-content">
         <h1>Brew to Grow</h1>
-        <p class="project-subtitle">Connecting coffee waste to community gardens</p>
-        
+        <p class="project-subtitle">Redirecting coffee waste for a sustainable future</p>
+      </div>
+      
+      <div class="hero-layout">
         <!-- Hero Image -->
         <div class="hero-image">
-          <img src="assets/images/Brew to Grow 1.png" alt="Brew to Grow App Interface" class="project-hero-image">
+          <img src="assets/images/Brew to Grow 1.png" class="project-hero-image">
         </div>
         
         <div class="project-meta">
@@ -430,18 +436,14 @@
             <span class="meta-label">Tools</span>
             <span class="meta-value">Figma, User Research, Prototyping</span>
           </div>
+          
+          <div class="project-tags">
+            <span class="tag">Sustainability</span>
+            <span class="tag">Mobile App</span>
+            <span class="tag">Community</span>
+            <span class="tag">User Research</span>
+          </div>
         </div>
-
-        <div class="project-tags">
-          <span class="tag">Sustainability</span>
-          <span class="tag">Mobile App</span>
-          <span class="tag">Community</span>
-          <span class="tag">User Research</span>
-        </div>
-      </div>
-      
-      <div class="hero-image">
-        <img src="assets/images/hero-mockup.jpg" alt="Brew to Grow app interface showing the main dashboard" />
       </div>
     </section>
 
@@ -449,15 +451,10 @@
     <section class="project-section">
       <h2 class="section-title">The Problem</h2>
       <div class="section-content">
-        <p>Every day, coffee shops across the country discard hundreds of pounds of used coffee grounds. Meanwhile, community gardens struggle to find affordable, nutrient-rich compost for their plants. This disconnect represents both an environmental waste and a missed opportunity for community connection.</p>
+        <p>Coffee shops and other businesses often generate large amounts of spent coffee grounds that go to waste every day. This app addresses this problem by providing a platform where individuals can connect with businesses that are willing to donate their used coffee grounds. This initiative not only reduces waste, but also promotes sustainability.</p>
         
-        <p>Through initial research, I discovered that:</p>
-        <ul>
-          <li>An average coffee shop produces 10-15 pounds of used grounds daily</li>
-          <li>Most grounds end up in landfills, contributing to methane emissions</li>
-          <li>Community gardens often lack access to quality compost</li>
-          <li>There's no efficient system connecting these two communities</li>
-        </ul>
+        <h2 class="section-title">The Solution</h2>
+        <p>The app allows businesses to easily donate their used coffee grounds to individuals who can use them for their own gardening or composting needs. This not only reduces waste, but also provides a valuable resource for community members who may not have access to quality compost.</p>
       </div>
     </section>
 
