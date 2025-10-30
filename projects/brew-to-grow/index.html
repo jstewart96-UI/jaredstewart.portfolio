@@ -485,6 +485,84 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* Navigation Links */
+    .navigation-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .nav-link {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--btn-bg);
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+      font-weight: 500;
+    }
+
+    .nav-link:hover {
+      background: var(--btn-bg-hover);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+      .navigation-links {
+        flex-direction: column;
+      }
+      
+      .nav-link {
+        text-align: center;
+      }
+    }
+
+    /* Stack Solution Images Vertically */
+    .solution-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .solution-gallery .gallery-item {
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .solution-gallery .gallery-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    /* Onboarding Image Styling */
+    .onboarding-image {
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .onboarding-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    /* Research Image Styling */
+    .research-image {
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .research-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
@@ -551,58 +629,84 @@
         <p>Coffee shops and other businesses often generate large amounts of spent coffee grounds that go to waste every day. This app addresses this problem by providing a platform where individuals can connect with businesses that are willing to donate their used coffee grounds. This initiative not only reduces waste, but also promotes sustainability.</p>
         
         <h2 class="section-title">The Solution</h2>
-        <p>The app allows businesses to easily donate their used coffee grounds to individuals who can use them for their own gardening or composting needs. This not only reduces waste, but also provides a valuable resource for community members who may not have access to quality compost.</p>
+        <p>This platform revolutionizes sustainability efforts by seamlessly connecting users with local coffee shops to collect and recycle used coffee grounds. With intuitive onboarding, users effortlessly contribute to waste reduction while fostering community engagement. By quantifying their impact through metrics like CO2 emissions saved and personal milestones, users gain insights into their environmental footprints and inspire others to join the movement towards a greener future.</p>
+      </div>
+
+      <div class="solution-gallery">
+        <div class="gallery-item">
+          <img src="assets/images/Solution-1.png" alt="Solution overview showing app concept" />
+          
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/Solution-2.png" alt="Key features demonstration" />
+          
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/Solution-2.5.png" alt="User interface mockups" />
+         
+        </div>
+      </div>
+    </section>
+
+    <!-- Onboarding -->
+    <section class="project-section">
+      <h2 class="section-title">Onboarding</h2>
+      <div class="section-content">
+        <p>The onboarding screens offer new users a seamless introduction to the app's mission and functionality. Users are guided through the process of collecting used coffee grounds from local businesses. By emphasizing simplicity and clarity, the screens empower users to get started with ease, encouraging them to join the movement towards a more sustainable future.</p>
+        
+        <div class="onboarding-image">
+          <img src="assets/images/Solution-3.png" alt="Onboarding screen" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="project-section">
+      <h2 class="section-title">Process</h2>
+      <div class="section-content">
+        <p>User research, including surveys and usability tests, influenced the design and features of the app. The research aimed to understand user needs and preferences for coffee ground waste collection and gardening, with the goal of providing a seamless and engaging user experience.</p>
+        
+        </ul
+      </div>
+    </section>
+
+    <!-- Navigation Links -->
+    <section class="project-section">
+      <h2 class="section-title">Quick Navigation</h2>
+      <div class="section-content">
+        <div class="navigation-links">
+          <a href="#user-research" class="nav-link">User Research</a>
+          <a href="#wireframes" class="nav-link">Wireframes</a>
+          <a href="#main-user-flow" class="nav-link">Main User Flow</a>
+          <a href="#design-iterations" class="nav-link">Design Iterations</a>
+        </div>
       </div>
     </section>
 
     <!-- Research & Discovery -->
-    <section class="project-section">
-      <h2 class="section-title">Research & Discovery</h2>
+    <section class="project-section" id="user-research">
+      <h2 class="section-title">Research</h2>
       <div class="section-content">
-        <p>I conducted comprehensive user research to understand both sides of this equation and identify opportunities for meaningful intervention.</p>
-      </div>
-
-      <div class="process-steps">
-        <div class="process-step">
-          <div class="step-number">1</div>
-          <h3 class="step-title">Coffee Shop Interviews</h3>
-          <p class="step-description">Interviewed 12 coffee shop owners and managers to understand their waste management challenges and willingness to participate in community programs.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-number">2</div>
-          <h3 class="step-title">Garden Community Survey</h3>
-          <p class="step-description">Surveyed 45 community garden coordinators to understand their compost needs, pickup capabilities, and interest in a digital platform.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-number">3</div>
-          <h3 class="step-title">Competitive Analysis</h3>
-          <p class="step-description">Analyzed existing waste management and community sharing platforms to identify gaps and opportunities for innovation.</p>
+        <p>I conducted user research through surveys and in-person interviews to gain better insight into the target audience backgrounds, goals, and potential frustrations. The data provided by the research allowed me to create a persona that facilitated effective decision making and resulted in improved user experience and development for this platform.</p>
+        
+        <div class="research-image">
+          <img src="assets/images/User-Persona.png" alt="User research findings and persona" />
         </div>
       </div>
 
-      <div class="image-gallery">
-        <div class="gallery-item">
-          <img src="assets/images/research-interviews.jpg" alt="User research interview setup" />
-          <div class="gallery-caption">Coffee shop owner interview session</div>
-        </div>
-        <div class="gallery-item">
-          <img src="assets/images/survey-data.jpg" alt="Survey results visualization" />
-          <div class="gallery-caption">Community garden survey results</div>
-        </div>
-      </div>
-    </section>
+      
 
     <!-- Solution Design -->
-    <section class="project-section">
+    <section class="project-section" id="wireframes">
       <h2 class="section-title">Solution Design</h2>
       <div class="section-content">
-        <p>Based on my research findings, I designed a mobile app that creates a seamless connection between coffee shops and community gardens. The solution focuses on simplicity, reliability, and community building.</p>
+        <p>With the data gathered from research, I created digital wireframes and prototypes and had 4 potential users provide feedback for further development.</p>
       </div>
 
       <div class="image-gallery">
         <div class="gallery-item">
-          <img src="assets/images/wireframes.jpg" alt="Initial wireframes showing app structure" />
-          <div class="gallery-caption">Initial wireframes exploring app structure</div>
+          <img src="assets/images/Wireframes.png" alt="Initial wireframes showing app structure" />
+
         </div>
         <div class="gallery-item">
           <img src="assets/images/user-flow.jpg" alt="User journey map for coffee shop owners" />
@@ -612,7 +716,7 @@
     </section>
 
     <!-- Key Features -->
-    <section class="project-section">
+    <section class="project-section" id="main-user-flow">
       <h2 class="section-title">Key Features</h2>
       <div class="section-content">
         <p>The app includes several key features designed to address the specific needs identified in my research:</p>
@@ -638,7 +742,7 @@
     </section>
 
     <!-- Final Design -->
-    <section class="project-section">
+    <section class="project-section" id="design-iterations">
       <h2 class="section-title">Final Design</h2>
       <div class="section-content">
         <p>The final design emphasizes clarity, trust, and community connection. The interface uses warm, earthy tones that reflect the sustainability mission while maintaining professional usability.</p>
