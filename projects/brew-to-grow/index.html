@@ -9,12 +9,12 @@
     /* Swiss Style / International Typographic Style Variables */
     :root {
       --bg: #ffffff;
-      --text: #000000;
-      --muted: #666666;
-      --border: #000000;
-      --btn-bg: #ffffff;
-      --btn-bg-hover: #f5f5f5;
-      --shadow-sm: none;
+      --text: #1e2530;
+      --muted: #1e2530;
+      --border: #dadce0;
+      --btn-bg: #f8f9fa;
+      --btn-bg-hover: #f1f3f4;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.1);
       --accent: #000000;
       --accent-light: #f5f5f5;
     }
@@ -24,21 +24,13 @@
     [data-theme="dark"] {
       --bg: #000000;
       --text: #ffffff;
-      --muted: #999999;
-      --border: #ffffff;
-      --btn-bg: #000000;
-      --btn-bg-hover: #1a1a1a;
-      --shadow-sm: none;
+      --muted: #b0b0b0;
+      --border: #4a4a4a;
+      --btn-bg: #1a1a1a;
+      --btn-bg-hover: #2d2d2d;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.6);
       --accent: #ffffff;
       --accent-light: #1a1a1a;
-    }
-
-    /* Dark mode navigation - Swiss Style */
-    html[data-theme="dark"] .project-nav,
-    body[data-theme="dark"] .project-nav,
-    [data-theme="dark"] .project-nav {
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
     }
 
     * {
@@ -62,60 +54,7 @@
       min-height: 100vh;
     }
 
-    /* Navigation - Consistent Styling */
-    .project-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      z-index: 1000;
-      padding: 20px 30px;
-      width: 100%;
-      transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .back-link {
-      color: var(--text);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: opacity 0.2s ease;
-    }
-
-    .back-link:hover {
-      opacity: 0.6;
-    }
-
-    .project-links {
-      display: flex;
-      gap: 16px;
-    }
-
-    .project-links a {
-      color: var(--text);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: opacity 0.2s ease;
-    }
-
-    .project-links a:hover {
-      opacity: 0.6;
-    }
+    /* Header styling is handled by styles.css - no need to override */
 
     /* Toggle Switch */
     .toggle-switch {
@@ -424,10 +363,6 @@
 
     /* Mobile Responsiveness - Comprehensive */
     @media screen and (max-width: 768px) and (orientation: portrait) {
-      .project-nav {
-        padding: 12px 16px;
-      }
-
       .project-container {
         padding: 200px 20px 40px !important;
       }
@@ -528,7 +463,7 @@
       margin-top: 1rem;
     }
 
-    .nav-link {
+    .navigation-links .nav-link {
       display: inline-block;
       padding: 8px 16px;
       background: var(--bg);
@@ -542,7 +477,7 @@
       letter-spacing: 0.1em;
     }
 
-    .nav-link:hover {
+    .navigation-links .nav-link:hover {
       background: var(--btn-bg-hover);
     }
 
@@ -551,7 +486,7 @@
         flex-direction: column;
       }
       
-      .nav-link {
+      .navigation-links .nav-link {
         text-align: center;
       }
     }
@@ -602,21 +537,21 @@
 </head>
 <body>
   <!-- Navigation -->
-  <nav class="project-nav">
-    <a href="../../work.html/index.html" class="back-link">
-      ← Back to Work
-    </a>
-    <div class="project-links">
-      <a href="../../index.html">Home</a>
-      <a href="../../about.html/index.html">About</a>
-      <a href="../../resume.html/index.html">Resume</a>
+  <header>
+    <div class="nav-left">
+      <a href="../../work.html/index.html" class="nav-link">← Back to Work</a>
+    </div>
+    <div class="nav-right">
+      <a href="../../index.html" class="nav-link">Home</a>
+      <a href="../../about.html/index.html" class="nav-link">About</a>
+      <a href="../../resume.html/index.html" class="nav-link">Resume</a>
       <!-- Dark Mode Toggle -->
       <label class="toggle-switch">
         <input type="checkbox" id="darkModeToggle">
         <span class="slider"></span>
       </label>
     </div>
-  </nav>
+  </header>
 
   <!-- Main Content -->
   <div class="project-container">
@@ -653,6 +588,19 @@
             <span class="tag">Community</span>
             <span class="tag">User Research</span>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Links -->
+    <section class="project-section">
+      <h2 class="section-title">Quick Navigation</h2>
+      <div class="section-content">
+        <div class="navigation-links">
+          <a href="#user-research" class="nav-link">User Research</a>
+          <a href="#wireframes" class="nav-link">Wireframes</a>
+          <a href="#main-user-flow" class="nav-link">Main User Flow</a>
+          <a href="#design-iterations" class="nav-link">Design Iterations</a>
         </div>
       </div>
     </section>
@@ -705,19 +653,6 @@
       </div>
     </section>
 
-    <!-- Navigation Links -->
-    <section class="project-section">
-      <h2 class="section-title">Quick Navigation</h2>
-      <div class="section-content">
-        <div class="navigation-links">
-          <a href="#user-research" class="nav-link">User Research</a>
-          <a href="#wireframes" class="nav-link">Wireframes</a>
-          <a href="#main-user-flow" class="nav-link">Main User Flow</a>
-          <a href="#design-iterations" class="nav-link">Design Iterations</a>
-        </div>
-      </div>
-    </section>
-
     <!-- Research & Discovery -->
     <section class="project-section" id="user-research">
       <h2 class="section-title">Research</h2>
@@ -741,87 +676,40 @@
       <div class="image-gallery">
         <div class="gallery-item">
           <img src="assets/images/Wireframes.png" alt="Initial wireframes showing app structure" />
-
-        </div>
-        <div class="gallery-item">
-          <img src="assets/images/user-flow.jpg" alt="User journey map for coffee shop owners" />
-          <div class="gallery-caption">User journey map for coffee shop owners</div>
         </div>
       </div>
-    </section>
 
-    <!-- Key Features -->
-    <section class="project-section" id="main-user-flow">
-      <h2 class="section-title">Key Features</h2>
+      <h2 class="section-title" style="margin-top: 48px;">Main User Flow</h2>
       <div class="section-content">
-        <p>The app includes several key features designed to address the specific needs identified in my research:</p>
-      </div>
-
-      <div class="process-steps">
-        <div class="process-step">
-          <div class="step-number">📱</div>
-          <h3 class="step-title">Easy Pickup Scheduling</h3>
-          <p class="step-description">Coffee shops can quickly schedule pickup times, and gardens receive notifications about available grounds in their area.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-number">🗺️</div>
-          <h3 class="step-title">Location-Based Matching</h3>
-          <p class="step-description">Smart matching system connects nearby coffee shops with community gardens based on location and availability.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-number">📊</div>
-          <h3 class="step-title">Impact Tracking</h3>
-          <p class="step-description">Both parties can track their environmental impact, seeing how much waste has been diverted and compost created.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Final Design -->
-    <section class="project-section" id="design-iterations">
-      <h2 class="section-title">Final Design</h2>
-      <div class="section-content">
-        <p>The final design emphasizes clarity, trust, and community connection. The interface uses warm, earthy tones that reflect the sustainability mission while maintaining professional usability.</p>
+        <p>This diagram shows a snapshot of how users navigate through the app. From logging in or creating an account, searching for businesses, and reserving a bag(s) for pick-up.</p>
       </div>
 
       <div class="image-gallery">
         <div class="gallery-item">
-          <img src="assets/images/final-design-1.jpg" alt="Final app design showing main dashboard" />
-          <div class="gallery-caption">Main dashboard for coffee shops</div>
-        </div>
-        <div class="gallery-item">
-          <img src="assets/images/final-design-2.jpg" alt="Pickup scheduling interface" />
-          <div class="gallery-caption">Pickup scheduling interface</div>
-        </div>
-        <div class="gallery-item">
-          <img src="assets/images/final-design-3.jpg" alt="Impact tracking screen" />
-          <div class="gallery-caption">Environmental impact tracking</div>
+          <img src="assets/images/Main-Flow.png" alt="Main user flow diagram" />
         </div>
       </div>
     </section>
 
-    <!-- Results & Impact -->
-    <section class="project-section">
-      <h2 class="section-title">Results & Impact</h2>
+    <!-- Design Iterations -->
+    <section class="project-section" id="design-iterations">
+      <h2 class="section-title">Design Iterations</h2>
       <div class="section-content">
-        <p>Through user testing and pilot program implementation, Brew to Grow demonstrated significant potential for community impact and environmental benefit.</p>
+        <p>User feedback collected from usability testing provided the necessary critiques to implement changes along the development process. I was able to address areas of concern where users notice aspects that were too cluttered, hard to read or navigate, etc. Initially, the first iteration was cluttered with text which caused users to feel overwhelmed, while in the second iteration I simplified the layout resulting a cleaner, more intuitive interface for improved user navigation and readability.</p>
       </div>
 
-      <div class="results-grid">
-        <div class="result-item">
-          <div class="result-number">85%</div>
-          <div class="result-label">User Satisfaction</div>
+      <div class="image-gallery" style="display: flex; flex-direction: column; gap: 40px;">
+        <div class="gallery-item">
+          <img src="assets/images/Iteration-1.png" alt="Design iteration 1" />
         </div>
-        <div class="result-item">
-          <div class="result-number">200+</div>
-          <div class="result-label">Pounds Diverted</div>
+        <div class="gallery-item">
+          <img src="assets/images/Iteration-2.png" alt="Design iteration 2" />
         </div>
-        <div class="result-item">
-          <div class="result-number">15</div>
-          <div class="result-label">Active Partnerships</div>
+        <div class="gallery-item">
+          <img src="assets/images/Iteration-3.png" alt="Design iteration 3" />
         </div>
-        <div class="result-item">
-          <div class="result-number">92%</div>
-          <div class="result-label">Task Success Rate</div>
+        <div class="gallery-item">
+          <img src="assets/images/Iteration-4.png" alt="Design iteration 4" />
         </div>
       </div>
     </section>
@@ -866,14 +754,81 @@
       }
 
       // Header scroll effect
-      const header = document.querySelector('.project-nav');
+      const header = document.querySelector('header');
       let lastScrollY = window.scrollY;
 
-      // Swiss Style: no scroll effects, header stays static
-      // Removed scroll handler for minimal aesthetic
+      window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        const currentTheme = body.getAttribute('data-theme');
+        
+        if (currentTheme === 'dark') {
+          if (currentScrollY > 50) {
+            header.style.background = 'rgba(0, 0, 0, 0.95)';
+            header.style.backdropFilter = 'blur(20px)';
+            header.style.webkitBackdropFilter = 'blur(20px)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.25)';
+          } else {
+            header.style.background = 'rgba(0, 0, 0, 0.9)';
+            header.style.backdropFilter = 'blur(10px)';
+            header.style.webkitBackdropFilter = 'blur(10px)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
+          }
+        } else {
+          if (currentScrollY > 50) {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            header.style.backdropFilter = 'blur(20px)';
+            header.style.webkitBackdropFilter = 'blur(20px)';
+            header.style.borderBottom = '1px solid rgba(0, 0, 0, 0.15)';
+          } else {
+            header.style.background = 'rgba(255, 255, 255, 0.8)';
+            header.style.backdropFilter = 'blur(10px)';
+            header.style.webkitBackdropFilter = 'blur(10px)';
+            header.style.borderBottom = '1px solid rgba(0, 0, 0, 0.1)';
+          }
+        }
+        
+        lastScrollY = currentScrollY;
+      });
 
-      // Swiss Style: Header uses CSS variables automatically, no JS manipulation needed
-      // The CSS [data-theme="dark"] selector handles all styling
+      // Dark mode header scroll effect
+      function updateHeaderForTheme(theme) {
+        const currentScrollY = window.scrollY;
+        
+        if (theme === 'dark') {
+          if (currentScrollY > 50) {
+            header.style.background = 'rgba(0, 0, 0, 0.95)';
+            header.style.backdropFilter = 'blur(20px)';
+            header.style.webkitBackdropFilter = 'blur(20px)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.25)';
+          } else {
+            header.style.background = 'rgba(0, 0, 0, 0.9)';
+            header.style.backdropFilter = 'blur(10px)';
+            header.style.webkitBackdropFilter = 'blur(10px)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
+          }
+        } else {
+          if (currentScrollY > 50) {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            header.style.backdropFilter = 'blur(20px)';
+            header.style.webkitBackdropFilter = 'blur(20px)';
+            header.style.borderBottom = '1px solid rgba(0, 0, 0, 0.15)';
+          } else {
+            header.style.background = 'rgba(255, 255, 255, 0.8)';
+            header.style.backdropFilter = 'blur(10px)';
+            header.style.webkitBackdropFilter = 'blur(10px)';
+            header.style.borderBottom = '1px solid rgba(0, 0, 0, 0.1)';
+          }
+        }
+      }
+
+      // Update header when theme changes
+      darkModeToggle.addEventListener('change', () => {
+        const newTheme = darkModeToggle.checked ? 'dark' : 'light';
+        updateHeaderForTheme(newTheme);
+      });
+
+      // Initialize header for current theme
+      updateHeaderForTheme(currentTheme);
     });
   </script>
 </body>
