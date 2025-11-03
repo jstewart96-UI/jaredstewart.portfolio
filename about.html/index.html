@@ -16,20 +16,24 @@
       --shadow-sm: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.1);
     }
 
+    html[data-theme="dark"],
+    body[data-theme="dark"],
     [data-theme="dark"] {
-      --bg: #121212;
-      --text: #e8eaed;
-      --muted: #9aa0a6;
-      --border: #3c4043;
-      --btn-bg: #2d2d2d;
-      --btn-bg-hover: #3c4043;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.4);
+      --bg: #000000;
+      --text: #ffffff;
+      --muted: #b0b0b0;
+      --border: #4a4a4a;
+      --btn-bg: #1a1a1a;
+      --btn-bg-hover: #2d2d2d;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.6);
     }
 
     /* Dark mode header */
-    [data-theme="dark"] .top-bar {
-      background: rgba(18, 18, 18, 0.8);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    html[data-theme="dark"] header,
+    body[data-theme="dark"] header,
+    [data-theme="dark"] header {
+      background: rgba(0, 0, 0, 0.9);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     body {
@@ -46,7 +50,7 @@
       font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
     
-    .top-bar {
+    header {
       position: fixed;
       top: 0;
       right: 0;
@@ -55,23 +59,25 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 20px 30px;
       width: 100%;
       transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-left {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      gap: 16px;
     }
 
-    .top-left {
-      flex: 1;
-      text-align: left;
-    }
-
-    .top-right {
-      flex: 1;
-      text-align: right;
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
     .home-button {
@@ -217,7 +223,7 @@
         margin-bottom: 16px;
       }
       
-      .top-bar {
+      header {
         padding: 12px 16px;
       }
     }
@@ -258,27 +264,17 @@
         font-weight: 500;
       }
       
-      .top-bar {
+      header {
         padding: 12px 16px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        background: var(--bg);
-        border-bottom: 1px solid var(--border);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
       }
       
-      .top-left {
+      .nav-left {
         display: flex;
         align-items: center;
         gap: 16px;
       }
       
-      .top-right {
+      .nav-right {
         display: flex;
         align-items: center;
         gap: 12px;
@@ -393,7 +389,7 @@
       }
 
       // Header scroll effect
-      const header = document.querySelector('.top-bar');
+      const header = document.querySelector('header');
       let lastScrollY = window.scrollY;
 
       window.addEventListener('scroll', () => {
@@ -402,15 +398,15 @@
         
         if (currentTheme === 'dark') {
           if (currentScrollY > 50) {
-            header.style.background = 'rgba(18, 18, 18, 0.95)';
+            header.style.background = 'rgba(0, 0, 0, 0.95)';
             header.style.backdropFilter = 'blur(20px)';
             header.style.webkitBackdropFilter = 'blur(20px)';
-            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.15)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.25)';
           } else {
-            header.style.background = 'rgba(18, 18, 18, 0.8)';
+            header.style.background = 'rgba(0, 0, 0, 0.9)';
             header.style.backdropFilter = 'blur(10px)';
             header.style.webkitBackdropFilter = 'blur(10px)';
-            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
           }
         } else {
           if (currentScrollY > 50) {
@@ -435,15 +431,15 @@
         
         if (theme === 'dark') {
           if (currentScrollY > 50) {
-            header.style.background = 'rgba(18, 18, 18, 0.95)';
+            header.style.background = 'rgba(0, 0, 0, 0.95)';
             header.style.backdropFilter = 'blur(20px)';
             header.style.webkitBackdropFilter = 'blur(20px)';
-            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.15)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.25)';
           } else {
-            header.style.background = 'rgba(18, 18, 18, 0.8)';
+            header.style.background = 'rgba(0, 0, 0, 0.9)';
             header.style.backdropFilter = 'blur(10px)';
             header.style.webkitBackdropFilter = 'blur(10px)';
-            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
           }
         } else {
           if (currentScrollY > 50) {

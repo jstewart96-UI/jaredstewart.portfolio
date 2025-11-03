@@ -118,15 +118,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (currentTheme === 'dark') {
       if (currentScrollY > 50) {
-        header.style.background = 'rgba(18, 18, 18, 0.95)';
+        header.style.background = 'rgba(0, 0, 0, 0.95)';
         header.style.backdropFilter = 'blur(20px)';
         header.style.webkitBackdropFilter = 'blur(20px)';
-        header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.15)';
+        header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.25)';
       } else {
-        header.style.background = 'rgba(18, 18, 18, 0.8)';
+        header.style.background = 'rgba(0, 0, 0, 0.9)';
         header.style.backdropFilter = 'blur(10px)';
         header.style.webkitBackdropFilter = 'blur(10px)';
-        header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+        header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
       }
     } else {
       if (currentScrollY > 50) {
@@ -151,15 +151,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (theme === 'dark') {
       if (currentScrollY > 50) {
-        header.style.background = 'rgba(18, 18, 18, 0.95)';
+        header.style.background = 'rgba(0, 0, 0, 0.95)';
         header.style.backdropFilter = 'blur(20px)';
         header.style.webkitBackdropFilter = 'blur(20px)';
-        header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.15)';
+        header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.25)';
       } else {
-        header.style.background = 'rgba(18, 18, 18, 0.8)';
+        header.style.background = 'rgba(0, 0, 0, 0.9)';
         header.style.backdropFilter = 'blur(10px)';
         header.style.webkitBackdropFilter = 'blur(10px)';
-        header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+        header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
       }
     } else {
       if (currentScrollY > 50) {

@@ -18,22 +18,29 @@
       --accent-light: #f5f1eb;
     }
 
+    html[data-theme="dark"],
+    body[data-theme="dark"],
     [data-theme="dark"] {
-      --bg: #121212;
-      --text: #e8eaed;
-      --muted: #9aa0a6;
-      --border: #3c4043;
-      --btn-bg: #2d2d2d;
-      --btn-bg-hover: #3c4043;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.4);
+      --bg: #000000;
+      --text: #ffffff;
+      --muted: #b0b0b0;
+      --border: #4a4a4a;
+      --btn-bg: #1a1a1a;
+      --btn-bg-hover: #2d2d2d;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.6);
       --accent: #D2691E;
       --accent-light: #2d1b0e;
     }
 
     /* Dark mode navigation */
-    [data-theme="dark"] .project-nav {
-      background: rgba(18, 18, 18, 0.8);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    html[data-theme="dark"] .project-nav,
+    body[data-theme="dark"] .project-nav,
+    [data-theme="dark"] .project-nav,
+    html[data-theme="dark"] header,
+    body[data-theme="dark"] header,
+    [data-theme="dark"] header {
+      background: rgba(0, 0, 0, 0.9);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     * {
@@ -85,7 +92,7 @@
 
     .project-links {
       display: flex;
-      gap: 24px;
+      gap: 16px;
     }
 
     .project-links a {
@@ -669,15 +676,15 @@
         
         if (currentTheme === 'dark') {
           if (currentScrollY > 50) {
-            header.style.background = 'rgba(18, 18, 18, 0.95)';
+            header.style.background = 'rgba(0, 0, 0, 0.95)';
             header.style.backdropFilter = 'blur(20px)';
             header.style.webkitBackdropFilter = 'blur(20px)';
-            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.15)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.25)';
           } else {
-            header.style.background = 'rgba(18, 18, 18, 0.8)';
+            header.style.background = 'rgba(0, 0, 0, 0.9)';
             header.style.backdropFilter = 'blur(10px)';
             header.style.webkitBackdropFilter = 'blur(10px)';
-            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
           }
         } else {
           if (currentScrollY > 50) {
@@ -702,15 +709,15 @@
         
         if (theme === 'dark') {
           if (currentScrollY > 50) {
-            header.style.background = 'rgba(18, 18, 18, 0.95)';
+            header.style.background = 'rgba(0, 0, 0, 0.95)';
             header.style.backdropFilter = 'blur(20px)';
             header.style.webkitBackdropFilter = 'blur(20px)';
-            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.15)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.25)';
           } else {
-            header.style.background = 'rgba(18, 18, 18, 0.8)';
+            header.style.background = 'rgba(0, 0, 0, 0.9)';
             header.style.backdropFilter = 'blur(10px)';
             header.style.webkitBackdropFilter = 'blur(10px)';
-            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
           }
         } else {
           if (currentScrollY > 50) {

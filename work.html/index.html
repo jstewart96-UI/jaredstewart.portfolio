@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,39 +6,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="../styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #ffffff;
-      --text: #1e2530;
-      --muted: #1e2530;
-      --border: #dadce0;
-      --btn-bg: #f8f9fa;
-      --btn-bg-hover: #f1f3f4;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.1);
+      --text: #000000;
+      --muted: #666666;
+      --border: #000000;
+      --btn-bg: #000000;
+      --btn-bg-hover: #333333;
+      --shadow-sm: 4px 4px 0px 0px #000000;
       --project-card-bg: #ffffff;
-      --project-card-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      --project-card-shadow: 4px 4px 0px 0px #000000;
       --header-height: 90px;
       --header-height-mobile: 80px;
+      /* Bauhaus Primary Colors */
+      --bauhaus-red: #E41E26;
+      --bauhaus-blue: #0066CC;
+      --bauhaus-yellow: #FFD700;
+      --bauhaus-black: #000000;
+      --bauhaus-white: #FFFFFF;
     }
 
+    html[data-theme="dark"],
+    body[data-theme="dark"],
     [data-theme="dark"] {
-      --bg: #121212;
-      --text: #e8eaed;
-      --muted: #9aa0a6;
-      --border: #3c4043;
-      --btn-bg: #2d2d2d;
-      --btn-bg-hover: #3c4043;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.4);
-      --project-card-bg: #1e1e1e;
-      --project-card-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      --bg: #000000;
+      --text: #ffffff;
+      --muted: #b0b0b0;
+      --border: #4a4a4a;
+      --btn-bg: #1a1a1a;
+      --btn-bg-hover: #2d2d2d;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.6);
+      --project-card-bg: #000000;
+      --project-card-shadow: 4px 4px 0px 0px rgba(255, 255, 255, 0.2);
     }
 
     /* Dark mode header */
+    html[data-theme="dark"] header,
+    body[data-theme="dark"] header,
     [data-theme="dark"] header {
-      background: rgba(18, 18, 18, 0.8);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.9);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
-
+    
     body {
       display: flex;
       flex-direction: column;
@@ -49,7 +63,9 @@
       text-align: center;
       background-color: var(--bg);
       color: var(--text);
-      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+      font-weight: 500;
+      letter-spacing: -0.02em;
     }
     
     header {
@@ -141,22 +157,25 @@
     }
 
     .home-button {
-      background: #4285F4;
-      color: white;
-      border: none;
-      border-radius: 8px;
+      background: var(--bauhaus-red);
+      color: var(--bauhaus-white);
+      border: 2px solid var(--bauhaus-black);
+      border-radius: 0;
       padding: 12px 20px;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      box-shadow: 4px 4px 0px 0px var(--bauhaus-black);
+      transition: all 0.2s ease;
       cursor: pointer;
       text-decoration: none;
-      transition: background-color 0.2s ease, transform 0.1s ease;
-      box-shadow: 0 2px 8px rgba(66, 133, 244, 0.3);
     }
     
     .home-button:hover {
-      background: #3367d6;
-      transform: translateY(-1px);
+      background: var(--bauhaus-yellow);
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px 0px var(--bauhaus-black);
     }
     
     .home-button:active {
@@ -263,6 +282,10 @@
       box-shadow: var(--shadow-sm);
     }
 
+    [data-theme="dark"] .search-box input:focus {
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
     .search-box input:hover {
       box-shadow: var(--shadow-sm);
     }
@@ -303,6 +326,10 @@
       text-align: left;
     }
 
+    [data-theme="dark"] .suggestions-dropdown li {
+      color: var(--muted);
+    }
+
     .suggestions-dropdown li:last-child {
       border-bottom: none;
     }
@@ -310,11 +337,15 @@
     .suggestions-dropdown li:hover {
       background-color: var(--btn-bg-hover);
     }
+
+    [data-theme="dark"] .suggestions-dropdown li:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
     
     .work-grid {
-      max-width: 800px;
+      max-width: 700px;
       margin: 0 auto;
-      padding: calc(var(--header-height) + 740px) 20px 0;
+      padding: calc(var(--header-height) + 1150px) 20px 0;
       text-align: left;
     }
 
@@ -322,26 +353,50 @@
     @media (max-width: 1024px) and (min-width: 481px) {
       .work-grid {
         margin: 0 auto;
-        padding: calc(var(--header-height) + 740px) 60px 0;
+        padding: calc(var(--header-height) + 1150px) 60px 0;
       }
     }
 
-    /* Enhanced Project Cards */
+    /* Enhanced Project Cards - Bauhaus Style */
     .project-card {
       background: var(--project-card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      border: 3px solid var(--border);
+      border-radius: 0;
       padding: 40px;
-      margin-bottom: 24px;
-      transition: all 0.3s ease;
+      margin-bottom: 32px;
+      transition: all 0.2s ease;
       box-shadow: var(--project-card-shadow);
       max-width: 100%;
+      width: 100%;
+      min-height: 450px;
       box-sizing: border-box;
+      position: relative;
     }
 
     .project-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translate(4px, 4px);
+      box-shadow: 0 0 0px 0px var(--border);
+    }
+    
+    /* Add geometric accent shapes to cards */
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      width: 40px;
+      height: 40px;
+      background: var(--bauhaus-red);
+      border: 3px solid var(--bauhaus-black);
+      z-index: 1;
+    }
+    
+    .project-card:nth-child(even)::before {
+      background: var(--bauhaus-blue);
+    }
+    
+    .project-card:nth-child(3n)::before {
+      background: var(--bauhaus-yellow);
     }
 
     .project-header {
@@ -362,39 +417,59 @@
       text-decoration: underline;
     }
     
-    .project h2 {
-      font-size: 24px;
-      font-weight: 500;
-      margin: 0 0 12px 0;
-      color: #4285F4;
+    .project h2, .card-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 20px 0 16px 0;
+      color: var(--bauhaus-black);
       text-decoration: none;
-      line-height: 1.3;
+      line-height: 1.2;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
-    /* Dark mode project titles - WCAG compliant lighter blue */
-    [data-theme="dark"] .project h2 {
-      color: #4285F4;
-    }
-    
-    .project h2:hover {
-      text-decoration: underline;
-    }
-
-    /* Visited state - match button hover color */
-    .project h2 a:visited {
-      color: #3367d6;
-    }
-
-    /* Dark mode visited state - match button hover color */
-    [data-theme="dark"] .project h2 a:visited {
-      color: #3367d6;
-    }
-    
-    .project p {
+    /* Dark mode project titles */
+    html[data-theme="dark"] .project h2,
+    body[data-theme="dark"] .project h2,
+    [data-theme="dark"] .project h2,
+    html[data-theme="dark"] .card-title,
+    body[data-theme="dark"] .card-title,
+    [data-theme="dark"] .card-title {
       color: var(--text);
-      line-height: 1.6;
-      margin: 0 0 16px 0;
+    }
+    
+    .project h2 a, .card-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    .project h2:hover, .card-title:hover {
+      background: var(--bauhaus-yellow);
+      padding: 4px 8px;
+      display: inline-block;
+    }
+
+    /* Visited state */
+    .project h2 a:visited, .card-title a:visited {
+      color: inherit;
+    }
+
+    /* Dark mode visited state */
+    html[data-theme="dark"] .project h2 a:visited,
+    body[data-theme="dark"] .project h2 a:visited,
+    [data-theme="dark"] .project h2 a:visited,
+    html[data-theme="dark"] .card-title a:visited,
+    body[data-theme="dark"] .card-title a:visited,
+    [data-theme="dark"] .card-title a:visited {
+      color: var(--text);
+    }
+    
+    .project p, .card-desc {
+      color: var(--text);
+      line-height: 1.7;
+      margin: 0 0 20px 0;
       font-size: 15px;
+      font-weight: 400;
     }
 
     .project-meta {
@@ -413,11 +488,15 @@
 
     .meta-label {
       color: var(--muted);
-      font-weight: 500;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 11px;
     }
 
     .meta-value {
       color: var(--text);
+      font-weight: 600;
     }
 
     .project-tags {
@@ -428,32 +507,90 @@
     }
 
     .tag {
-      background: var(--btn-bg);
+      background: var(--bauhaus-white);
+      color: var(--bauhaus-black);
+      padding: 6px 14px;
+      border-radius: 0;
+      font-size: 11px;
+      font-weight: 700;
+      border: 2px solid var(--bauhaus-black);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      box-shadow: 2px 2px 0px 0px var(--bauhaus-black);
+    }
+    
+    html[data-theme="dark"] .tag,
+    body[data-theme="dark"] .tag,
+    [data-theme="dark"] .tag {
+      background: var(--bg);
       color: var(--text);
-      padding: 4px 12px;
-      border-radius: 16px;
-      font-size: 12px;
-      font-weight: 500;
-      border: 1px solid var(--border);
+      border: 2px solid var(--border);
+      box-shadow: 2px 2px 0px 0px var(--border);
     }
 
-    .view-case-study {
+    /* Dark mode button styling */
+    html[data-theme="dark"] .view-case-study,
+    body[data-theme="dark"] .view-case-study,
+    [data-theme="dark"] .view-case-study,
+    html[data-theme="dark"] .card-cta,
+    body[data-theme="dark"] .card-cta,
+    [data-theme="dark"] .card-cta {
+      border: 2px solid var(--border);
+      box-shadow: 4px 4px 0px 0px var(--border);
+    }
+
+    html[data-theme="dark"] .view-case-study:hover,
+    body[data-theme="dark"] .view-case-study:hover,
+    [data-theme="dark"] .view-case-study:hover,
+    html[data-theme="dark"] .card-cta:hover,
+    body[data-theme="dark"] .card-cta:hover,
+    [data-theme="dark"] .card-cta:hover {
+      box-shadow: 2px 2px 0px 0px var(--border);
+    }
+
+    /* Dark mode home button */
+    html[data-theme="dark"] .home-button,
+    body[data-theme="dark"] .home-button,
+    [data-theme="dark"] .home-button {
+      border: 2px solid var(--border);
+      box-shadow: 4px 4px 0px 0px var(--border);
+    }
+
+    html[data-theme="dark"] .home-button:hover,
+    body[data-theme="dark"] .home-button:hover,
+    [data-theme="dark"] .home-button:hover {
+      box-shadow: 2px 2px 0px 0px var(--border);
+    }
+
+    /* Dark mode geometric accent squares */
+    html[data-theme="dark"] .project-card::before,
+    body[data-theme="dark"] .project-card::before,
+    [data-theme="dark"] .project-card::before {
+      border: 3px solid var(--border);
+    }
+
+    .view-case-study, .card-cta {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #4285F4;
-      color: white;
+      background: var(--bauhaus-blue);
+      color: var(--bauhaus-white);
       text-decoration: none;
-      padding: 12px 20px;
-      border-radius: 8px;
+      padding: 12px 24px;
+      border-radius: 0;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: 2px solid var(--bauhaus-black);
+      box-shadow: 4px 4px 0px 0px var(--bauhaus-black);
       transition: all 0.2s ease;
     }
 
-    .view-case-study:hover {
-      background: #3367d6;
-      transform: translateY(-1px);
+    .view-case-study:hover, .card-cta:hover {
+      background: var(--bauhaus-red);
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px 0px var(--bauhaus-black);
     }
 
     .view-case-study:active {
@@ -469,12 +606,13 @@
       .work-grid {
         max-width: 100%;
         margin: 0 auto;
-        padding: calc(var(--header-height-mobile) + 1035px) 16px 0;
+        padding: calc(var(--header-height-mobile) + 1330px) 16px 0;
       }
       
       .project-card {
         margin-bottom: 20px;
         padding: 32px;
+        min-height: auto;
       }
       
       .project h2 {
@@ -510,13 +648,14 @@
       
       .work-grid {
         margin: 0 auto;
-        padding: calc(var(--header-height-mobile) + 1035px) 12px 0;
+        padding: calc(var(--header-height-mobile) + 1330px) 12px 0;
         max-width: 100%;
       }
       
       .project-card {
         margin-bottom: 24px;
         padding: 32px;
+        min-height: auto;
         border-radius: 8px;
       }
       
@@ -615,12 +754,13 @@
       
       .work-grid {
         margin: 0 auto;
-        padding: calc(var(--header-height-mobile) + 1035px) 8px 0;
+        padding: calc(var(--header-height-mobile) + 1330px) 8px 0;
       }
       
       .project-card {
         padding: 24px;
         margin-bottom: 16px;
+        min-height: auto;
       }
       
       .search-wrapper {
@@ -641,7 +781,7 @@
       
       .work-grid {
         margin: 0 auto;
-        padding: calc(var(--header-height-mobile) + 1035px) 8px 0;
+        padding: calc(var(--header-height-mobile) + 1330px) 8px 0;
       }
     }
 
@@ -650,7 +790,7 @@
     @media screen and (max-width: 320px) {
       .work-grid {
         margin: 0 auto;
-        padding: calc(var(--header-height-mobile) + 1035px) 4px 0;
+        padding: calc(var(--header-height-mobile) + 1330px) 4px 0;
       }
     }
     
@@ -703,6 +843,7 @@
     .view-case {
       display: none;
     }
+
   </style>
 </head>
 <body>
@@ -721,12 +862,12 @@
   </header>
   
   
+  <!-- PROJECT CARDS -->
   <div class="work-grid">
     <!-- Brew to Grow Project -->
-    <section class="project-card">
-      <a href="../projects/brew-to-grow/index.html" class="project-url">jaredstewart.com › brew-to-grow</a>
-      <h2><a href="../projects/brew-to-grow/index.html">Brew to Grow</a></h2>
-      <p>A sustainability-focused mobile app that allows users to connect with coffee shops and other businesses within their community to redirect used coffee grounds that would otherwise go to waste.</p>
+    <article class="project-card">
+      <h2 class="card-title"><a href="../projects/brew-to-grow/index.html">Brew to Grow</a></h2>
+      <p class="card-desc">A sustainability-focused mobile app that allows users to connect with coffee shops and other businesses within their community to redirect used coffee grounds that would otherwise go to waste.</p>
       
       <div class="project-meta">
         <div class="meta-item">
@@ -750,14 +891,13 @@
         <span class="tag">User Research</span>
       </div>
 
-      <a href="../projects/brew-to-grow/index.html" class="view-case-study">View Case Study →</a>
-    </section>
+      <a href="../projects/brew-to-grow/index.html" class="card-cta view-case-study">View Case Study →</a>
+    </article>
 
     <!-- Philo Redesign Project -->
-    <section class="project-card">
-      <a href="../projects/philo/index.html" class="project-url">jaredstewart.com › philo-redesign</a>
-      <h2><a href="../projects/philo/index.html">Philo Sign-In Redesign</a></h2>
-      <p>A UX case study focused on improving sign-in flows and accessibility for streaming users. This project addresses common authentication pain points and creates a more inclusive user experience for diverse audiences.</p>
+    <article class="project-card">
+      <h2 class="card-title"><a href="../projects/philo/index.html">Philo Sign-In Redesign</a></h2>
+      <p class="card-desc">A UX case study focused on improving sign-in flows and accessibility for streaming users. This project addresses common authentication pain points and creates a more inclusive user experience for diverse audiences.</p>
       
       <div class="project-meta">
         <div class="meta-item">
@@ -781,14 +921,13 @@
         <span class="tag">User Testing</span>
       </div>
 
-      <a href="../projects/philo/index.html" class="view-case-study">View Case Study →</a>
-    </section>
+      <a href="../projects/philo/index.html" class="card-cta view-case-study">View Case Study →</a>
+    </article>
 
     <!-- Peet's Coffee Project -->
-    <section class="project-card">
-      <a href="../projects/peets-coffee/index.html" class="project-url">jaredstewart.com › peets-coffee-mobile</a>
-      <h2><a href="../projects/peets-coffee/index.html">Peet's Coffee Mobile App</a></h2>
-      <p>How a small improvement streamlined a core function for increased usability. This case study demonstrates how thoughtful UX design can significantly improve user experience with minimal changes.</p>
+    <article class="project-card">
+      <h2 class="card-title"><a href="../projects/peets-coffee/index.html">Peet's Coffee Mobile App</a></h2>
+      <p class="card-desc">How a small improvement streamlined a core function for increased usability. This case study demonstrates how thoughtful UX design can significantly improve user experience with minimal changes.</p>
       
       <div class="project-meta">
         <div class="meta-item">
@@ -812,14 +951,13 @@
         <span class="tag">UX Improvements</span>
       </div>
 
-      <a href="../projects/peets-coffee/index.html" class="view-case-study">View Case Study →</a>
-    </section>
+      <a href="../projects/peets-coffee/index.html" class="card-cta view-case-study">View Case Study →</a>
+    </article>
 
     <!-- Bolsa Chica Land Trust Project -->
-    <section class="project-card">
-      <a href="../projects/bolsa-chica/index.html" class="project-url">jaredstewart.com › bolsa-chica-rebranding</a>
-      <h2><a href="../projects/bolsa-chica/index.html">Bolsa Chica Land Trust: Rebranding</a></h2>
-      <p>A comprehensive rebranding project for Bolsa Chica Land Trust, focusing on modernizing their visual identity while preserving their environmental mission. This case study explores how strategic design can strengthen nonprofit organizations and improve community engagement.</p>
+    <article class="project-card">
+      <h2 class="card-title"><a href="../projects/bolsa-chica/index.html">Bolsa Chica Land Trust: Rebranding</a></h2>
+      <p class="card-desc">A comprehensive rebranding project for Bolsa Chica Land Trust, focusing on modernizing their visual identity while preserving their environmental mission. This case study explores how strategic design can strengthen nonprofit organizations and improve community engagement.</p>
       
       <div class="project-meta">
         <div class="meta-item">
@@ -843,8 +981,8 @@
         <span class="tag">Community</span>
       </div>
 
-      <a href="../projects/bolsa-chica/index.html" class="view-case-study">View Project →</a>
-    </section>
+      <a href="../projects/bolsa-chica/index.html" class="card-cta view-case-study">View Project →</a>
+    </article>
   </div>
 
   <script>
@@ -968,15 +1106,15 @@
         
         if (currentTheme === 'dark') {
           if (currentScrollY > 50) {
-            header.style.background = 'rgba(18, 18, 18, 0.95)';
+            header.style.background = 'rgba(0, 0, 0, 0.95)';
             header.style.backdropFilter = 'blur(20px)';
             header.style.webkitBackdropFilter = 'blur(20px)';
-            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.15)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.25)';
           } else {
-            header.style.background = 'rgba(18, 18, 18, 0.8)';
+            header.style.background = 'rgba(0, 0, 0, 0.9)';
             header.style.backdropFilter = 'blur(10px)';
             header.style.webkitBackdropFilter = 'blur(10px)';
-            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
           }
         } else {
           if (currentScrollY > 50) {
@@ -1001,15 +1139,15 @@
         
         if (theme === 'dark') {
           if (currentScrollY > 50) {
-            header.style.background = 'rgba(18, 18, 18, 0.95)';
+            header.style.background = 'rgba(0, 0, 0, 0.95)';
             header.style.backdropFilter = 'blur(20px)';
             header.style.webkitBackdropFilter = 'blur(20px)';
-            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.15)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.25)';
           } else {
-            header.style.background = 'rgba(18, 18, 18, 0.8)';
+            header.style.background = 'rgba(0, 0, 0, 0.9)';
             header.style.backdropFilter = 'blur(10px)';
             header.style.webkitBackdropFilter = 'blur(10px)';
-            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
           }
         } else {
           if (currentScrollY > 50) {
@@ -1034,6 +1172,7 @@
 
       // Initialize header for current theme
       updateHeaderForTheme(currentTheme);
+
     });
   </script>
 </body>
