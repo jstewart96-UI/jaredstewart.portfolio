@@ -5,46 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Peet's Coffee Mobile App - Jared Stewart UX Portfolio</title>
   <link rel="stylesheet" href="../../styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    /* Mid-Century Modern Style Variables */
     :root {
-      --bg: #ffffff;
-      --text: #1e2530;
-      --muted: #9aa0a6;
-      --border: #dadce0;
-      --btn-bg: #f8f9fa;
-      --btn-bg-hover: #f1f3f4;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.1);
-      --accent: #8B4513;
-      --accent-light: #f5f1eb;
+      --bg: #F5E6D3;
+      --text: #2C2416;
+      --muted: #5A4A3A;
+      --border: #C95D2C;
+      --btn-bg: #FF6B35;
+      --btn-bg-hover: #E85A2A;
+      --shadow-sm: 2px 2px 0px rgba(0, 0, 0, 0.1);
+      --accent: #FF6B35;
+      --accent-light: #FFE5D9;
+      --accent-teal: #4A90A4;
+      --accent-olive: #8B956D;
+      --grid-color: rgba(201, 93, 44, 0.2);
     }
 
     html[data-theme="dark"],
     body[data-theme="dark"],
     [data-theme="dark"] {
-      --bg: #000000;
-      --text: #ffffff;
-      --muted: #b0b0b0;
-      --border: #4a4a4a;
-      --btn-bg: #1a1a1a;
-      --btn-bg-hover: #2d2d2d;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.6);
-      --accent: #D2691E;
-      --accent-light: #2d1b0e;
-    }
-
-    /* Dark mode navigation */
-    html[data-theme="dark"] .project-nav,
-    body[data-theme="dark"] .project-nav,
-    [data-theme="dark"] .project-nav,
-    html[data-theme="dark"] header,
-    body[data-theme="dark"] header,
-    [data-theme="dark"] header {
-      background: rgba(0, 0, 0, 0.9);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      --bg: #2C2416;
+      --text: #F5E6D3;
+      --muted: #B8A898;
+      --border: #FF6B35;
+      --btn-bg: #FF6B35;
+      --btn-bg-hover: #E85A2A;
+      --shadow-sm: 2px 2px 0px rgba(255, 255, 255, 0.1);
+      --accent: #FF6B35;
+      --accent-light: #4A2410;
+      --accent-teal: #6BB8D1;
+      --accent-olive: #A8B884;
+      --grid-color: rgba(255, 107, 53, 0.3);
     }
 
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      background: var(--bg);
     }
 
     body {
@@ -52,59 +55,19 @@
       padding: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: "Nunito", "Futura", "Gill Sans", "Avenir", "Arial Rounded MT Bold", "Helvetica Rounded", sans-serif;
       line-height: 1.6;
+      text-align: left;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+      background-size: 40px 40px;
     }
 
-    /* Navigation */
-    .project-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      z-index: 1000;
-      padding: 20px 30px;
-      width: 100%;
-      transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .back-link {
-      color: var(--text);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: color 0.2s ease;
-    }
-
-    .back-link:hover {
-      color: var(--accent);
-    }
-
-    .project-links {
-      display: flex;
-      gap: 16px;
-    }
-
-    .project-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.2s ease;
-    }
-
-    .project-links a:hover {
-      color: var(--text);
-    }
+    /* Header styling is handled by styles.css - no need to override */
 
     /* Toggle Switch */
     .toggle-switch {
@@ -155,39 +118,65 @@
       transform: translateX(24px);
     }
 
-    /* Main Content */
+    /* Main Content - Mid-Century Modern */
     .project-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 100px 24px 40px;
+      padding: 120px 60px 80px;
+      background: transparent;
+      position: relative;
     }
 
-    /* Hero Section */
+    /* Hero Section - Mid-Century Modern */
     .project-hero {
+      margin-bottom: 120px;
+      position: relative;
+    }
+    
+    .project-hero::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      right: -20px;
+      bottom: -20px;
+      border: 3px solid var(--accent);
+      border-radius: 12px;
+      z-index: -1;
+    }
+
+    .hero-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
-      margin-bottom: 80px;
+      gap: 80px;
+      align-items: start;
+      margin-top: 60px;
     }
 
     .hero-content h1 {
-      font-size: clamp(32px, 5vw, 48px);
-      font-weight: 600;
-      margin: 0 0 16px 0;
-      line-height: 1.2;
+      font-size: 64px;
+      font-weight: 700;
+      margin: 0 0 24px 0;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      text-align: left;
+      color: var(--accent);
+      text-shadow: 2px 2px 0px var(--accent-light);
     }
 
     .project-subtitle {
       font-size: 20px;
-      color: var(--muted);
-      margin: 0 0 32px 0;
-      line-height: 1.4;
+      color: var(--text);
+      margin: 0 0 48px 0;
+      line-height: 1.6;
+      font-weight: 500;
+      letter-spacing: 0.03em;
     }
 
     .project-meta {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      display: flex;
+      flex-direction: column;
       gap: 24px;
       margin-bottom: 32px;
     }
@@ -199,17 +188,19 @@
     }
 
     .meta-label {
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 11px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--muted);
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 8px;
     }
 
     .meta-value {
       font-size: 16px;
       color: var(--text);
       font-weight: 500;
+      letter-spacing: 0.02em;
     }
 
     .project-tags {
@@ -219,44 +210,83 @@
     }
 
     .tag {
-      background: var(--accent-light);
-      color: var(--accent);
-      padding: 6px 12px;
+      background: var(--accent);
+      color: var(--bg);
+      padding: 6px 16px;
+      border: 2px solid var(--accent);
       border-radius: 20px;
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      box-shadow: 2px 2px 0px var(--accent-teal);
     }
 
     .hero-image {
       display: flex;
       justify-content: center;
-      align-items: center;
     }
 
-    .hero-image img {
+    .project-hero-image {
       max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: var(--shadow-sm);
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: center;
+      border: 4px solid var(--accent);
+      border-radius: 16px;
+      box-shadow: 6px 6px 0px var(--accent-teal);
     }
 
-    /* Project Sections */
+    /* Project Sections - Mid-Century Modern */
     .project-section {
-      margin-bottom: 80px;
+      margin-bottom: 120px;
+      position: relative;
+      padding: 30px;
+      background: rgba(245, 230, 211, 0.8);
+      backdrop-filter: blur(2px);
+      border: 3px solid var(--accent);
+      border-radius: 16px;
+      box-shadow: 4px 4px 0px var(--accent-teal);
+    }
+    
+    html[data-theme="dark"] .project-section,
+    body[data-theme="dark"] .project-section {
+      background: rgba(44, 36, 22, 0.8);
     }
 
     .section-title {
-      font-size: 32px;
-      font-weight: 600;
-      margin: 0 0 24px 0;
-      color: var(--text);
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0 0 32px 0;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-shadow: 2px 2px 0px var(--accent-light);
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    .section-title::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      background: var(--accent-teal);
+      border-radius: 50%;
     }
 
     .section-content {
-      font-size: 18px;
-      line-height: 1.7;
+      font-size: 16px;
+      line-height: 1.8;
       color: var(--text);
-      margin-bottom: 32px;
+      margin-bottom: 48px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      max-width: 800px;
     }
 
     .section-content p {
@@ -286,17 +316,21 @@
     }
 
     .improvement-content h3 {
-      font-size: 24px;
-      font-weight: 600;
+      font-size: 18px;
+      font-weight: 700;
       margin: 0 0 16px 0;
       color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
     .improvement-content p {
-      font-size: 16px;
-      color: var(--muted);
-      margin: 0 0 16px 0;
+      font-size: 14px;
+      color: var(--text);
+      margin: 0 0 24px 0;
       line-height: 1.6;
+      font-weight: 400;
+      letter-spacing: 0.01em;
     }
 
     .improvement-image {
@@ -306,115 +340,135 @@
     .improvement-image img {
       max-width: 100%;
       height: auto;
+      border: 3px solid var(--accent);
       border-radius: 12px;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 4px 4px 0px var(--accent-teal);
     }
 
-    /* Process Steps */
+    /* Process Steps - Mid-Century Modern */
     .process-steps {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 32px;
-      margin: 32px 0;
+      gap: 40px;
+      margin: 48px 0;
     }
 
     .process-step {
-      text-align: center;
+      text-align: left;
       padding: 24px;
-      background: var(--btn-bg);
+      background: var(--accent-light);
+      border: 2px solid var(--accent);
       border-radius: 12px;
-      border: 1px solid var(--border);
+      box-shadow: 3px 3px 0px var(--accent-teal);
     }
 
     .step-number {
-      width: 48px;
-      height: 48px;
+      width: 50px;
+      height: 50px;
       background: var(--accent);
-      color: white;
-      border-radius: 50%;
+      color: var(--bg);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 20px;
-      font-weight: 600;
-      margin: 0 auto 16px;
+      font-weight: 700;
+      margin: 0 0 24px 0;
+      border-radius: 50%;
+      box-shadow: 3px 3px 0px var(--accent-teal);
     }
 
     .step-title {
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 16px;
+      font-weight: 700;
       margin: 0 0 12px 0;
-      color: var(--text);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
     .step-description {
       font-size: 14px;
-      color: var(--muted);
-      line-height: 1.5;
+      color: var(--text);
+      line-height: 1.7;
+      font-weight: 400;
+      letter-spacing: 0.02em;
     }
 
-    /* Results Grid */
+    /* Results Grid - Mid-Century Modern */
     .results-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 24px;
-      margin: 32px 0;
+      gap: 40px;
+      margin: 48px 0;
     }
 
     .result-item {
-      text-align: center;
+      text-align: left;
       padding: 24px;
-      background: var(--btn-bg);
+      background: var(--accent-light);
+      border: 2px solid var(--accent);
       border-radius: 12px;
-      border: 1px solid var(--border);
+      box-shadow: 3px 3px 0px var(--accent-teal);
     }
 
     .result-number {
-      font-size: 36px;
+      font-size: 64px;
       font-weight: 700;
       color: var(--accent);
-      margin: 0 0 8px 0;
+      margin: 0 0 16px 0;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      text-shadow: 2px 2px 0px var(--accent-light);
     }
 
     .result-label {
-      font-size: 14px;
-      color: var(--muted);
-      font-weight: 500;
+      font-size: 11px;
+      color: var(--text);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
     /* Mobile Responsiveness */
     @media (max-width: 768px) {
-      .project-nav {
-        padding: 12px 16px;
-      }
-
       .project-container {
-        padding: 80px 16px 40px;
+        padding: 200px 20px 40px !important;
       }
 
-      .project-hero {
+      .hero-layout {
         grid-template-columns: 1fr;
-        gap: 32px;
-        text-align: center;
+        gap: 40px;
+        text-align: left;
+      }
+
+      .hero-image {
+        margin: 32px 0;
+      }
+
+      .project-hero-image {
+        border: 1px solid var(--border);
       }
 
       .project-meta {
         grid-template-columns: 1fr;
-        gap: 16px;
+      }
+
+      .hero-content h1 {
+        font-size: 36px;
       }
 
       .section-title {
-        font-size: 28px;
+        font-size: 18px;
       }
 
       .section-content {
-        font-size: 16px;
+        font-size: 12px;
       }
 
       .improvement-showcase {
         grid-template-columns: 1fr;
         gap: 32px;
-        text-align: center;
+        text-align: left;
       }
 
       .process-steps {
@@ -439,21 +493,21 @@
 </head>
 <body>
   <!-- Navigation -->
-  <nav class="project-nav">
-    <a href="../../work.html/index.html" class="back-link">
-      ← Back to Work
-    </a>
-    <div class="project-links">
-      <a href="../../index.html">Home</a>
-      <a href="../../about.html/index.html">About</a>
-      <a href="../../resume.html/index.html">Resume</a>
+  <header>
+    <div class="nav-left">
+      <a href="../../work.html/index.html" class="nav-link">← Back to Work</a>
+    </div>
+    <div class="nav-right">
+      <a href="../../index.html" class="nav-link">Home</a>
+      <a href="../../about.html/index.html" class="nav-link">About</a>
+      <a href="../../resume.html/index.html" class="nav-link">Resume</a>
       <!-- Dark Mode Toggle -->
       <label class="toggle-switch">
         <input type="checkbox" id="darkModeToggle">
         <span class="slider"></span>
       </label>
     </div>
-  </nav>
+  </header>
 
   <!-- Main Content -->
   <div class="project-container">
@@ -461,7 +515,14 @@
     <section class="project-hero">
       <div class="hero-content">
         <h1>Peet's Coffee Mobile App</h1>
-        <p class="project-subtitle">Streamlining the core ordering experience</p>
+        <p class="project-subtitle">How a Small Improvement Streamlined a Core Function for Increased Usability </p>
+      </div>
+      
+      <div class="hero-layout">
+        <!-- Hero Image -->
+        <div class="hero-image">
+          <img src="assets/images/Peets-App-Redesign-Mock-Up.png" alt="Peet's Coffee mobile app interface" class="project-hero-image">
+        </div>
         
         <div class="project-meta">
           <div class="meta-item">
@@ -476,18 +537,14 @@
             <span class="meta-label">Tools</span>
             <span class="meta-value">Figma, Usability Testing</span>
           </div>
+          
+          <div class="project-tags">
+            <span class="tag">Mobile App</span>
+            <span class="tag">Usability</span>
+            <span class="tag">Coffee</span>
+            <span class="tag">UX Improvements</span>
+          </div>
         </div>
-
-        <div class="project-tags">
-          <span class="tag">Mobile App</span>
-          <span class="tag">Usability</span>
-          <span class="tag">Coffee</span>
-          <span class="tag">UX Improvements</span>
-        </div>
-      </div>
-      
-      <div class="hero-image">
-        <img src="assets/images/hero-mockup.jpg" alt="Peet's Coffee mobile app interface" />
       </div>
     </section>
 
@@ -660,6 +717,7 @@
         body.setAttribute('data-theme', newTheme);
         html.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
+        updateHeaderForTheme(newTheme);
       });
 
       function updateToggleState(theme) {
@@ -667,7 +725,7 @@
       }
 
       // Header scroll effect
-      const header = document.querySelector('.project-nav');
+      const header = document.querySelector('header');
       let lastScrollY = window.scrollY;
 
       window.addEventListener('scroll', () => {
@@ -733,12 +791,6 @@
           }
         }
       }
-
-      // Update header when theme changes
-      darkModeToggle.addEventListener('change', () => {
-        const newTheme = darkModeToggle.checked ? 'dark' : 'light';
-        updateHeaderForTheme(newTheme);
-      });
 
       // Initialize header for current theme
       updateHeaderForTheme(currentTheme);
