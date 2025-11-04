@@ -61,10 +61,13 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       min-height: 100vh;
-      background-image: 
-        linear-gradient(var(--grid-color) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-      background-size: 40px 40px;
+    }
+
+    /* Ensure all images are responsive by default */
+    img {
+      max-width: 100%;
+      height: auto;
+      box-sizing: border-box;
     }
 
     /* Header styling is handled by styles.css - no need to override */
@@ -125,6 +128,7 @@
       padding: 120px 60px 80px;
       background: transparent;
       position: relative;
+      z-index: 1;
     }
 
     /* Hero Section - Mid-Century Modern */
@@ -248,6 +252,8 @@
       border: 3px solid var(--accent);
       border-radius: 16px;
       box-shadow: 4px 4px 0px var(--accent-teal);
+      overflow: hidden;
+      box-sizing: border-box;
     }
     
     html[data-theme="dark"] .project-section,
@@ -265,6 +271,11 @@
       text-shadow: 2px 2px 0px var(--accent-light);
       position: relative;
       padding-left: 20px;
+      padding-right: 0;
+      max-width: 100%;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      box-sizing: border-box;
     }
     
     .section-title::before {
@@ -286,7 +297,11 @@
       margin-bottom: 48px;
       font-weight: 400;
       letter-spacing: 0.01em;
-      max-width: 800px;
+      max-width: 100%;
+      width: 100%;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      box-sizing: border-box;
     }
 
     .section-content p {
@@ -335,14 +350,20 @@
 
     .improvement-image {
       text-align: center;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
 
     .improvement-image img {
       max-width: 100%;
+      width: 100%;
       height: auto;
+      display: block;
       border: 3px solid var(--accent);
       border-radius: 12px;
       box-shadow: 4px 4px 0px var(--accent-teal);
+      box-sizing: border-box;
     }
 
     /* Process Steps - Mid-Century Modern */
@@ -443,10 +464,16 @@
 
       .hero-image {
         margin: 32px 0;
+        width: 100%;
+        max-width: 100%;
       }
 
       .project-hero-image {
         border: 1px solid var(--border);
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
       }
 
       .project-meta {
@@ -471,12 +498,31 @@
         text-align: left;
       }
 
+      .improvement-image {
+        width: 100%;
+        max-width: 100%;
+        margin: 24px 0;
+      }
+
+      .improvement-image img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
       .process-steps {
         grid-template-columns: 1fr;
       }
 
       .results-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      /* Ensure all images scale properly */
+      img {
+        max-width: 100%;
+        height: auto;
+        box-sizing: border-box;
       }
     }
 
@@ -487,6 +533,43 @@
 
       .results-grid {
         grid-template-columns: 1fr;
+      }
+
+      .project-hero-image {
+        border-width: 2px;
+        border-radius: 12px;
+      }
+
+      .improvement-image {
+        margin: 20px 0;
+      }
+
+      .improvement-image img {
+        border-width: 2px;
+        border-radius: 8px;
+      }
+
+      .section-title {
+        font-size: 16px;
+      }
+
+      .section-content {
+        font-size: 11px;
+      }
+    }
+
+    /* Small mobile devices */
+    @media (max-width: 320px) {
+      .project-container {
+        padding: 200px 12px 40px !important;
+      }
+
+      .project-hero-image {
+        border-width: 1px;
+      }
+
+      .improvement-image img {
+        border-width: 1px;
       }
     }
   </style>
@@ -548,21 +631,67 @@
       </div>
     </section>
 
+    <!-- New Section -->
+    <section class="project-section">
+      <h2 class="section-title">"How do I check in?" "Where's the scan button?"</h2>
+      <div class="section-content">
+        <h3>Analyzing the most common problem users face with this app </p>
+      </div>
+    </section>
+
     <!-- The Challenge -->
     <section class="project-section">
-      <h2 class="section-title">The Challenge</h2>
+      <h2 class="section-title">Overview</h2>
       <div class="section-content">
-        <p>Peet's Coffee's mobile app had a core usability issue in their ordering flow. Users were experiencing friction when trying to customize their drinks, leading to abandoned carts and decreased user satisfaction.</p>
+        <p>Working in a coffee shop offers valuable insights beyond enjoying excellent coffee. It provides the unique opportunity to receive first-hand feedback from customers who express their frustrations with the Peet's Coffee mobile app. Additionally, I have access to our loyalty metrics through Power BI, giving me a comprehensive view of how many guests check-in with the app against the store's overall customer count. As a UX designer, I have taken these concerns to heart and used them to inform a redesign of the Peet's Coffee Mobile App, ensuring that customer feedback and data-driven insights shape the user experience.</p>
         
         <p>The specific problem was in the drink customization interface, where users had to navigate through multiple screens to make simple modifications to their orders. This created unnecessary complexity for what should be a quick, intuitive process.</p>
       </div>
     </section>
 
+    <!-- Problem -->
+    <section class="project-section">
+      <h2 class="section-title">Problem</h2>
+      <div class="section-content">
+        <p>Many users find it difficult to locate the QR code for scanning within the app. Previous and current iterations prioritize visual elements and promotional content, which can obscure the QR code’s placement and make it less intuitive to find quickly. This difficulty in accessing a core functionality hampers the app’s usability, detracts from the seamless customer experience that the app aims to provide, and hinders our ability to increase loyalty metrics.</p>
+      </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="project-section">
+      <h2 class="section-title">Solution</h2>
+      <div class="section-content">
+        <p>This case study explores the potential impact of our company's app redesign on loyalty metrics and overall user satisfaction. The redesign is informed by user feedback and aims to address their main concerns. It represents a step towards a more user-friendly, streamlined app and a more engaging user experience. The project's goal was to redesign the home screen of Peet’s Coffee’s mobile app to enhance user experience, streamline functionality, and simplify access to key features.</p>
+      </div>
+    </section>
+
+    <!-- Sourcing the Problem -->
+    <section class="project-section">
+      <h2 class="section-title">Sourcing the Problem</h2>
+      <div class="section-content">
+        <p>In order to understand the problem users were facing with the app, I took note of customers who verbally expressed difficulty locating the “scan to check in” button. However, this was not a streamlined or consistent approach as there was the variable of those same customers not coming back in. To counter this issue, I asked 20 random customers if they've had difficulty with the app, in terms of the check in process and navigation.</p>
+
+          <p>Here are those results:</p>
+      </div>
+      
+      <div class="improvement-image">
+        <img src="assets/images/Pie-Chart.png" alt="Data visualization chart" />
+      </div>
+    </section>
+
     <!-- User Research -->
     <section class="project-section">
-      <h2 class="section-title">User Research</h2>
+      <h2 class="section-title">Analyzing the past to enhance the future: Observations</h2>
       <div class="section-content">
-        <p>I conducted focused user research to understand how customers were interacting with the current ordering system and identify the specific pain points in the customization flow.</p>
+        <p>One previous version of the app excelled at creating a visually appealing and brand-consistent interface. However, its design, featuring a central coffee cup graphic and promotional image, may have prioritized aesthetics over functionality. While the personalized greeting and intuitive navigation bar were strengths, the interface could have been streamlined to focus more on key user interactions, such as scanning for rewards and checking point statuses.</p>
+      </div>
+
+      <div class="improvement-image">
+        <img src="assets/images/Frame-201.png" alt="Analysis observations" />
+      </div>
+
+      <div class="section-content">
+        <p></p>
       </div>
 
       <div class="process-steps">
@@ -613,7 +742,7 @@
           <p>Implemented a collapsible customization panel that expands when needed, keeping the interface clean while providing access to all options.</p>
         </div>
         <div class="improvement-image">
-          <img src="assets/images/customization-improvement.jpg" alt="Improved customization interface" />
+          <img src="assets/images/Frame-201.png" alt="Improved customization interface" />
         </div>
       </div>
 
@@ -624,7 +753,7 @@
           <p>Increased touch targets and improved spacing to reduce accidental taps and improve usability on smaller screens.</p>
         </div>
         <div class="improvement-image">
-          <img src="assets/images/one-handed-design.jpg" alt="One-handed mobile optimization" />
+          <img src="assets/images/Frame-202.png" alt="One-handed mobile optimization" />
         </div>
       </div>
     </section>

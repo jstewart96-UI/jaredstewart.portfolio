@@ -30,6 +30,8 @@ html[data-theme="dark"] {
 }
 
 /* Dark mode header */
+html[data-theme="dark"] header,
+body[data-theme="dark"] header,
 [data-theme="dark"] header {
   background: rgba(0, 0, 0, 0.9);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -85,6 +87,10 @@ header {
   color: var(--text);
   font-size: 14px;
   font-weight: 400;
+  font-family: "TT Hoves", "TT Hove", Arial, sans-serif;
+  -webkit-text-stroke: 0;
+  text-stroke: 0;
+  text-shadow: none;
   transition: color 0.2s ease;
 }
 

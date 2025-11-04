@@ -6,14 +6,15 @@
   <title>Philo Sign-In Redesign - Jared Stewart UX Portfolio</title>
   <link rel="stylesheet" href="../../styles.css">
   <style>
+    /* Swiss Style / International Typographic Style Variables */
     :root {
       --bg: #ffffff;
       --text: #1e2530;
-      --muted: #9aa0a6;
+      --muted: #1e2530;
       --border: #dadce0;
       --btn-bg: #f8f9fa;
       --btn-bg-hover: #f1f3f4;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-sm: none;
       --accent: #4285F4;
       --accent-light: #e8f0fe;
     }
@@ -27,24 +28,17 @@
       --border: #4a4a4a;
       --btn-bg: #1a1a1a;
       --btn-bg-hover: #2d2d2d;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.6);
+      --shadow-sm: none;
       --accent: #4285F4;
       --accent-light: #1a237e;
     }
 
-    /* Dark mode navigation */
-    html[data-theme="dark"] .project-nav,
-    body[data-theme="dark"] .project-nav,
-    [data-theme="dark"] .project-nav,
-    html[data-theme="dark"] header,
-    body[data-theme="dark"] header,
-    [data-theme="dark"] header {
-      background: rgba(0, 0, 0, 0.9);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      background: var(--bg);
     }
 
     body {
@@ -52,59 +46,15 @@
       padding: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height: 1.6;
+      font-family: "Helvetica Neue", Helvetica, Arial, "Arial Unicode MS", sans-serif;
+      line-height: 1.5;
+      text-align: left;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
     }
 
-    /* Navigation */
-    .project-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      z-index: 1000;
-      padding: 20px 30px;
-      width: 100%;
-      transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .back-link {
-      color: var(--text);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: color 0.2s ease;
-    }
-
-    .back-link:hover {
-      color: var(--accent);
-    }
-
-    .project-links {
-      display: flex;
-      gap: 16px;
-    }
-
-    .project-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.2s ease;
-    }
-
-    .project-links a:hover {
-      color: var(--text);
-    }
+    /* Header styling is handled by styles.css - no need to override */
 
     /* Toggle Switch */
     .toggle-switch {
@@ -155,39 +105,49 @@
       transform: translateX(24px);
     }
 
-    /* Main Content */
+    /* Main Content - Swiss Grid */
     .project-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 100px 24px 40px;
+      padding: 120px 60px 80px;
+      background: var(--bg);
     }
 
-    /* Hero Section */
+    /* Hero Section - Swiss Style */
     .project-hero {
+      margin-bottom: 120px;
+    }
+
+    .hero-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
-      margin-bottom: 80px;
+      gap: 80px;
+      align-items: start;
+      margin-top: 60px;
     }
 
     .hero-content h1 {
-      font-size: clamp(32px, 5vw, 48px);
-      font-weight: 600;
-      margin: 0 0 16px 0;
-      line-height: 1.2;
+      font-size: 64px;
+      font-weight: 700;
+      margin: 0 0 24px 0;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      text-align: left;
     }
 
     .project-subtitle {
-      font-size: 20px;
+      font-size: 18px;
       color: var(--muted);
-      margin: 0 0 32px 0;
-      line-height: 1.4;
+      margin: 0 0 48px 0;
+      line-height: 1.5;
+      font-weight: 400;
+      letter-spacing: 0.02em;
     }
 
     .project-meta {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      display: flex;
+      flex-direction: column;
       gap: 24px;
       margin-bottom: 32px;
     }
@@ -199,17 +159,19 @@
     }
 
     .meta-label {
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 10px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--muted);
+      letter-spacing: 0.15em;
+      color: var(--text);
+      margin-bottom: 8px;
     }
 
     .meta-value {
-      font-size: 16px;
+      font-size: 14px;
       color: var(--text);
-      font-weight: 500;
+      font-weight: 400;
+      letter-spacing: 0.01em;
     }
 
     .project-tags {
@@ -219,44 +181,49 @@
     }
 
     .tag {
-      background: var(--accent-light);
-      color: var(--accent);
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: 500;
+      background: var(--bg);
+      color: var(--text);
+      padding: 4px 12px;
+      border: 1px solid var(--border);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
     .hero-image {
       display: flex;
       justify-content: center;
-      align-items: center;
     }
 
-    .hero-image img {
+    .project-hero-image {
       max-width: 100%;
       height: auto;
-      border-radius: 12px;
-      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
     }
 
-    /* Project Sections */
+    /* Project Sections - Swiss Style */
     .project-section {
-      margin-bottom: 80px;
+      margin-bottom: 120px;
     }
 
     .section-title {
-      font-size: 32px;
-      font-weight: 600;
-      margin: 0 0 24px 0;
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0 0 32px 0;
       color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
     .section-content {
-      font-size: 18px;
-      line-height: 1.7;
+      font-size: 14px;
+      line-height: 1.6;
       color: var(--text);
-      margin-bottom: 32px;
+      margin-bottom: 48px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      max-width: 800px;
     }
 
     .section-content p {
@@ -285,36 +252,36 @@
     }
 
     .comparison-item {
-      text-align: center;
+      text-align: left;
     }
 
     .comparison-label {
-      font-size: 16px;
-      font-weight: 600;
+      font-size: 10px;
+      font-weight: 700;
       margin-bottom: 16px;
       color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
     .comparison-image {
       width: 100%;
-      border-radius: 12px;
-      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
     }
 
     /* Accessibility Features */
     .accessibility-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 24px;
-      margin: 32px 0;
+      gap: 40px;
+      margin: 48px 0;
     }
 
     .accessibility-item {
-      padding: 24px;
-      background: var(--btn-bg);
-      border-radius: 12px;
+      padding: 0;
+      background: transparent;
       border: 1px solid var(--border);
-      text-align: center;
+      text-align: left;
     }
 
     .accessibility-icon {
@@ -323,74 +290,88 @@
     }
 
     .accessibility-title {
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 14px;
+      font-weight: 700;
       margin: 0 0 12px 0;
       color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
     .accessibility-description {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.5;
+      font-size: 12px;
+      color: var(--text);
+      line-height: 1.6;
+      font-weight: 400;
+      letter-spacing: 0.01em;
     }
 
-    /* Results Grid */
+    /* Results Grid - Swiss Style */
     .results-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 24px;
-      margin: 32px 0;
+      gap: 40px;
+      margin: 48px 0;
     }
 
     .result-item {
-      text-align: center;
-      padding: 24px;
-      background: var(--btn-bg);
-      border-radius: 12px;
-      border: 1px solid var(--border);
+      text-align: left;
+      padding: 0;
+      background: transparent;
+      border: none;
     }
 
     .result-number {
-      font-size: 36px;
+      font-size: 64px;
       font-weight: 700;
-      color: var(--accent);
-      margin: 0 0 8px 0;
+      color: var(--text);
+      margin: 0 0 16px 0;
+      line-height: 1;
+      letter-spacing: -0.02em;
     }
 
     .result-label {
-      font-size: 14px;
-      color: var(--muted);
-      font-weight: 500;
+      font-size: 12px;
+      color: var(--text);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
     /* Mobile Responsiveness */
     @media (max-width: 768px) {
-      .project-nav {
-        padding: 12px 16px;
-      }
-
       .project-container {
-        padding: 80px 16px 40px;
+        padding: 200px 20px 40px !important;
       }
 
-      .project-hero {
+      .hero-layout {
         grid-template-columns: 1fr;
-        gap: 32px;
-        text-align: center;
+        gap: 40px;
+        text-align: left;
+      }
+
+      .hero-image {
+        margin: 32px 0;
+      }
+
+      .project-hero-image {
+        border: 1px solid var(--border);
       }
 
       .project-meta {
         grid-template-columns: 1fr;
-        gap: 16px;
+      }
+
+      .hero-content h1 {
+        font-size: 36px;
       }
 
       .section-title {
-        font-size: 28px;
+        font-size: 18px;
       }
 
       .section-content {
-        font-size: 16px;
+        font-size: 12px;
       }
 
       .comparison-container {
@@ -420,21 +401,21 @@
 </head>
 <body>
   <!-- Navigation -->
-  <nav class="project-nav">
-    <a href="../../work.html/index.html" class="back-link">
-      ← Back to Work
-    </a>
-    <div class="project-links">
-      <a href="../../index.html">Home</a>
-      <a href="../../about.html/index.html">About</a>
-      <a href="../../resume.html/index.html">Resume</a>
+  <header>
+    <div class="nav-left">
+      <a href="../../work.html/index.html" class="nav-link">← Back to Work</a>
+    </div>
+    <div class="nav-right">
+      <a href="../../index.html" class="nav-link">Home</a>
+      <a href="../../about.html/index.html" class="nav-link">About</a>
+      <a href="../../resume.html/index.html" class="nav-link">Resume</a>
       <!-- Dark Mode Toggle -->
       <label class="toggle-switch">
         <input type="checkbox" id="darkModeToggle">
         <span class="slider"></span>
       </label>
     </div>
-  </nav>
+  </header>
 
   <!-- Main Content -->
   <div class="project-container">
@@ -443,6 +424,13 @@
       <div class="hero-content">
         <h1>Philo Sign-In Redesign</h1>
         <p class="project-subtitle">Improving accessibility and user experience for streaming authentication</p>
+      </div>
+      
+      <div class="hero-layout">
+        <!-- Hero Image -->
+        <div class="hero-image">
+          <img src="assets/images/hero-mockup.jpg" alt="Philo sign-in interface redesign" class="project-hero-image">
+        </div>
         
         <div class="project-meta">
           <div class="meta-item">
@@ -457,18 +445,14 @@
             <span class="meta-label">Tools</span>
             <span class="meta-value">Figma, User Testing, A/B Testing</span>
           </div>
+          
+          <div class="project-tags">
+            <span class="tag">Streaming</span>
+            <span class="tag">Accessibility</span>
+            <span class="tag">Authentication</span>
+            <span class="tag">User Testing</span>
+          </div>
         </div>
-
-        <div class="project-tags">
-          <span class="tag">Streaming</span>
-          <span class="tag">Accessibility</span>
-          <span class="tag">Authentication</span>
-          <span class="tag">User Testing</span>
-        </div>
-      </div>
-      
-      <div class="hero-image">
-        <img src="assets/images/hero-mockup.jpg" alt="Philo sign-in interface redesign" />
       </div>
     </section>
 
@@ -638,6 +622,7 @@
         body.setAttribute('data-theme', newTheme);
         html.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
+        updateHeaderForTheme(newTheme);
       });
 
       function updateToggleState(theme) {
@@ -645,7 +630,7 @@
       }
 
       // Header scroll effect
-      const header = document.querySelector('.project-nav');
+      const header = document.querySelector('header');
       let lastScrollY = window.scrollY;
 
       window.addEventListener('scroll', () => {
@@ -711,12 +696,6 @@
           }
         }
       }
-
-      // Update header when theme changes
-      darkModeToggle.addEventListener('change', () => {
-        const newTheme = darkModeToggle.checked ? 'dark' : 'light';
-        updateHeaderForTheme(newTheme);
-      });
 
       // Initialize header for current theme
       updateHeaderForTheme(currentTheme);

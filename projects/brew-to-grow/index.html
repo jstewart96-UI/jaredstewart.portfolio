@@ -144,6 +144,7 @@
       line-height: 1.1;
       letter-spacing: -0.02em;
       text-transform: uppercase;
+      text-align: left;
     }
 
     .project-subtitle {
@@ -266,6 +267,8 @@
       background: var(--bg);
       border: 1px solid var(--border);
       overflow: hidden;
+      width: 100%;
+      max-width: 800px;
     }
 
     .gallery-item img {
@@ -499,11 +502,6 @@
       align-items: flex-start;
     }
 
-    .solution-gallery .gallery-item {
-      width: 100%;
-      max-width: 800px;
-    }
-
     .solution-gallery .gallery-item img {
       width: 100%;
       height: auto;
@@ -514,10 +512,12 @@
     .onboarding-image {
       margin: 48px 0;
       text-align: left;
+      width: 100%;
+      max-width: 800px;
     }
 
     .onboarding-image img {
-      max-width: 100%;
+      width: 100%;
       height: auto;
       border: 1px solid var(--border);
     }
@@ -526,10 +526,24 @@
     .research-image {
       margin: 48px 0;
       text-align: left;
+      width: 100%;
+      max-width: 800px;
     }
 
     .research-image img {
-      max-width: 100%;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--border);
+    }
+
+    /* Final Design Image Styling */
+    .final-design-image {
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .final-design-image img {
+      width: 100%;
       height: auto;
       border: 1px solid var(--border);
     }
@@ -699,30 +713,39 @@
       </div>
 
       <div class="image-gallery" style="display: flex; flex-direction: column; gap: 40px; align-items: flex-start;">
-        <div class="gallery-item" style="width: 100%; max-width: 800px;">
+        <div class="gallery-item">
           <img src="assets/images/Iteration-1.png" alt="Design iteration 1" />
         </div>
-        <div class="gallery-item" style="width: 100%; max-width: 800px;">
+        <div class="gallery-item">
           <img src="assets/images/Iteration-2.png" alt="Design iteration 2" />
         </div>
-        <div class="gallery-item" style="width: 100%; max-width: 800px;">
+        <div class="gallery-item">
           <img src="assets/images/Iteration-3.png" alt="Design iteration 3" />
         </div>
-        <div class="gallery-item" style="width: 100%; max-width: 800px;">
+        <div class="gallery-item">
           <img src="assets/images/Iteration-4.png" alt="Design iteration 4" />
         </div>
+      </div>
+
+      <div class="section-content" style="margin-top: 48px;">
+        <p>In the above examples, users felt the first iteration lacked information about their order. The updated iteration incorporated missing information (like what to do when a user arrives for their order) to provide users with a more informative experience.</p>
       </div>
     </section>
 
     <!-- Reflection -->
     <section class="project-section">
-      <h2 class="section-title">Reflection</h2>
+      <h2 class="section-title">Final Design & Conclusion</h2>
       <div class="section-content">
-        <p>This project taught me the importance of understanding multiple user groups when designing for community impact. The challenge of balancing the needs of coffee shop owners (who need efficiency) with community gardens (who need reliability) pushed me to think more holistically about user experience.</p>
+        <p>Working on this project has been a rewarding experience that has taught me valuable lessons in problem-solving, collaboration, and the power of design to drive positive change. Through this project, I've learned the importance of understanding user needs, gathering feedback, and iteratively refining solutions to create meaningful experiences. Collaborating with local businesses, and gaining insights from other designers in the UX community has underscored the value of effective communication, empathy, and compromise in achieving shared goals. Overall, this project has been a testament to the impact of design in promoting environmental sustainability, fostering community engagement, and creating meaningful connections between users and their communities.</p>
         
-        <p>Key learnings included the value of in-person research, the importance of building trust in community platforms, and the power of simple solutions to complex environmental problems.</p>
+        
       </div>
     </section>
+
+    <!-- Final Design Image -->
+    <div class="final-design-image" style="margin-top: 24px; margin-bottom: 48px;">
+      <img src="assets/images/Final-Design-Iteration.png" alt="Final Design Iteration" />
+    </div>
   </div>
 
   <script>
