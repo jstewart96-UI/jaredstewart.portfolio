@@ -306,6 +306,19 @@
     .nav-link:hover {
       color: var(--muted);
     }
+
+    /* Dark mode: make nav-link white */
+    html[data-theme="dark"] .nav-link,
+    body[data-theme="dark"] .nav-link,
+    [data-theme="dark"] .nav-link {
+      color: #FFFFFF;
+    }
+
+    html[data-theme="dark"] .nav-link:hover,
+    body[data-theme="dark"] .nav-link:hover,
+    [data-theme="dark"] .nav-link:hover {
+      color: #CCCCCC;
+    }
     
     .bio-image {
       width: 200px;
