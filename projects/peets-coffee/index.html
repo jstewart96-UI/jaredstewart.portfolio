@@ -23,6 +23,8 @@
       --accent-teal: #4A90A4;
       --accent-olive: #8B956D;
       --grid-color: rgba(201, 93, 44, 0.2);
+      --card-gap: 32px;
+      --scale-factor: 0.95;
     }
 
     html[data-theme="dark"],
@@ -40,6 +42,8 @@
       --accent-teal: #6BB8D1;
       --accent-olive: #A8B884;
       --grid-color: rgba(255, 107, 53, 0.3);
+      --card-gap: 32px;
+      --scale-factor: 0.95;
     }
 
     * {
@@ -122,13 +126,23 @@
     }
 
     /* Main Content - Mid-Century Modern */
+    .project-scale-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
     .project-container {
       max-width: 1200px;
-      margin: 0 auto;
-      padding: 120px 60px 80px;
+      margin: calc(var(--header-height) + 40px) auto 0;
+      padding: 105px 60px 0;
       background: transparent;
       position: relative;
       z-index: 1;
+      box-sizing: border-box;
+      transform: scale(var(--scale-factor));
+      transform-origin: top center;
     }
 
     /* Hero Section - Mid-Century Modern */
@@ -453,7 +467,8 @@
     /* Mobile Responsiveness */
     @media (max-width: 768px) {
       .project-container {
-        padding: 200px 20px 40px !important;
+        margin: calc(var(--header-height-mobile) + 32px) auto 0;
+        padding: 92px 28px 0;
       }
 
       .hero-layout {
@@ -561,7 +576,8 @@
     /* Small mobile devices */
     @media (max-width: 320px) {
       .project-container {
-        padding: 200px 12px 40px !important;
+        margin: calc(var(--header-height-mobile) + 28px) auto 0;
+        padding: 84px 18px 0px;
       }
 
       .project-hero-image {
@@ -593,7 +609,8 @@
   </header>
 
   <!-- Main Content -->
-  <div class="project-container">
+  <div class="project-scale-wrapper">
+    <div class="project-container">
     <!-- Hero Section -->
     <section class="project-hero">
       <div class="hero-content">
@@ -619,15 +636,15 @@
           <div class="meta-item">
             <span class="meta-label">Tools</span>
             <span class="meta-value">Figma, Usability Testing</span>
-          </div>
-          
-          <div class="project-tags">
-            <span class="tag">Mobile App</span>
-            <span class="tag">Usability</span>
-            <span class="tag">Coffee</span>
-            <span class="tag">UX Improvements</span>
-          </div>
         </div>
+
+        <div class="project-tags">
+          <span class="tag">Mobile App</span>
+          <span class="tag">Usability</span>
+          <span class="tag">Coffee</span>
+          <span class="tag">UX Improvements</span>
+        </div>
+      </div>
       </div>
     </section>
 
@@ -686,15 +703,15 @@
         <p>One previous version of the app excelled at creating a visually appealing and brand-consistent interface. However, its design, featuring a central coffee cup graphic and promotional image, may have prioritized aesthetics over functionality. While the personalized greeting and intuitive navigation bar were strengths, the interface could have been streamlined to focus more on key user interactions, such as scanning for rewards and checking point statuses.</p>
       </div>
 
-      <div class="improvement-image">
+        <div class="improvement-image">
         <img src="assets/images/Frame-201.png" alt="Analysis observations" />
-      </div>
+        </div>
 
       <div class="section-content">
         <p>While the current app version is visually appealing and consistent with the Peet's brand, there are areas for improvement in navigation and UI design. Improving the visibility and accessibility of key features such as the QR code scanner and rewards points, along with ensuring better contrast for interactive elements, could significantly enhance the user experience.</p>
       </div>
 
-      <div class="improvement-image">
+        <div class="improvement-image">
         <img src="assets/images/Frame-202.png" alt="Additional observations" />
       </div>
     </section>
@@ -726,11 +743,11 @@
       
       <div class="improvement-image">
         <img src="assets/images/Frame-205.png" alt="Comprehensive redesign - view 1" />
-      </div>
+        </div>
 
       <div class="improvement-image">
         <img src="assets/images/Frame-206.png" alt="Comprehensive redesign - view 2" />
-      </div>
+        </div>
 
       <div class="section-content">
         <p>By combining first-hand feedback from Peet's users and conducting competitive audits of the Starbucks and Dunkin apps, I streamlined the Peet's app home page to prominently display the QR code for check-ins, added a rewards progress bar, and made "Tap to Scan" the primary call-to-action button. The new design integrates user feedback and successful elements from competitor apps to enhance the user experience. If fully realized, these improvements are expected to boost loyalty metrics by providing a seamless and user-friendly app interface.</p>
@@ -766,6 +783,7 @@
         <img src="assets/images/Version-2001.png" alt="Final design version" />
       </div>
     </section>
+    </div>
   </div>
 
   <script>

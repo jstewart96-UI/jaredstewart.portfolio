@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bolsa Chica Rebrand – Jared Stewart UX Portfolio</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F6EDE3;
+      --text: #3B2B23;
+      --muted: #6D5A4B;
+      --border: #C8A989;
+      --accent: #A45C3A;
+      --accent-soft: rgba(164, 92, 58, 0.12);
+      --accent-olive: #7C8C6A;
+      --accent-gold: #D9B16C;
+      --shape: rgba(255, 255, 255, 0.82);
+      --ink: #2B221B;
+      --card-gap: 32px;
+    }
+
+    html[data-theme="dark"],
+    body[data-theme="dark"],
+    [data-theme="dark"] {
+      --bg: #1E1A16;
+      --text: #EFE2D4;
+      --muted: #C5B49C;
+      --border: #5A4A3E;
+      --accent: #C97A52;
+      --accent-soft: rgba(201, 122, 82, 0.16);
+      --accent-olive: #9CA87E;
+      --accent-gold: #E2C17A;
+      --shape: rgba(34, 30, 25, 0.82);
+      --ink: #F0E5D8;
+      --card-gap: 32px;
+    }
+
+    html {
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      font-family: "Libre Baskerville", "Times New Roman", serif;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    .project-wrapper {
+      width: 100%;
+      margin-top: calc(var(--header-height) + 40px);
+      box-sizing: border-box;
+    }
+
+    .project-container {
+      max-width: 980px;
+      margin: 0 auto 120px;
+      padding: 105px 48px 15px;
+      display: grid;
+      gap: calc(var(--card-gap) * 1.35);
+      justify-items: stretch;
+      position: relative;
+    }
+
+    .project-container::before,
+    .project-container::after {
+      content: "";
+      position: absolute;
+      width: clamp(160px, 22vw, 280px);
+      height: clamp(160px, 22vw, 280px);
+      border-radius: 58% 42% 60% 40% / 55% 45% 55% 45%;
+      background: linear-gradient(145deg, rgba(164, 92, 58, 0.25), rgba(124, 140, 106, 0.18));
+      top: 0;
+      z-index: -1;
+      filter: blur(0.6px);
+    }
+
+    .project-container::before {
+      left: -8%;
+      transform: translateY(-30%) rotate(-6deg);
+    }
+
+    .project-container::after {
+      right: -12%;
+      top: 45%;
+      background: linear-gradient(160deg, rgba(217, 177, 108, 0.22), rgba(164, 92, 58, 0.18));
+      transform: translateY(-30%) rotate(9deg);
+    }
+
+    .hero-card {
+      width: 100%;
+      padding: clamp(44px, 6vw, 64px);
+      background: var(--shape);
+      border: 2px solid var(--border);
+      box-shadow: 20px 20px 0 rgba(164, 92, 58, 0.1);
+      display: grid;
+      gap: 32px;
+      justify-items: start;
+      text-align: left;
+      position: relative;
+      border-radius: 48px 62px 52px 60px / 58px 52px 60px 48px;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: clamp(180px, 28vw, 320px);
+      height: clamp(180px, 28vw, 320px);
+      border-radius: 55% 45% 65% 35% / 60% 40% 55% 45%;
+      background: radial-gradient(circle at 30% 30%, rgba(217, 177, 108, 0.6), rgba(164, 92, 58, 0.2));
+      top: -30%;
+      right: -18%;
+      opacity: 0.6;
+      pointer-events: none;
+      filter: blur(1px);
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      border-radius: 44px 60px 46px 58px / 56px 46px 60px 48px;
+      border: 1px dashed rgba(124, 140, 106, 0.35);
+      pointer-events: none;
+    }
+
+    .hero-card h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 5.2vw, 3.4rem);
+      letter-spacing: 0.02em;
+      font-family: "Playfair Display", "Georgia", serif;
+      color: var(--ink);
+      text-transform: uppercase;
+    }
+
+    .hero-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1.08rem;
+      max-width: 640px;
+    }
+
+    .hero-card .meta-ribbon {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 18px;
+      background: rgba(124, 140, 106, 0.18);
+      border: 1px solid rgba(124, 140, 106, 0.35);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-olive);
+    }
+
+    .content-section {
+      width: 100%;
+      padding: clamp(40px, 5vw, 56px);
+      border: 2px solid var(--border);
+      background: linear-gradient(135deg, var(--shape), rgba(246, 237, 227, 0.8));
+      box-shadow: 18px 18px 0 rgba(124, 140, 106, 0.12);
+      display: grid;
+      grid-template-columns: minmax(0, 0.38fr) minmax(0, 1fr);
+      gap: clamp(24px, 4vw, 40px);
+      align-items: start;
+      position: relative;
+      border-radius: 42px 58px 46px 52px / 48px 46px 58px 42px;
+      overflow: hidden;
+    }
+
+    .content-section h2 {
+      margin: 0;
+      font-size: clamp(1.9rem, 3.6vw, 2.4rem);
+      letter-spacing: -0.02em;
+      font-family: "Playfair Display", "Georgia", serif;
+      color: var(--ink);
+      text-transform: none;
+      line-height: 1.2;
+    }
+
+    .content-section h2::after {
+      content: "";
+      display: block;
+      width: 64px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-gold));
+      margin-top: 20px;
+      border-radius: 12px;
+    }
+
+    .content-section p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1.05rem;
+      grid-column: 2;
+    }
+
+    .content-section h2 {
+      grid-column: 1;
+    }
+
+    .content-section::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border-radius: 38px 50px 42px 48px / 46px 40px 52px 44px;
+      border: 1px dashed rgba(190, 156, 120, 0.4);
+      pointer-events: none;
+    }
+
+    .content-section::after {
+      content: "";
+      position: absolute;
+      width: clamp(120px, 18vw, 220px);
+      height: clamp(120px, 18vw, 220px);
+      border-radius: 58% 42% 54% 46% / 52% 48% 56% 44%;
+      background: radial-gradient(circle at 20% 25%, rgba(217, 177, 108, 0.45), rgba(164, 92, 58, 0.15));
+      top: -18%;
+      left: -10%;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    [data-theme="dark"] .content-section {
+      background: linear-gradient(135deg, rgba(34, 30, 25, 0.88), rgba(34, 30, 25, 0.72));
+      box-shadow: 16px 16px 0 rgba(124, 140, 106, 0.18);
+    }
+
+    [data-theme="dark"] .content-section::after {
+      background: radial-gradient(circle at 20% 25%, rgba(201, 122, 82, 0.35), rgba(124, 140, 106, 0.18));
+      opacity: 0.55;
+    }
+
+    @media (max-width: 768px) {
+      .project-container {
+        margin-top: calc(var(--header-height-mobile) + 40px);
+        padding: 92px 24px 15px;
+      }
+
+      .hero-card {
+        padding: 40px;
+      }
+
+      .content-section {
+        padding: 36px;
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .content-section h2,
+      .content-section p {
+        grid-column: 1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .project-container {
+        padding: 84px 18px 15px;
+      }
+
+      .hero-card {
+        padding: 28px;
+      }
+
+      .content-section {
+        padding: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-left">
+      <a href="../../work.html/index.html" class="nav-link">← Back to Work</a>
+    </div>
+    <div class="nav-right">
+      <a href="../../index.html" class="nav-link">Home</a>
+      <a href="../../about.html/index.html" class="nav-link">About</a>
+      <a href="../../resume.html/index.html" class="nav-link">Resume</a>
+      <label class="toggle-switch">
+        <input type="checkbox" id="darkModeToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </header>
+
+  <div class="project-wrapper">
+    <div class="project-container">
+      <section class="hero-card">
+        <h1>Bolsa Chica Rebrand</h1>
+        <p>
+          Placeholder content describing the Bolsa Chica Land Trust rebranding initiative. Replace this text with an overview of the project goals, inspiration, and results.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Logo Variation</h2>
+        <p>
+          Placeholder content outlining the various logo lockups created for the Bolsa Chica Land Trust. Describe how each variation adapts across print, digital, and environmental applications while maintaining brand recognition.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Color Palette</h2>
+        <p>
+          Placeholder content describing the core and secondary color palettes. Highlight how the hues connect to the natural landscape and how they support accessibility and contrast requirements across mediums.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Typeface</h2>
+        <p>
+          Placeholder content introducing the selected primary and supporting typefaces. Explain why they were chosen, how they communicate the brand personality, and guidance for hierarchy across materials.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Merchandise</h2>
+        <p>
+          Placeholder content summarizing merchandise applications such as apparel, tote bags, and signage. Mention production considerations, placement rules, and how the visual system scales across items.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Social Media &amp; Web</h2>
+        <p>
+          Placeholder content outlining usage of the refreshed brand across social media templates and the website. Detail the approach to imagery, iconography, and component styling to ensure consistency online.
+        </p>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.getElementById('darkModeToggle');
+      const html = document.documentElement;
+      const savedTheme = localStorage.getItem('theme') || 'light';
+
+      html.setAttribute('data-theme', savedTheme);
+      toggle.checked = savedTheme === 'dark';
+
+      toggle.addEventListener('change', () => {
+        const theme = toggle.checked ? 'dark' : 'light';
+        html.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+      });
+    });
+  </script>
+</body>
+</html>

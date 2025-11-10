@@ -20,7 +20,7 @@
       --shadow-sm: 4px 4px 0px 0px #000000;
       --project-card-bg: #ffffff;
       --project-card-shadow: 4px 4px 0px 0px #000000;
-      --header-height: 90px;
+       --header-height: 80px;
       --header-height-mobile: 80px;
       /* Bauhaus Primary Colors */
       --bauhaus-red: #E41E26;
@@ -28,6 +28,7 @@
       --bauhaus-yellow: #FFD700;
       --bauhaus-black: #000000;
       --bauhaus-white: #FFFFFF;
+      --card-gap: 32px;
     }
 
     html[data-theme="dark"],
@@ -60,16 +61,22 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       min-height: 100vh;
       margin: 0;
-      padding: var(--header-height) 20px 20px; /* Dynamic header height */
+      padding: 0 20px 20px;
       text-align: center;
       background-color: var(--bg);
       color: var(--text);
       font-family: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
       font-weight: 500;
       letter-spacing: -0.02em;
+    }
+
+    .work-page-wrapper {
+      width: 100%;
+      padding-top: var(--header-height);
+      box-sizing: border-box;
     }
     
     header {
@@ -353,7 +360,7 @@
     .work-grid {
       max-width: 700px;
       margin: 0 auto;
-      padding: calc(var(--header-height) + 1150px) 20px 0;
+      padding: 0 20px 0;
       text-align: left;
     }
 
@@ -361,7 +368,7 @@
     @media (max-width: 1024px) and (min-width: 481px) {
       .work-grid {
         margin: 0 auto;
-        padding: calc(var(--header-height) + 1150px) 60px 0;
+        padding: 0 60px 0;
       }
     }
 
@@ -371,7 +378,7 @@
       border: 3px solid var(--border);
       border-radius: 0;
       padding: 40px;
-      margin-bottom: 32px;
+      margin-bottom: var(--card-gap);
       transition: all 0.2s ease;
       box-shadow: var(--project-card-shadow);
       max-width: 100%;
@@ -608,13 +615,17 @@
     /* Mobile responsiveness */
     @media (max-width: 768px) {
       body {
-        padding: var(--header-height-mobile) 16px 20px;
+        padding: 0 16px 20px;
       }
-      
+
+      .work-page-wrapper {
+        padding-top: var(--header-height-mobile);
+      }
+
       .work-grid {
         max-width: 100%;
         margin: 0 auto;
-        padding: calc(var(--header-height-mobile) + 1330px) 16px 0;
+        padding: 0 16px 0;
       }
       
       .project-card {
@@ -651,12 +662,16 @@
     
     @media (max-width: 480px) {
       body {
-        padding: var(--header-height-mobile) 12px 20px;
+        padding: 0 12px 20px;
       }
-      
+
+      .work-page-wrapper {
+        padding-top: var(--header-height-mobile);
+      }
+
       .work-grid {
         margin: 0 auto;
-        padding: calc(var(--header-height-mobile) + 1330px) 12px 0;
+        padding: 0 12px 0;
         max-width: 100%;
       }
       
@@ -757,12 +772,16 @@
     /* iPhone 15 specific optimizations */
     @media screen and (max-width: 430px) and (max-height: 932px) {
       body {
-        padding: var(--header-height-mobile) 8px 20px;
+        padding: 0 8px 20px;
       }
-      
+
+      .work-page-wrapper {
+        padding-top: var(--header-height-mobile);
+      }
+
       .work-grid {
         margin: 0 auto;
-        padding: calc(var(--header-height-mobile) + 1430px) 8px 0;
+        padding: 0 8px 0;
       }
       
       .project-card {
@@ -784,12 +803,16 @@
     /* Additional responsive breakpoints for better coverage */
     @media screen and (max-width: 375px) {
       body {
-        padding: var(--header-height-mobile) 8px 20px;
+        padding: 0 8px 20px;
       }
-      
+
+      .work-page-wrapper {
+        padding-top: var(--header-height-mobile);
+      }
+
       .work-grid {
         margin: 0 auto;
-        padding: calc(var(--header-height-mobile) + 1330px) 8px 0;
+        padding: 0 8px 0;
       }
     }
 
@@ -798,7 +821,7 @@
     @media screen and (max-width: 320px) {
       .work-grid {
         margin: 0 auto;
-        padding: calc(var(--header-height-mobile) + 1330px) 4px 0;
+        padding: 0 4px 0;
       }
     }
     
@@ -868,9 +891,8 @@
       </label>
     </div>
   </header>
-  
-  
-  <!-- PROJECT CARDS -->
+  <div class="work-page-wrapper">
+    <!-- PROJECT CARDS -->
   <div class="work-grid">
     <!-- Brew to Grow Project -->
     <article class="project-card">
@@ -900,36 +922,6 @@
       </div>
 
       <a href="../projects/brew-to-grow/index.html" class="card-cta view-case-study">View Case Study →</a>
-    </article>
-
-    <!-- Philo Redesign Project -->
-    <article class="project-card">
-      <h2 class="card-title"><a href="../projects/philo/index.html">Philo Sign-In Redesign</a></h2>
-      <p class="card-desc">A UX case study focused on improving sign-in flows and accessibility for streaming users. This project addresses common authentication pain points and creates a more inclusive user experience for diverse audiences.</p>
-      
-      <div class="project-meta">
-        <div class="meta-item">
-          <span class="meta-label">Role:</span>
-          <span class="meta-value">UX Designer</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Timeline:</span>
-          <span class="meta-value">2 months</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Tools:</span>
-          <span class="meta-value">Figma, User Testing, A/B Testing</span>
-        </div>
-      </div>
-
-      <div class="project-tags">
-        <span class="tag">Streaming</span>
-        <span class="tag">Accessibility</span>
-        <span class="tag">Authentication</span>
-        <span class="tag">User Testing</span>
-      </div>
-
-      <a href="../projects/philo/index.html" class="card-cta view-case-study">View Case Study →</a>
     </article>
 
     <!-- Peet's Coffee Project -->
@@ -962,15 +954,15 @@
       <a href="../projects/peets-coffee/index.html" class="card-cta view-case-study">View Case Study →</a>
     </article>
 
-    <!-- Bolsa Chica Land Trust Project -->
+    <!-- Bolsa Chica Rebrand Project -->
     <article class="project-card">
-      <h2 class="card-title"><a href="../projects/bolsa-chica/index.html">Bolsa Chica Land Trust: Rebranding</a></h2>
-      <p class="card-desc">A comprehensive rebranding project for Bolsa Chica Land Trust, focusing on modernizing their visual identity while preserving their environmental mission. This case study explores how strategic design can strengthen nonprofit organizations and improve community engagement.</p>
-      
+      <h2 class="card-title"><a href="../projects/bolsa-chica-rebrand/index.html">Bolsa Chica Rebrand</a></h2>
+      <p class="card-desc">Refreshing the Bolsa Chica Land Trust identity with natural, modern visuals inspired by the wetlands they protect.</p>
+
       <div class="project-meta">
         <div class="meta-item">
           <span class="meta-label">Role:</span>
-          <span class="meta-value">Freelance Brand Designer</span>
+          <span class="meta-value">Brand Designer</span>
         </div>
         <div class="meta-item">
           <span class="meta-label">Timeline:</span>
@@ -984,13 +976,15 @@
 
       <div class="project-tags">
         <span class="tag">Branding</span>
-        <span class="tag">Nonprofit</span>
+        <span class="tag">Identity</span>
         <span class="tag">Environmental</span>
-        <span class="tag">Community</span>
       </div>
 
-      <a href="../projects/bolsa-chica/index.html" class="card-cta view-case-study">View Project →</a>
+      <a href="../projects/bolsa-chica-rebrand/index.html" class="card-cta view-case-study">View Project →</a>
     </article>
+
+    <!-- End of projects list -->
+    </div>
   </div>
 
   <script>
@@ -1035,18 +1029,11 @@
         { text: 'portfolio', url: '../index.html' },
             // Specific projects
             { text: 'brew to grow', url: '../projects/brew-to-grow/index.html' },
-            { text: 'philo', url: '../projects/philo/index.html' },
-            { text: 'philo sign-in', url: '../projects/philo/index.html' },
-            { text: 'philo redesign', url: '../projects/philo/index.html' },
             { text: 'peets coffee', url: '../projects/peets-coffee/index.html' },
             { text: 'peets coffee mobile', url: '../projects/peets-coffee/index.html' },
             { text: 'mobile app', url: '../projects/peets-coffee/index.html' },
             { text: 'sustainability', url: '../projects/brew-to-grow/index.html' },
-            { text: 'coffee', url: '../projects/brew-to-grow/index.html' },
-            { text: 'streaming', url: '../projects/philo/index.html' },
-            { text: 'accessibility', url: '../projects/philo/index.html' },
-            { text: 'sign-in', url: '../projects/philo/index.html' },
-            { text: 'authentication', url: '../projects/philo/index.html' }
+            { text: 'coffee', url: '../projects/brew-to-grow/index.html' }
       ];
 
       searchInput.addEventListener('input', (e) => {

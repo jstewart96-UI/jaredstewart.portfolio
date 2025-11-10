@@ -16,18 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
     { text: 'portfolio', url: 'index.html' },
         // Specific projects
         { text: 'brew to grow', url: 'work.html/index.html' },
-        { text: 'philo', url: 'work.html/index.html' },
-        { text: 'philo sign-in', url: 'work.html/index.html' },
-        { text: 'philo redesign', url: 'work.html/index.html' },
         { text: 'peets coffee', url: 'work.html/index.html' },
         { text: 'peets coffee mobile', url: 'work.html/index.html' },
         { text: 'mobile app', url: 'work.html/index.html' },
         { text: 'sustainability', url: 'work.html/index.html' },
-        { text: 'coffee', url: 'work.html/index.html' },
-        { text: 'streaming', url: 'work.html/index.html' },
-        { text: 'accessibility', url: 'work.html/index.html' },
-        { text: 'sign-in', url: 'work.html/index.html' },
-        { text: 'authentication', url: 'work.html/index.html' }
+        { text: 'coffee', url: 'work.html/index.html' }
   ];
 
   searchInput.addEventListener('input', (e) => {

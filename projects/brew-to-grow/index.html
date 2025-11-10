@@ -109,8 +109,9 @@
     .project-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 120px 60px 80px;
+      padding: calc(var(--header-height) + 40px) 60px 80px;
       background: var(--bg);
+      box-sizing: border-box;
     }
 
     /* Hero Section - Swiss Style */
@@ -485,6 +486,10 @@
     }
 
     @media (max-width: 768px) {
+      .project-container {
+        padding: calc(var(--header-height-mobile) + 40px) 28px 64px;
+      }
+
       .navigation-links {
         flex-direction: column;
       }
