@@ -166,55 +166,25 @@
       width: 100%;
       padding: clamp(40px, 5vw, 56px);
       border: 2px solid var(--border);
-      background: linear-gradient(135deg, var(--shape), rgba(246, 237, 227, 0.8));
+      background: linear-gradient(135deg, var(--shape), rgba(246, 237, 227, 0.75));
       box-shadow: 18px 18px 0 rgba(124, 140, 106, 0.12);
-      display: grid;
-      grid-template-columns: minmax(0, 0.38fr) minmax(0, 1fr);
-      gap: clamp(24px, 4vw, 40px);
-      align-items: start;
-      position: relative;
       border-radius: 42px 58px 46px 52px / 48px 46px 58px 42px;
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-items: center;
+      align-items: start;
+      gap: clamp(20px, 4vw, 32px);
+      position: relative;
       overflow: hidden;
-    }
-
-    .content-section h2 {
-      margin: 0;
-      font-size: clamp(1.9rem, 3.6vw, 2.4rem);
-      letter-spacing: -0.02em;
-      font-family: "Playfair Display", "Georgia", serif;
-      color: var(--ink);
-      text-transform: none;
-      line-height: 1.2;
-    }
-
-    .content-section h2::after {
-      content: "";
-      display: block;
-      width: 64px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-gold));
-      margin-top: 20px;
-      border-radius: 12px;
-    }
-
-    .content-section p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 1.05rem;
-      grid-column: 2;
-    }
-
-    .content-section h2 {
-      grid-column: 1;
+      text-align: left;
     }
 
     .content-section::before {
       content: "";
       position: absolute;
-      inset: 14px;
+      inset: 18px;
       border-radius: 38px 50px 42px 48px / 46px 40px 52px 44px;
-      border: 1px dashed rgba(190, 156, 120, 0.4);
+      border: 1px dashed rgba(190, 156, 120, 0.35);
       pointer-events: none;
     }
 
@@ -224,11 +194,105 @@
       width: clamp(120px, 18vw, 220px);
       height: clamp(120px, 18vw, 220px);
       border-radius: 58% 42% 54% 46% / 52% 48% 56% 44%;
-      background: radial-gradient(circle at 20% 25%, rgba(217, 177, 108, 0.45), rgba(164, 92, 58, 0.15));
+      background: radial-gradient(circle at 20% 25%, rgba(217, 177, 108, 0.35), rgba(164, 92, 58, 0.15));
       top: -18%;
       left: -10%;
       opacity: 0.5;
       pointer-events: none;
+    }
+
+    .content-section h2 {
+      margin: 0;
+      font-size: clamp(1.9rem, 3.6vw, 2.4rem);
+      letter-spacing: 0.02em;
+      font-family: "Playfair Display", "Georgia", serif;
+      color: var(--ink);
+      text-transform: uppercase;
+      line-height: 1.2;
+      justify-self: center;
+    }
+
+    .content-section h2::after {
+      content: "";
+      display: block;
+      width: 64px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-gold));
+      margin: 18px auto 0;
+      border-radius: 12px;
+    }
+
+    .section-figure {
+      margin: 0;
+      width: 100%;
+      max-width: clamp(340px, 85%, 760px);
+      border: none;
+      background: none;
+      padding: 0;
+      display: grid;
+      gap: 12px;
+      justify-items: center;
+    }
+
+    .section-figure img,
+    .content-section img {
+      object-fit: contain;
+      object-position: center;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .section-figure img {
+      width: 100%;
+      max-width: 100%;
+      max-height: clamp(220px, 40vw, 420px);
+      border-radius: 6px;
+      border: none;
+      padding: clamp(8px, 1.5vw, 18px);
+      background: rgba(0, 0, 0, 0.02);
+    }
+
+    .figure-description {
+      margin: 0;
+      width: 100%;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    .section-figure.merch-gallery {
+      width: clamp(360px, 70vw, 820px);
+      padding: clamp(10px, 2vw, 20px);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(16px, 2vw, 28px);
+      align-items: stretch;
+      justify-items: stretch;
+      background: rgba(0, 0, 0, 0.02);
+      border-radius: 16px;
+    }
+
+    .section-figure.merch-gallery img {
+      width: 100%;
+      max-width: 100%;
+      border-radius: 6px;
+      margin: 0;
+      padding: clamp(6px, 1vw, 12px);
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .section-figure.merch-gallery .figure-description {
+      grid-column: 1 / -1;
+    }
+
+    .content-section p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1.05rem;
+      max-width: clamp(340px, 85%, 760px);
+      text-align: left;
     }
 
     [data-theme="dark"] .content-section {
@@ -255,6 +319,21 @@
         padding: 36px;
         grid-template-columns: 1fr;
         gap: 20px;
+      }
+
+      .section-figure img,
+      .content-section img {
+        width: 100%;
+        max-width: 100%;
+        max-height: clamp(220px, 58vw, 360px);
+        border-radius: 6px;
+        margin: 0 auto;
+        padding: clamp(6px, 1.2vw, 12px);
+      }
+
+      .section-figure.merch-gallery {
+        width: 100%;
+        grid-template-columns: 1fr;
       }
 
       .content-section h2,
@@ -305,6 +384,13 @@
 
       <section class="content-section">
         <h2>Logo Variation</h2>
+        <figure class="section-figure">
+          <img src="assets/images/Logos.png" alt="Bolsa Chica logo variations">
+          <figcaption class="figure-description">
+            Multiple logo lockups were developed to ensure clarity and recognition across social icons,
+            print collateral, signage, and environmental applications while preserving a cohesive brand identity.
+          </figcaption>
+        </figure>
         <p>
           Placeholder content outlining the various logo lockups created for the Bolsa Chica Land Trust. Describe how each variation adapts across print, digital, and environmental applications while maintaining brand recognition.
         </p>
@@ -312,6 +398,13 @@
 
       <section class="content-section">
         <h2>Color Palette</h2>
+        <figure class="section-figure">
+          <img src="assets/images/ColorPal.png" alt="Bolsa Chica color palette">
+          <figcaption class="figure-description">
+            The color system draws from Bolsa Chica's wetlands and shoreline. Earth-forward neutrals build warmth
+            and trust, while accent tones create hierarchy and maintain accessible contrast in digital and print.
+          </figcaption>
+        </figure>
         <p>
           Placeholder content describing the core and secondary color palettes. Highlight how the hues connect to the natural landscape and how they support accessibility and contrast requirements across mediums.
         </p>
@@ -319,6 +412,13 @@
 
       <section class="content-section">
         <h2>Typeface</h2>
+        <figure class="section-figure">
+          <img src="assets/images/TypeFace.png" alt="Typography selections">
+          <figcaption class="figure-description">
+            The typography pair balances character and readability. Display type establishes a distinctive voice,
+            while supporting text styles provide clear structure for long-form content and interface elements.
+          </figcaption>
+        </figure>
         <p>
           Placeholder content introducing the selected primary and supporting typefaces. Explain why they were chosen, how they communicate the brand personality, and guidance for hierarchy across materials.
         </p>
@@ -326,6 +426,14 @@
 
       <section class="content-section">
         <h2>Merchandise</h2>
+        <figure class="section-figure merch-gallery">
+          <img src="assets/images/Merch1.png" alt="Merchandise mockup tote bag">
+          <img src="assets/images/Merch2.png" alt="Merchandise mockup packaging">
+          <figcaption class="figure-description">
+            Brand applications were tested across merchandise to validate scale, legibility, and placement.
+            The system remains recognizable and flexible across apparel, packaging, and promotional materials.
+          </figcaption>
+        </figure>
         <p>
           Placeholder content summarizing merchandise applications such as apparel, tote bags, and signage. Mention production considerations, placement rules, and how the visual system scales across items.
         </p>
@@ -333,6 +441,15 @@
 
       <section class="content-section">
         <h2>Social Media &amp; Web</h2>
+        <figure class="section-figure merch-gallery">
+          <img src="assets/images/SocialMedia.png" alt="Social media previews">
+          <img src="assets/images/Website1.png" alt="Website design preview one">
+          <img src="assets/images/Website2.png" alt="Website design preview two">
+          <figcaption class="figure-description">
+            Social and web explorations translate the refreshed identity into digital touchpoints with consistent
+            color use, typography hierarchy, and component styling for a unified cross-platform experience.
+          </figcaption>
+        </figure>
         <p>
           Placeholder content outlining usage of the refreshed brand across social media templates and the website. Detail the approach to imagery, iconography, and component styling to ensure consistency online.
         </p>
