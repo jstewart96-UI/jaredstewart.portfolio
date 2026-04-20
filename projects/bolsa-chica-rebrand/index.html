@@ -117,9 +117,47 @@
       margin-bottom: 120px;
     }
 
-    .hero-figure {
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
       margin-top: 60px;
+    }
+
+    .hero-figure {
       max-width: 480px;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 0;
+      padding-top: 8px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .meta-value {
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      line-height: 1.5;
     }
 
     .hero-image {
@@ -241,12 +279,21 @@
         padding: 200px 20px 15px !important;
       }
 
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
       .hero-figure {
         max-width: 100%;
       }
 
       .hero-image {
         margin: 32px 0;
+      }
+
+      .project-meta {
+        padding-top: 0;
       }
 
       .hero-content h1 {
@@ -326,9 +373,26 @@
         <p class="project-subtitle">Visual identity for Bolsa Chica Land Trust</p>
       </div>
 
-      <div class="hero-figure">
-        <div class="hero-image">
-          <img src="assets/images/BolsaChicaLT_Logo.png" alt="Bolsa Chica Land Trust logo" class="project-hero-image">
+      <div class="hero-layout">
+        <div class="hero-figure">
+          <div class="hero-image">
+            <img src="assets/images/BolsaChicaLT_Logo.png" alt="Bolsa Chica Land Trust logo" class="project-hero-image">
+          </div>
+        </div>
+
+        <div class="project-meta">
+          <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">Designer</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Timeline</span>
+            <span class="meta-value">On-going</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Tools</span>
+            <span class="meta-value">Figma, Photoshop, Illustrator</span>
+          </div>
         </div>
       </div>
 
