@@ -5,22 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bolsa Chica Rebrand – Jared Stewart UX Portfolio</title>
   <link rel="stylesheet" href="../../styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
+    /* Bolsa Chica palette on Brew to Grow (Swiss) layout skeleton */
     :root {
       --bg: #F6EDE3;
       --text: #3B2B23;
       --muted: #6D5A4B;
       --border: #C8A989;
       --accent: #A45C3A;
-      --accent-soft: rgba(164, 92, 58, 0.12);
-      --accent-olive: #7C8C6A;
-      --accent-gold: #D9B16C;
-      --shape: rgba(255, 255, 255, 0.82);
-      --ink: #2B221B;
-      --card-gap: 32px;
+      --btn-bg: rgba(164, 92, 58, 0.08);
+      --btn-bg-hover: rgba(164, 92, 58, 0.16);
+      --shadow-sm: 0 1px 2px rgba(59, 43, 35, 0.08), 0 1px 3px rgba(59, 43, 35, 0.06);
     }
 
     html[data-theme="dark"],
@@ -31,12 +26,13 @@
       --muted: #C5B49C;
       --border: #5A4A3E;
       --accent: #C97A52;
-      --accent-soft: rgba(201, 122, 82, 0.16);
-      --accent-olive: #9CA87E;
-      --accent-gold: #E2C17A;
-      --shape: rgba(34, 30, 25, 0.82);
-      --ink: #F0E5D8;
-      --card-gap: 32px;
+      --btn-bg: rgba(201, 122, 82, 0.12);
+      --btn-bg-hover: rgba(201, 122, 82, 0.22);
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     html {
@@ -45,314 +41,307 @@
 
     body {
       margin: 0;
-      font-family: "Libre Baskerville", "Times New Roman", serif;
-      color: var(--text);
+      padding: 0;
       background: var(--bg);
+      color: var(--text);
+      font-family: "Helvetica Neue", Helvetica, Arial, "Arial Unicode MS", sans-serif;
+      line-height: 1.5;
+      text-align: left;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       min-height: 100vh;
     }
 
-    .project-wrapper {
-      width: 100%;
-      margin-top: calc(var(--header-height) + 40px);
+    img {
+      max-width: 100%;
+      height: auto;
       box-sizing: border-box;
     }
 
-    .project-container {
-      max-width: 980px;
-      margin: 0 auto 120px;
-      padding: 105px 48px 15px;
-      display: grid;
-      gap: calc(var(--card-gap) * 1.35);
-      justify-items: stretch;
+    /* Toggle Switch */
+    .toggle-switch {
       position: relative;
+      width: 50px;
+      height: 26px;
+      display: inline-block;
     }
 
-    .project-container::before,
-    .project-container::after {
-      content: "";
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
       position: absolute;
-      width: clamp(160px, 22vw, 280px);
-      height: clamp(160px, 22vw, 280px);
-      border-radius: 58% 42% 60% 40% / 55% 45% 55% 45%;
-      background: linear-gradient(145deg, rgba(164, 92, 58, 0.25), rgba(124, 140, 106, 0.18));
+      cursor: pointer;
       top: 0;
-      z-index: -1;
-      filter: blur(0.6px);
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      border-radius: 26px;
+      transition: background-color 0.3s;
     }
 
-    .project-container::before {
-      left: -8%;
-      transform: translateY(-30%) rotate(-6deg);
-    }
-
-    .project-container::after {
-      right: -12%;
-      top: 45%;
-      background: linear-gradient(160deg, rgba(217, 177, 108, 0.22), rgba(164, 92, 58, 0.18));
-      transform: translateY(-30%) rotate(9deg);
-    }
-
-    .hero-card {
-      width: 100%;
-      padding: clamp(44px, 6vw, 64px);
-      background: var(--shape);
-      border: 2px solid var(--border);
-      box-shadow: 20px 20px 0 rgba(164, 92, 58, 0.1);
-      display: grid;
-      gap: 32px;
-      justify-items: start;
-      text-align: left;
-      position: relative;
-      border-radius: 48px 62px 52px 60px / 58px 52px 60px 48px;
-      overflow: hidden;
-    }
-
-    .hero-card::before {
-      content: "";
+    .slider::before {
       position: absolute;
-      width: clamp(180px, 28vw, 320px);
-      height: clamp(180px, 28vw, 320px);
-      border-radius: 55% 45% 65% 35% / 60% 40% 55% 45%;
-      background: radial-gradient(circle at 30% 30%, rgba(217, 177, 108, 0.6), rgba(164, 92, 58, 0.2));
-      top: -30%;
-      right: -18%;
-      opacity: 0.6;
-      pointer-events: none;
-      filter: blur(1px);
-    }
-
-    .hero-card::after {
       content: "";
-      position: absolute;
-      inset: 22px;
-      border-radius: 44px 60px 46px 58px / 56px 46px 60px 48px;
-      border: 1px dashed rgba(124, 140, 106, 0.35);
-      pointer-events: none;
+      height: 20px;
+      width: 20px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s;
     }
 
-    .hero-card h1 {
-      margin: 0;
-      font-size: clamp(2.4rem, 5.2vw, 3.4rem);
-      letter-spacing: 0.02em;
-      font-family: "Playfair Display", "Georgia", serif;
-      color: var(--ink);
-      text-transform: uppercase;
+    .toggle-switch input:checked + .slider {
+      background-color: var(--accent);
     }
 
-    .hero-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.85;
-      font-size: 1.08rem;
-      max-width: 640px;
+    .toggle-switch input:checked + .slider::before {
+      transform: translateX(24px);
     }
 
-    .hero-card .meta-ribbon {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 18px;
-      background: rgba(124, 140, 106, 0.18);
-      border: 1px solid rgba(124, 140, 106, 0.35);
-      border-radius: 999px;
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent-olive);
-    }
-
-    .content-section {
-      width: 100%;
-      padding: clamp(40px, 5vw, 56px);
-      border: 2px solid var(--border);
-      background: linear-gradient(135deg, var(--shape), rgba(246, 237, 227, 0.75));
-      box-shadow: 18px 18px 0 rgba(124, 140, 106, 0.12);
-      border-radius: 42px 58px 46px 52px / 48px 46px 58px 42px;
-      display: grid;
-      grid-template-columns: 1fr;
-      justify-items: center;
-      align-items: start;
-      gap: clamp(20px, 4vw, 32px);
-      position: relative;
-      overflow: hidden;
-      text-align: left;
-    }
-
-    .content-section::before {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border-radius: 38px 50px 42px 48px / 46px 40px 52px 44px;
-      border: 1px dashed rgba(190, 156, 120, 0.35);
-      pointer-events: none;
-    }
-
-    .content-section::after {
-      content: "";
-      position: absolute;
-      width: clamp(120px, 18vw, 220px);
-      height: clamp(120px, 18vw, 220px);
-      border-radius: 58% 42% 54% 46% / 52% 48% 56% 44%;
-      background: radial-gradient(circle at 20% 25%, rgba(217, 177, 108, 0.35), rgba(164, 92, 58, 0.15));
-      top: -18%;
-      left: -10%;
-      opacity: 0.5;
-      pointer-events: none;
-    }
-
-    .content-section h2 {
-      margin: 0;
-      font-size: clamp(1.9rem, 3.6vw, 2.4rem);
-      letter-spacing: 0.02em;
-      font-family: "Playfair Display", "Georgia", serif;
-      color: var(--ink);
-      text-transform: uppercase;
-      line-height: 1.2;
-      justify-self: center;
-    }
-
-    .content-section h2::after {
-      content: "";
-      display: block;
-      width: 64px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-gold));
-      margin: 18px auto 0;
-      border-radius: 12px;
-    }
-
-    .section-figure {
-      margin: 0;
-      width: 100%;
-      max-width: clamp(340px, 85%, 760px);
-      border: none;
-      background: none;
-      padding: 0;
-      display: grid;
-      gap: 12px;
-      justify-items: center;
-    }
-
-    .section-figure img,
-    .content-section img {
-      object-fit: contain;
-      object-position: center;
+    /* Main Content - Swiss Grid */
+    .project-container {
+      max-width: 1200px;
       margin: 0 auto;
+      padding: calc(var(--header-height) + 40px) 60px 80px;
+      background: var(--bg);
+      box-sizing: border-box;
+    }
+
+    .project-hero {
+      margin-bottom: 120px;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 60px;
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid var(--border);
+    }
+
+    .project-hero-image {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid var(--border);
+    }
+
+    .hero-content h1 {
+      font-size: 64px;
+      font-weight: 700;
+      margin: 0 0 24px 0;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    .project-subtitle {
+      font-size: 18px;
+      color: var(--muted);
+      margin: 0 0 48px 0;
+      line-height: 1.5;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .meta-value {
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    .project-section {
+      margin-bottom: 120px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0 0 32px 0;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .section-content {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 48px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      max-width: 800px;
+    }
+
+    .section-content p {
+      margin: 0 0 24px 0;
+    }
+
+    .section-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin: 48px 0;
+    }
+
+    .gallery-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
       display: block;
     }
 
-    .section-figure img {
-      width: 100%;
-      max-width: 100%;
-      max-height: clamp(220px, 40vw, 420px);
-      border-radius: 6px;
-      border: none;
-      padding: clamp(8px, 1.5vw, 18px);
+    .gallery-caption {
+      padding: 12px 16px;
+      font-size: 10px;
+      color: var(--muted);
+      text-align: left;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .gallery-item--tall img {
+      max-height: min(420px, 70vh);
+      object-fit: contain;
       background: rgba(0, 0, 0, 0.02);
     }
 
-    .figure-description {
-      margin: 0;
-      width: 100%;
-      color: var(--muted);
-      font-size: 0.95rem;
+    .figure-note {
+      margin: 0 0 24px 0;
+      font-size: 13px;
       line-height: 1.6;
-      text-align: left;
-    }
-
-    .section-figure.merch-gallery {
-      width: clamp(360px, 70vw, 820px);
-      padding: clamp(10px, 2vw, 20px);
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: clamp(16px, 2vw, 28px);
-      align-items: stretch;
-      justify-items: stretch;
-      background: rgba(0, 0, 0, 0.02);
-      border-radius: 16px;
-    }
-
-    .section-figure.merch-gallery img {
-      width: 100%;
-      max-width: 100%;
-      border-radius: 6px;
-      margin: 0;
-      padding: clamp(6px, 1vw, 12px);
-      background: rgba(255, 255, 255, 0.6);
-    }
-
-    .section-figure.merch-gallery .figure-description {
-      grid-column: 1 / -1;
-    }
-
-    .content-section p {
-      margin: 0;
       color: var(--muted);
-      line-height: 1.85;
-      font-size: 1.05rem;
-      max-width: clamp(340px, 85%, 760px);
-      text-align: left;
+      max-width: 800px;
     }
 
-    [data-theme="dark"] .content-section {
-      background: linear-gradient(135deg, rgba(34, 30, 25, 0.88), rgba(34, 30, 25, 0.72));
-      box-shadow: 16px 16px 0 rgba(124, 140, 106, 0.18);
+    @media screen and (max-width: 768px) and (orientation: portrait) {
+      .project-container {
+        padding: 200px 20px 40px !important;
+      }
+
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: left;
+      }
+
+      .hero-image {
+        margin: 32px 0;
+      }
+
+      .project-hero-image {
+        border: 1px solid var(--border);
+      }
+
+      .project-meta {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .hero-content h1 {
+        font-size: 36px;
+      }
+
+      .section-title {
+        font-size: 18px;
+      }
+
+      .section-content {
+        font-size: 12px;
+      }
+
+      .image-gallery {
+        grid-template-columns: 1fr;
+      }
     }
 
-    [data-theme="dark"] .content-section::after {
-      background: radial-gradient(circle at 20% 25%, rgba(201, 122, 82, 0.35), rgba(124, 140, 106, 0.18));
-      opacity: 0.55;
+    @media screen and (max-width: 768px) and (orientation: landscape) {
+      .project-container {
+        padding: 120px 20px 40px !important;
+      }
+    }
+
+    @media screen and (max-width: 430px) and (max-height: 932px) {
+      .project-container {
+        padding: 220px 20px 40px !important;
+      }
+    }
+
+    @media screen and (max-width: 430px) and (min-height: 932px) {
+      .project-container {
+        padding: 240px 20px 40px !important;
+      }
+    }
+
+    @media screen and (max-width: 375px) {
+      .project-container {
+        padding: 180px 16px 40px !important;
+      }
+    }
+
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+      .project-container {
+        padding: 120px 30px 40px;
+      }
     }
 
     @media (max-width: 768px) {
       .project-container {
-        margin-top: calc(var(--header-height-mobile) + 40px);
-        padding: 92px 24px 15px;
-      }
-
-      .hero-card {
-        padding: 40px;
-      }
-
-      .content-section {
-        padding: 36px;
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .section-figure img,
-      .content-section img {
-        width: 100%;
-        max-width: 100%;
-        max-height: clamp(220px, 58vw, 360px);
-        border-radius: 6px;
-        margin: 0 auto;
-        padding: clamp(6px, 1.2vw, 12px);
-      }
-
-      .section-figure.merch-gallery {
-        width: 100%;
-        grid-template-columns: 1fr;
-      }
-
-      .content-section h2,
-      .content-section p {
-        grid-column: 1;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .project-container {
-        padding: 84px 18px 15px;
-      }
-
-      .hero-card {
-        padding: 28px;
-      }
-
-      .content-section {
-        padding: 26px;
+        padding: calc(var(--header-height-mobile) + 40px) 28px 64px;
       }
     }
   </style>
@@ -373,116 +362,228 @@
     </div>
   </header>
 
-  <div class="project-wrapper">
-    <div class="project-container">
-      <section class="hero-card">
+  <div class="project-container">
+    <section class="project-hero">
+      <div class="hero-content">
         <h1>Bolsa Chica Rebrand</h1>
-        <p>
-          This rebrand for Bolsa Chica Land Trust modernizes the visual identity while honoring the
+        <p class="project-subtitle">Visual identity for Bolsa Chica Land Trust</p>
+      </div>
+
+      <div class="hero-layout">
+        <div class="hero-image">
+          <img src="assets/images/BolsaChicaLT_Logo.png" alt="Bolsa Chica Land Trust logo" class="project-hero-image">
+        </div>
+
+        <div class="project-meta">
+          <div class="meta-item">
+            <span class="meta-label">Focus</span>
+            <span class="meta-value">Brand identity &amp; guidelines</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Deliverables</span>
+            <span class="meta-value">Logo system, color, type, merchandise, digital</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Context</span>
+            <span class="meta-value">Nonprofit conservation &amp; community engagement</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-content" style="margin-top: 48px; margin-bottom: 0;">
+        <p>This rebrand for Bolsa Chica Land Trust modernizes the visual identity while honoring the
           wetlands and coastal habitat that define the organization. The updated system improves
-          consistency across print, merchandise, social channels, and web touchpoints.
-        </p>
-      </section>
+          consistency across print, merchandise, social channels, and web touchpoints.</p>
+      </div>
+    </section>
 
-      <section class="content-section">
-        <h2>Logo Variation</h2>
-        <figure class="section-figure">
-          <img src="assets/images/Logos.png" alt="Bolsa Chica logo variations">
-          <figcaption class="figure-description">
-            Multiple logo lockups were developed to ensure clarity and recognition across social icons,
-            print collateral, signage, and environmental applications while preserving a cohesive brand identity.
-          </figcaption>
-        </figure>
-        <p>
-          The logo suite includes primary and secondary lockups designed for flexibility across digital,
+    <section class="project-section">
+      <h2 class="section-title">Logo Variation</h2>
+      <div class="section-content">
+        <div class="image-gallery">
+          <div class="gallery-item gallery-item--tall">
+            <img src="assets/images/Logos.png" alt="Bolsa Chica logo variations">
+            <p class="figure-note">Multiple logo lockups were developed to ensure clarity and recognition across social icons,
+              print collateral, signage, and environmental applications while preserving a cohesive brand identity.</p>
+          </div>
+        </div>
+        <p>The logo suite includes primary and secondary lockups designed for flexibility across digital,
           print, and environmental applications. Each variation preserves recognizability while adapting
-          to different sizes, formats, and context-specific constraints.
-        </p>
-      </section>
+          to different sizes, formats, and context-specific constraints.</p>
+      </div>
+    </section>
 
-      <section class="content-section">
-        <h2>Color Palette</h2>
-        <figure class="section-figure">
-          <img src="assets/images/ColorPal.png" alt="Bolsa Chica color palette">
-          <figcaption class="figure-description">
-            The color system draws from Bolsa Chica's wetlands and shoreline. Earth-forward neutrals build warmth
-            and trust, while accent tones create hierarchy and maintain accessible contrast in digital and print.
-          </figcaption>
-        </figure>
-        <p>
-          The core and secondary palettes draw directly from the wetlands, shoreline, and native
+    <section class="project-section">
+      <h2 class="section-title">Color Palette</h2>
+      <div class="section-content">
+        <div class="image-gallery">
+          <div class="gallery-item gallery-item--tall">
+            <img src="assets/images/ColorPal.png" alt="Bolsa Chica color palette">
+            <p class="figure-note">The color system draws from Bolsa Chica's wetlands and shoreline. Earth-forward neutrals build warmth
+              and trust, while accent tones create hierarchy and maintain accessible contrast in digital and print.</p>
+          </div>
+        </div>
+        <p>The core and secondary palettes draw directly from the wetlands, shoreline, and native
           vegetation. Colors were selected to create a natural, grounded tone while maintaining
-          accessibility and contrast requirements for clear communication across mediums.
-        </p>
-      </section>
+          accessibility and contrast requirements for clear communication across mediums.</p>
+      </div>
+    </section>
 
-      <section class="content-section">
-        <h2>Typeface</h2>
-        <figure class="section-figure">
-          <img src="assets/images/TypeFace.png" alt="Typography selections">
-          <figcaption class="figure-description">
-            The typography pair balances character and readability. Display type establishes a distinctive voice,
-            while supporting text styles provide clear structure for long-form content and interface elements.
-          </figcaption>
-        </figure>
-        <p>
-          The typography system pairs expressive display styles with highly legible supporting type.
+    <section class="project-section">
+      <h2 class="section-title">Typeface</h2>
+      <div class="section-content">
+        <div class="image-gallery">
+          <div class="gallery-item gallery-item--tall">
+            <img src="assets/images/TypeFace.png" alt="Typography selections">
+            <p class="figure-note">The typography pair balances character and readability. Display type establishes a distinctive voice,
+              while supporting text styles provide clear structure for long-form content and interface elements.</p>
+          </div>
+        </div>
+        <p>The typography system pairs expressive display styles with highly legible supporting type.
           Together, they establish a confident voice and clear hierarchy for educational content,
-          campaign messaging, and branded collateral.
-        </p>
-      </section>
+          campaign messaging, and branded collateral.</p>
+      </div>
+    </section>
 
-      <section class="content-section">
-        <h2>Merchandise</h2>
-        <figure class="section-figure merch-gallery">
-          <img src="assets/images/Merch1.png" alt="Merchandise mockup tote bag">
-          <img src="assets/images/Merch2.png" alt="Merchandise mockup packaging">
-          <figcaption class="figure-description">
-            Brand applications were tested across merchandise to validate scale, legibility, and placement.
-            The system remains recognizable and flexible across apparel, packaging, and promotional materials.
-          </figcaption>
-        </figure>
-        <p>
-          Merchandise explorations test how the identity performs on wearable and physical goods,
+    <section class="project-section">
+      <h2 class="section-title">Merchandise</h2>
+      <div class="section-content">
+        <div class="image-gallery">
+          <div class="gallery-item">
+            <img src="assets/images/Merch1.png" alt="Merchandise mockup tote bag">
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Merch2.png" alt="Merchandise mockup packaging">
+          </div>
+        </div>
+        <p class="figure-note">Brand applications were tested across merchandise to validate scale, legibility, and placement.
+          The system remains recognizable and flexible across apparel, packaging, and promotional materials.</p>
+        <p>Merchandise explorations test how the identity performs on wearable and physical goods,
           including tote bags and packaging. The visual system scales cleanly across formats while
-          preserving legibility, balance, and brand consistency.
-        </p>
-      </section>
+          preserving legibility, balance, and brand consistency.</p>
+      </div>
+    </section>
 
-      <section class="content-section">
-        <h2>Social Media &amp; Web</h2>
-        <figure class="section-figure merch-gallery">
-          <img src="assets/images/SocialMedia.png" alt="Social media previews">
-          <img src="assets/images/Website1.png" alt="Website design preview one">
-          <img src="assets/images/Website2.png" alt="Website design preview two">
-          <figcaption class="figure-description">
-            Social and web explorations translate the refreshed identity into digital touchpoints with consistent
-            color use, typography hierarchy, and component styling for a unified cross-platform experience.
-          </figcaption>
-        </figure>
-        <p>
-          Social templates and website concepts translate the refreshed brand into a cohesive digital
+    <section class="project-section">
+      <h2 class="section-title">Social Media &amp; Web</h2>
+      <div class="section-content">
+        <div class="image-gallery">
+          <div class="gallery-item gallery-item--tall">
+            <img src="assets/images/SocialMedia.png" alt="Social media previews">
+          </div>
+          <div class="gallery-item gallery-item--tall">
+            <img src="assets/images/Website1.png" alt="Website design preview one">
+          </div>
+          <div class="gallery-item gallery-item--tall">
+            <img src="assets/images/Website2.png" alt="Website design preview two">
+          </div>
+        </div>
+        <p class="figure-note">Social and web explorations translate the refreshed identity into digital touchpoints with consistent
+          color use, typography hierarchy, and component styling for a unified cross-platform experience.</p>
+        <p>Social templates and website concepts translate the refreshed brand into a cohesive digital
           presence. Consistent typography, color usage, and component styling create continuity across
-          channels while supporting engaging storytelling.
-        </p>
-      </section>
-    </div>
+          channels while supporting engaging storytelling.</p>
+      </div>
+    </section>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const toggle = document.getElementById('darkModeToggle');
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      const body = document.body;
       const html = document.documentElement;
-      const savedTheme = localStorage.getItem('theme') || 'light';
 
-      html.setAttribute('data-theme', savedTheme);
-      toggle.checked = savedTheme === 'dark';
+      const currentTheme = localStorage.getItem('theme') || 'light';
+      body.setAttribute('data-theme', currentTheme);
+      html.setAttribute('data-theme', currentTheme);
+      updateToggleState(currentTheme);
 
-      toggle.addEventListener('change', () => {
-        const theme = toggle.checked ? 'dark' : 'light';
-        html.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
+      darkModeToggle.addEventListener('change', () => {
+        const newTheme = darkModeToggle.checked ? 'dark' : 'light';
+
+        body.setAttribute('data-theme', newTheme);
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+
+        void body.offsetHeight;
       });
+
+      function updateToggleState(theme) {
+        darkModeToggle.checked = theme === 'dark';
+      }
+
+      const header = document.querySelector('header');
+      let lastScrollY = window.scrollY;
+
+      window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        const currentTheme = body.getAttribute('data-theme');
+
+        if (currentTheme === 'dark') {
+          if (currentScrollY > 50) {
+            header.style.background = 'rgba(0, 0, 0, 0.95)';
+            header.style.backdropFilter = 'blur(20px)';
+            header.style.webkitBackdropFilter = 'blur(20px)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.25)';
+          } else {
+            header.style.background = 'rgba(0, 0, 0, 0.9)';
+            header.style.backdropFilter = 'blur(10px)';
+            header.style.webkitBackdropFilter = 'blur(10px)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
+          }
+        } else {
+          if (currentScrollY > 50) {
+            header.style.background = 'rgba(246, 237, 227, 0.95)';
+            header.style.backdropFilter = 'blur(20px)';
+            header.style.webkitBackdropFilter = 'blur(20px)';
+            header.style.borderBottom = '1px solid rgba(200, 169, 137, 0.35)';
+          } else {
+            header.style.background = 'rgba(246, 237, 227, 0.88)';
+            header.style.backdropFilter = 'blur(10px)';
+            header.style.webkitBackdropFilter = 'blur(10px)';
+            header.style.borderBottom = '1px solid rgba(200, 169, 137, 0.25)';
+          }
+        }
+
+        lastScrollY = currentScrollY;
+      });
+
+      function updateHeaderForTheme(theme) {
+        const currentScrollY = window.scrollY;
+
+        if (theme === 'dark') {
+          if (currentScrollY > 50) {
+            header.style.background = 'rgba(0, 0, 0, 0.95)';
+            header.style.backdropFilter = 'blur(20px)';
+            header.style.webkitBackdropFilter = 'blur(20px)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.25)';
+          } else {
+            header.style.background = 'rgba(0, 0, 0, 0.9)';
+            header.style.backdropFilter = 'blur(10px)';
+            header.style.webkitBackdropFilter = 'blur(10px)';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
+          }
+        } else {
+          if (currentScrollY > 50) {
+            header.style.background = 'rgba(246, 237, 227, 0.95)';
+            header.style.backdropFilter = 'blur(20px)';
+            header.style.webkitBackdropFilter = 'blur(20px)';
+            header.style.borderBottom = '1px solid rgba(200, 169, 137, 0.35)';
+          } else {
+            header.style.background = 'rgba(246, 237, 227, 0.88)';
+            header.style.backdropFilter = 'blur(10px)';
+            header.style.webkitBackdropFilter = 'blur(10px)';
+            header.style.borderBottom = '1px solid rgba(200, 169, 137, 0.25)';
+          }
+        }
+      }
+
+      darkModeToggle.addEventListener('change', () => {
+        const newTheme = darkModeToggle.checked ? 'dark' : 'light';
+        updateHeaderForTheme(newTheme);
+      });
+
+      updateHeaderForTheme(currentTheme);
     });
   </script>
 </body>
