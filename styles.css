@@ -7,6 +7,9 @@
   --btn-bg: #f8f9fa;
   --btn-bg-hover: #f1f3f4;
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.1);
+  /* Fixed header clearance (see header { position: fixed }) — used by project pages */
+  --header-height: 80px;
+  --header-height-mobile: 72px;
 }
 
 [data-theme="dark"] {
