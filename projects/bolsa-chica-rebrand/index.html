@@ -117,17 +117,14 @@
       margin-bottom: 120px;
     }
 
-    .hero-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
+    .hero-figure {
       margin-top: 60px;
+      max-width: 480px;
     }
 
     .hero-image {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
     }
 
@@ -160,35 +157,6 @@
       line-height: 1.5;
       font-weight: 400;
       letter-spacing: 0.02em;
-    }
-
-    .project-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      margin-bottom: 32px;
-    }
-
-    .meta-item {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .meta-label {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-
-    .meta-value {
-      font-size: 14px;
-      color: var(--text);
-      font-weight: 400;
-      letter-spacing: 0.01em;
     }
 
     .project-section {
@@ -273,10 +241,8 @@
         padding: 200px 20px 40px !important;
       }
 
-      .hero-layout {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: left;
+      .hero-figure {
+        max-width: 100%;
       }
 
       .hero-image {
@@ -285,11 +251,6 @@
 
       .project-hero-image {
         border: 1px solid var(--border);
-      }
-
-      .project-meta {
-        grid-template-columns: 1fr;
-        gap: 16px;
       }
 
       .hero-content h1 {
@@ -369,24 +330,9 @@
         <p class="project-subtitle">Visual identity for Bolsa Chica Land Trust</p>
       </div>
 
-      <div class="hero-layout">
+      <div class="hero-figure">
         <div class="hero-image">
           <img src="assets/images/BolsaChicaLT_Logo.png" alt="Bolsa Chica Land Trust logo" class="project-hero-image">
-        </div>
-
-        <div class="project-meta">
-          <div class="meta-item">
-            <span class="meta-label">Focus</span>
-            <span class="meta-value">Brand identity &amp; guidelines</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Deliverables</span>
-            <span class="meta-value">Logo system, color, type, merchandise, digital</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Context</span>
-            <span class="meta-value">Nonprofit conservation &amp; community engagement</span>
-          </div>
         </div>
       </div>
 
