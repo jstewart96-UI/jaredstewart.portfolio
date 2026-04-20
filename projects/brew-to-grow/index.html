@@ -109,7 +109,8 @@
     .project-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: calc(var(--header-height) + 40px) 60px 80px;
+      /* Extra gap below fixed nav — large hero titles need more than nav height alone */
+      padding: calc(var(--header-height) + 72px) 60px 80px;
       background: var(--bg);
       box-sizing: border-box;
     }
@@ -417,7 +418,7 @@
 
     @media screen and (max-width: 768px) and (orientation: landscape) {
       .project-container {
-        padding: 120px 20px 40px !important;
+        padding: calc(var(--header-height-mobile) + 56px) 20px 40px !important;
       }
     }
 
@@ -487,7 +488,7 @@
 
     @media (max-width: 768px) {
       .project-container {
-        padding: calc(var(--header-height-mobile) + 40px) 28px 64px;
+        padding: calc(var(--header-height-mobile) + 56px) 28px 64px;
       }
 
       .navigation-links {
